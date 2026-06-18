@@ -2927,3 +2927,37 @@ img, video, canvas, svg {
         justify-content: center;
     }
 }
+
+/* ==================== SECTION DEMO (WHISKING) THEME LOCK ==================== */
+.section-demo {
+    background-color: var(--primary) !important;
+    color: #e8ede9 !important;
+    --white: #ffffff;
+}
+
+.section-demo h2,
+.section-demo .section-title {
+    color: #e8ede9 !important;
+}
+
+.section-demo .section-tag {
+    color: var(--accent-light) !important;
+}
+
+.section-demo .demo-label {
+    color: #e8ede9 !important;
+    opacity: 0.8 !important;
+}
+
+.section-demo .btn-primary {
+    background-color: var(--accent) !important;
+    color: var(--primary) !important;
+    border: none !important;
+}
+
+.section-demo .btn-primary:hover {
+    background-color: var(--accent-light) !important;
+    color: var(--primary) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(189, 162, 107, 0.25) !important;
+}
