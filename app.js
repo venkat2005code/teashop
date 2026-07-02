@@ -66,6 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize shade growth preview
     updateShadeSimulation(10);
     
+    // Initialize first instrument preview quietly on startup
+    showHotspotInfo('chasen', false);
+    
     // LTR/RTL Listener
     const rtlBtn = document.getElementById('rtl-toggle');
     if (rtlBtn) {
@@ -99,6 +102,9 @@ function navigateTo(pageId) {
     if (targetPage) {
         targetPage.classList.remove('hide');
         state.activePage = pageId;
+        if (pageId === 'contact') {
+            initContactMap();
+        }
     }
     
     // Highlight nav link
@@ -317,8 +323,9 @@ function addNotification(message) {
 }
 
 // ==================== INSTRUMENT HOTSPOTS ====================
-function showHotspotInfo(id) {
+function showHotspotInfo(id, triggerNotification = true) {
     const displayCard = document.getElementById('hotspot-display');
+    if (!displayCard) return;
     const defaultText = displayCard.querySelector('.hotspot-default-text');
     const detailPanel = document.getElementById('hotspot-detail');
     
@@ -345,14 +352,25 @@ function showHotspotInfo(id) {
     };
     
     if (data[id]) {
-        defaultText.classList.add('hidden');
-        detailPanel.classList.remove('hidden');
-        title.textContent = data[id].title;
-        desc.textContent = data[id].desc;
-        zen.textContent = data[id].zen;
+        if (defaultText) defaultText.classList.add('hidden');
+        if (detailPanel) detailPanel.classList.remove('hidden');
+        if (title) title.textContent = data[id].title;
+        if (desc) desc.textContent = data[id].desc;
+        if (zen) zen.textContent = data[id].zen;
         
-        addNotification(`Details loaded for ${id.charAt(0).toUpperCase() + id.slice(1)}`);
+        if (triggerNotification) {
+            addNotification(`Details loaded for ${id.charAt(0).toUpperCase() + id.slice(1)}`);
+        }
     }
+}
+
+function showInstrumentDetail(btn, id) {
+    // Remove active state from other items
+    document.querySelectorAll('.instrument-selector-item').forEach(el => el.classList.remove('active-selector'));
+    // Add active state to clicked item
+    btn.classList.add('active-selector');
+    // Call original hotspot function
+    showHotspotInfo(id);
 }
 
 // ==================== HOME 2 PHILOSOPHY TABS ====================
@@ -403,7 +421,7 @@ function updateShadeSimulation(val) {
         descTitle.textContent = 'Slightly Shaded Tea (Kabusecha)';
         descP.textContent = 'Bushes shaded for 10 days. The conversion of sweet amino acids slows. Color becomes a lighter pea-green. Flavor is fresh and moderately earthy.';
         // Light shade net rows — unique to this stage
-        if (shadeImg) shadeImg.src = 'https://images.unsplash.com/photo-1587593810167-a84920ea0781?auto=format&fit=crop&q=80&w=500';
+        if (shadeImg) shadeImg.src = 't8.jpg';
 
         barChlorophyll.style.width = '40%';
         barTheanine.style.width = '30%';
@@ -752,6 +770,23 @@ function toggleSubscriptionPause() {
     }
 }
 
+// ==================== DASHBOARD PROFILE DROPDOWN ====================
+function toggleProfileMenu(menuId) {
+    const menu = document.getElementById(menuId);
+    if (!menu) return;
+    const isOpen = menu.classList.contains('open');
+    // Close all profile menus first
+    document.querySelectorAll('.dash-profile-menu').forEach(m => m.classList.remove('open'));
+    if (!isOpen) menu.classList.add('open');
+}
+
+// Close profile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.dash-profile-dropdown')) {
+        document.querySelectorAll('.dash-profile-menu').forEach(m => m.classList.remove('open'));
+    }
+});
+
 // ==================== LOGIN MODAL CONTROLS ====================
 function openLoginModal() {
     const modal = document.getElementById('login-modal');
@@ -927,6 +962,8 @@ function drawAdminMembershipChart() {
     // Clear canvas
     ctx.clearRect(0, 0, width, height);
     
+    const colors = getThemeColors();
+    
     // Chart padding
     const padding = { top: 20, right: 20, bottom: 30, left: 40 };
     const chartWidth = width - padding.left - padding.right;
@@ -938,11 +975,11 @@ function drawAdminMembershipChart() {
     const maxVal = 400;
     
     // Draw grid lines (Horizontal)
-    ctx.strokeStyle = 'rgba(35, 52, 37, 0.08)';
+    ctx.strokeStyle = colors.gridColor;
     ctx.lineWidth = 1;
     ctx.textAlign = 'right';
     ctx.textBaseline = 'middle';
-    ctx.fillStyle = 'var(--text-muted)';
+    ctx.fillStyle = colors.textMuted;
     ctx.font = '10px var(--font-sans)';
     
     for (let i = 0; i <= 4; i++) {
@@ -965,8 +1002,9 @@ function drawAdminMembershipChart() {
     
     // Fill Area under line (Gradient)
     const gradient = ctx.createLinearGradient(0, padding.top, 0, padding.top + chartHeight);
-    gradient.addColorStop(0, 'rgba(35, 52, 37, 0.2)');
-    gradient.addColorStop(1, 'rgba(35, 52, 37, 0.01)');
+    const primaryColor = colors.primary;
+    gradient.addColorStop(0, primaryColor === '#bda26b' ? 'rgba(189, 162, 107, 0.25)' : 'rgba(35, 52, 37, 0.2)');
+    gradient.addColorStop(1, primaryColor === '#bda26b' ? 'rgba(189, 162, 107, 0.01)' : 'rgba(35, 52, 37, 0.01)');
     ctx.fillStyle = gradient;
     ctx.beginPath();
     ctx.moveTo(points[0].x, padding.top + chartHeight);
@@ -976,7 +1014,7 @@ function drawAdminMembershipChart() {
     ctx.fill();
     
     // Draw Line
-    ctx.strokeStyle = 'var(--primary)';
+    ctx.strokeStyle = colors.primary;
     ctx.lineWidth = 3;
     ctx.beginPath();
     ctx.moveTo(points[0].x, points[0].y);
@@ -986,12 +1024,12 @@ function drawAdminMembershipChart() {
     ctx.stroke();
     
     // Draw points & labels
-    ctx.fillStyle = 'var(--accent)';
+    ctx.fillStyle = colors.accent;
     points.forEach((pt, i) => {
         ctx.beginPath();
         ctx.arc(pt.x, pt.y, 5, 0, 2 * Math.PI);
         ctx.fill();
-        ctx.strokeStyle = 'var(--primary)';
+        ctx.strokeStyle = colors.primary;
         ctx.lineWidth = 2;
         ctx.stroke();
     });
@@ -999,7 +1037,7 @@ function drawAdminMembershipChart() {
     // Draw Month Labels
     ctx.textAlign = 'center';
     ctx.textBaseline = 'top';
-    ctx.fillStyle = 'var(--text-muted)';
+    ctx.fillStyle = colors.textMuted;
     months.forEach((month, i) => {
         const x = padding.left + (i / (months.length - 1)) * chartWidth;
         ctx.fillText(month, x, padding.top + chartHeight + 8);
@@ -1017,6 +1055,7 @@ function drawAdminCategoryChart() {
     // Clear canvas
     ctx.clearRect(0, 0, width, height);
     
+    const colors = getThemeColors();
     const padding = { top: 20, right: 20, bottom: 30, left: 80 };
     const chartWidth = width - padding.left - padding.right;
     const chartHeight = height - padding.top - padding.bottom;
@@ -1038,24 +1077,24 @@ function drawAdminCategoryChart() {
         const y = padding.top + (i * barSpacing) + (barSpacing / 2);
         
         // Label
-        ctx.fillStyle = 'var(--text-dark)';
+        ctx.fillStyle = colors.text;
         ctx.fillText(categories[i], padding.left - 12, y);
         
         // Bar background
-        ctx.fillStyle = 'var(--primary-xlight)';
+        ctx.fillStyle = colors.barBg;
         ctx.beginPath();
         ctx.roundRect(padding.left, y - (barHeight / 2), chartWidth, barHeight, 4);
         ctx.fill();
         
         // Bar fill
         const fillWidth = (values[i] / maxVal) * chartWidth;
-        ctx.fillStyle = i === 0 ? 'var(--primary)' : i === 1 ? 'var(--accent)' : 'var(--primary-light)';
+        ctx.fillStyle = i === 0 ? colors.primary : i === 1 ? colors.accent : colors.primaryLight;
         ctx.beginPath();
         ctx.roundRect(padding.left, y - (barHeight / 2), fillWidth, barHeight, 4);
         ctx.fill();
         
         // Value Text
-        ctx.fillStyle = 'var(--text-dark)';
+        ctx.fillStyle = colors.text;
         ctx.textAlign = 'left';
         ctx.fillText(`$${values[i]}`, padding.left + fillWidth + 8, y);
         ctx.textAlign = 'right'; // reset align
@@ -1895,4 +1934,58 @@ if (typeof CanvasRenderingContext2D.prototype.roundRect !== 'function') {
         this.closePath();
         return this;
     };
+}
+
+// ==================== INTERACTIVE LEAFLET MAP ====================
+let contactMap = null;
+let mapMarkers = {};
+
+function initContactMap() {
+    const mapContainer = document.getElementById('contact-map');
+    if (!mapContainer) return;
+    
+    if (contactMap) {
+        // If map already exists, invalidate size so it fits container correctly
+        setTimeout(() => {
+            contactMap.invalidateSize();
+        }, 150);
+        return;
+    }
+    
+    // Create map centered on Kyoto Gion
+    contactMap = L.map('contact-map').setView([35.0037, 135.7782], 13);
+    
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(contactMap);
+    
+    // Add markers
+    mapMarkers.kyoto = L.marker([35.0037, 135.7782]).addTo(contactMap)
+        .bindPopup('<b>Sado Kyoto Tea House</b><br>15 Gionmachi Minamigawa, Kyoto');
+        
+    mapMarkers.sf = L.marker([37.7884, -122.4093]).addTo(contactMap)
+        .bindPopup('<b>Sado San Francisco Ritual Room</b><br>450 Post St, San Francisco');
+        
+    // Invalidate size on first load
+    setTimeout(() => {
+        contactMap.invalidateSize();
+    }, 150);
+}
+
+function showMapLocation(locationKey) {
+    if (!contactMap) {
+        initContactMap();
+    }
+    
+    const coords = {
+        kyoto: [35.0037, 135.7782],
+        sf: [37.7884, -122.4093]
+    };
+    
+    if (coords[locationKey]) {
+        contactMap.setView(coords[locationKey], 15);
+        mapMarkers[locationKey].openPopup();
+        addNotification(`Map centered on Sado ${locationKey === 'kyoto' ? 'Kyoto' : 'San Francisco'} location.`);
+    }
 }

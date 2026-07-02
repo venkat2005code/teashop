@@ -15,6 +15,9 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
+    <!-- Leaflet Map library -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 <body>
 
@@ -106,11 +109,11 @@
                         <button class="btn btn-primary btn-lg" onclick="navigateTo('services')">Explore Tea Club</button>
                         <button class="btn btn-outline btn-lg" onclick="navigateTo('about')">Our Story</button>
                     </div>
+                </div>
                     <div class="scroll-indicator">
                         <span class="scroll-text">Scroll to explore</span>
                         <i data-lucide="chevron-down" class="bounce"></i>
                     </div>
-                </div>
             </section>
 
             <!-- Section 2: Ceremonial Grades Collection -->
@@ -125,7 +128,7 @@
                     <div class="card product-card">
                         <div class="product-badge">BEST SELLER</div>
                         <div class="product-img-box">
-                            <img src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&q=80&w=600" alt="Imperial Uji Matcha" class="product-img">
+                            <img src="https://images.unsplash.com/photo-1556881286-fc6915169721?auto=format&fit=crop&q=80&w=600" alt="Imperial Uji Matcha" class="product-img">
                         </div>
                         <div class="product-info">
                             <h3 class="product-name">Imperial Uji Ceremonial</h3>
@@ -140,7 +143,7 @@
                     <!-- Product Card 2 -->
                     <div class="card product-card">
                         <div class="product-img-box">
-                            <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?auto=format&fit=crop&q=80&w=600" alt="Fukuoka Premium Matcha" class="product-img">
+                            <img src="https://images.unsplash.com/photo-1582793988951-9aed5509eb97?auto=format&fit=crop&q=80&w=600" alt="Fukuoka Premium Matcha" class="product-img">
                         </div>
                         <div class="product-info">
                             <h3 class="product-name">Fukuoka Reserve</h3>
@@ -155,7 +158,7 @@
                     <!-- Product Card 3 -->
                     <div class="card product-card">
                         <div class="product-img-box">
-                            <img src="https://images.unsplash.com/photo-1582793988951-9aed5509eb97?auto=format&fit=crop&q=80&w=600" alt="Organic Ceremonial Matcha" class="product-img">
+                            <img src="https://images.unsplash.com/photo-1563822249548-9a72b6353cd1?auto=format&fit=crop&q=80&w=600" alt="Organic Ceremonial Matcha" class="product-img">
                         </div>
                         <div class="product-info">
                             <h3 class="product-name">Organic Nishio</h3>
@@ -170,42 +173,56 @@
                 </div>
             </section>
 
-            <!-- Section 3: Interactive Instrument Hotspots -->
+            <!-- Section 3: Interactive Instruments Selector (Without Image) -->
             <section class="section section-instrument bg-light">
                 <div class="container">
-                    <div class="grid grid-2 items-center">
-                        <div class="instrument-visual">
-                            <div class="hotspot-img-container">
-                                <img src="https://images.unsplash.com/photo-1563822249548-9a72b6353cd1?auto=format&fit=crop&q=80&w=800" alt="Matcha Whisk Set" class="instrument-img">
-                                <!-- Hotspot 1: Whisk (Chasen) -->
-                                <div class="hotspot" style="top: 50%; left: 30%;" onclick="showHotspotInfo('chasen')">
-                                    <div class="hotspot-pulse"></div>
-                                    <span class="hotspot-number">1</span>
-                                </div>
-                                <!-- Hotspot 2: Bowl (Chawan) -->
-                                <div class="hotspot" style="top: 35%; left: 65%;" onclick="showHotspotInfo('chawan')">
-                                    <div class="hotspot-pulse"></div>
-                                    <span class="hotspot-number">2</span>
-                                </div>
-                                <!-- Hotspot 3: Scoop (Chashaku) -->
-                                <div class="hotspot" style="top: 75%; left: 55%;" onclick="showHotspotInfo('chashaku')">
-                                    <div class="hotspot-pulse"></div>
-                                    <span class="hotspot-number">3</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="instrument-content">
+                    <div class="grid grid-2 items-center gap-lg">
+                        <div class="instrument-selectors">
                             <span class="section-tag">TRADITIONAL IMPLEMENTS</span>
                             <h2 class="section-title">The Essential Tea Set</h2>
-                            <p class="section-desc">Every piece in the Japanese tea ceremony holds a specific function and philosophy. Click on the hot-spots on the image to discover the art behind the tools.</p>
+                            <p class="section-desc margin-bottom-md">Every piece in the Japanese tea ceremony holds a specific function and philosophy. Select a traditional tool to explore its historical design and Zen philosophy.</p>
                             
-                            <div id="hotspot-display" class="hotspot-info-card">
+                            <div class="instrument-selector-list">
+                                <button class="instrument-selector-item card active-selector" onclick="showInstrumentDetail(this, 'chasen')">
+                                    <div class="selector-left">
+                                        <span class="selector-number">01</span>
+                                        <div class="selector-details">
+                                            <h3>Chasen</h3>
+                                            <span>The Bamboo Whisk</span>
+                                        </div>
+                                    </div>
+                                    <span class="selector-jp">筅</span>
+                                </button>
+                                <button class="instrument-selector-item card" onclick="showInstrumentDetail(this, 'chawan')">
+                                    <div class="selector-left">
+                                        <span class="selector-number">02</span>
+                                        <div class="selector-details">
+                                            <h3>Chawan</h3>
+                                            <span>The Tea Bowl</span>
+                                        </div>
+                                    </div>
+                                    <span class="selector-jp">碗</span>
+                                </button>
+                                <button class="instrument-selector-item card" onclick="showInstrumentDetail(this, 'chashaku')">
+                                    <div class="selector-left">
+                                        <span class="selector-number">03</span>
+                                        <div class="selector-details">
+                                            <h3>Chashaku</h3>
+                                            <span>The Bamboo Scoop</span>
+                                        </div>
+                                    </div>
+                                    <span class="selector-jp">杓</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="instrument-details-pane">
+                            <div id="hotspot-display" class="hotspot-info-card display-pane-card">
                                 <div class="hotspot-default-text">
                                     <i data-lucide="info" class="text-accent info-icon"></i>
-                                    <p>Select a numbered hot-spot on the ceremonial instruments to learn about its historical design and utility.</p>
+                                    <p>Select a traditional instrument to learn about its historical design and Zen philosophy.</p>
                                 </div>
                                 <div id="hotspot-detail" class="hidden">
-                                    <h3 id="hotspot-title" class="text-primary"></h3>
+                                    <h3 id="hotspot-title" class="text-primary font-serif"></h3>
                                     <p id="hotspot-desc" class="hotspot-desc-text"></p>
                                     <div class="hotspot-philosophical">
                                         <strong>Zen Element:</strong> <span id="hotspot-zen"></span>
@@ -226,22 +243,22 @@
                 </div>
                 <div class="grid grid-4 text-center">
                     <div class="benefit-item">
-                        <div class="benefit-icon-box"><i data-lucide="sparkles"></i></div>
+                        <div class="benefit-icon-box"><i data-lucide="leaf"></i></div>
                         <h3>Fresh Harvest</h3>
                         <p>Receive tea stone-ground weekly in Kyoto, vacuum sealed in double-lid tins to preserve freshness.</p>
                     </div>
                     <div class="benefit-item">
-                        <div class="benefit-icon-box"><i data-lucide="book-open"></i></div>
+                        <div class="benefit-icon-box"><i data-lucide="video"></i></div>
                         <h3>Exclusive Tutorials</h3>
                         <p>Gain access to interactive video guides, whisking masterclasses, and traditional chado recipes.</p>
                     </div>
                     <div class="benefit-item">
-                        <div class="benefit-icon-box"><i data-lucide="calendar"></i></div>
+                        <div class="benefit-icon-box"><i data-lucide="users"></i></div>
                         <h3>VIP Workshops</h3>
                         <p>Enjoy monthly live virtual tea ceremony workshops led by certified masters at no extra cost.</p>
                     </div>
                     <div class="benefit-item">
-                        <div class="benefit-icon-box"><i data-lucide="sliders"></i></div>
+                        <div class="benefit-icon-box"><i data-lucide="settings-2"></i></div>
                         <h3>Flexible Deliveries</h3>
                         <p>Customize your matcha blend, adjust shipment frequency, or pause membership anytime with ease.</p>
                     </div>
@@ -250,12 +267,12 @@
 
             <!-- Section 5: Interactive Brewing Demo Teaser -->
             <section class="section section-demo bg-dark text-light">
-                <div class="container grid grid-2 items-center">
-                    <div class="demo-content">
+                <div class="container text-center" style="max-width: 800px; margin: 0 auto;">
+                    <div class="demo-content" style="max-width: 650px; margin: 0 auto;">
                         <span class="section-tag text-accent">CHADO RITUAL</span>
                         <h2 class="section-title text-light">Mindful Whisking Ritual</h2>
                         <p class="section-desc">Traditional Usucha (thin tea) preparation requires high-speed whisking in an 'M' or 'W' motion. This forms a rich, jade froth that softens the taste.</p>
-                        <div class="demo-stats">
+                        <div class="demo-stats" style="justify-content: center; gap: 32px; margin: 32px 0;">
                             <div class="demo-stat">
                                 <span class="demo-number">80°C</span>
                                 <span class="demo-label">Water Temp</span>
@@ -270,12 +287,6 @@
                             </div>
                         </div>
                         <button class="btn btn-primary" onclick="navigateTo('user-dashboard')">Try Interactive Timer</button>
-                    </div>
-                    <div class="demo-visual">
-                        <div class="video-placeholder" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1594589980199-ef1105b402e2?auto=format&fit=crop&q=80&w=800');">
-                            <button class="play-btn" onclick="addNotification('Playing tutorial video preview...')" aria-label="Play video"><i data-lucide="play"></i></button>
-                            <span class="video-duration">02:15</span>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -365,14 +376,14 @@
         <div id="home-2" class="page-view hide">
             <!-- Section 1: Minimalist Hero Banner -->
             <section class="hero-section text-center home-2-hero">
-                <div class="hero-bg" style="background-image: linear-gradient(rgba(30, 40, 32, 0.75), rgba(30, 40, 32, 0.8)), url('https://images.unsplash.com/photo-1508193638397-1c4234db14d8?auto=format&fit=crop&q=80&w=1600');"></div>
+                <div class="hero-bg" style="background-image: linear-gradient(rgba(18, 30, 20, 0.72), rgba(18, 30, 20, 0.78)), url('t4.jpg');"></div>
                 <div class="hero-content container">
                     <span class="hero-badge text-accent">ZEN MIND, MATCHA HEALTH</span>
                     <h1 class="hero-title font-serif">Quiet Your World</h1>
                     <p class="hero-description">Cultivate clean energy and dynamic focus. Discover the unique synergy of L-Theanine and caffeine in our shade-grown matcha.</p>
                     <div class="hero-actions">
                         <button class="btn btn-primary btn-lg" onclick="navigateTo('user-dashboard')">Start Tasting Journal</button>
-                        <button class="btn btn-outline-light btn-lg" onclick="navigateTo('services')">View Ritual Tiers</button>
+                        <button class="btn btn-outline btn-lg" onclick="navigateTo('services')">View Ritual Tiers</button>
                     </div>
                 </div>
             </section>
@@ -386,22 +397,31 @@
                 </div>
                 <div class="grid grid-3">
                     <div class="card terroir-card text-center">
+                        <div class="terroir-img-box">
+                            <img src="m1.jpg" alt="Uji Kyoto tea fields" class="terroir-card-img">
+                        </div>
                         <div class="terroir-kanji text-primary">宇治</div>
                         <h3>Kyoto Uji</h3>
                         <p class="terroir-detail">The birthplace of matcha. Uji's cool river mists shade the leaves naturally, producing unparalleled deep umami, sweetness, and smooth mouthfeel.</p>
-                        <span class="terroir-metric">Umami: High • Astringency: Low</span>
+                        <span class="terroir-metric">Umami: High &bull; Astringency: Low</span>
                     </div>
                     <div class="card terroir-card text-center">
+                        <div class="terroir-img-box">
+                            <img src="m2.jpg" alt="Fukuoka Yame tea terraces" class="terroir-card-img">
+                        </div>
                         <div class="terroir-kanji text-primary">八女</div>
                         <h3>Fukuoka Yame</h3>
                         <p class="terroir-detail">Grown on high terraced hillsides. Yame's massive temperature fluctuations produce leaves rich in volatile oils, lending a highly floral, sweet bean aroma.</p>
-                        <span class="terroir-metric">Umami: Medium • Aroma: Floral</span>
+                        <span class="terroir-metric">Umami: Medium &bull; Aroma: Floral</span>
                     </div>
                     <div class="card terroir-card text-center">
+                        <div class="terroir-img-box">
+                            <img src="m3.jpg" alt="Aichi Nishio matcha fields" class="terroir-card-img">
+                        </div>
                         <div class="terroir-kanji text-primary">西尾</div>
                         <h3>Aichi Nishio</h3>
                         <p class="terroir-detail">Sourced from wind-sheltered fields. Nishio's mineral-rich soils cultivate deep chlorophyll levels, creating a bright green leaf with a robust, bold matcha flavor.</p>
-                        <span class="terroir-metric">Umami: Medium • Body: Intense</span>
+                        <span class="terroir-metric">Umami: Medium &bull; Body: Intense</span>
                     </div>
                 </div>
             </section>
@@ -431,7 +451,7 @@
                                         <blockquote class="zen-quote">"Harmony is the gentle union of heart and environment, finding balance in the present moment."</blockquote>
                                     </div>
                                     <div class="phi-image">
-                                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=600" alt="Harmony in nature">
+                                        <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&q=80&w=600" alt="Harmony - Japanese tea ceremony">
                                     </div>
                                 </div>
                             </div>
@@ -444,7 +464,7 @@
                                         <blockquote class="zen-quote">"Respect is realizing that every object, guest, and scoop of tea contains the spark of life."</blockquote>
                                     </div>
                                     <div class="phi-image">
-                                        <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=600" alt="Respectful gesture">
+                                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=600" alt="Respect - traditional Japanese bow">
                                     </div>
                                 </div>
                             </div>
@@ -457,7 +477,7 @@
                                         <blockquote class="zen-quote">"Purity is wiping away the dust of the world, leaving only a clean glass to reflect the soul."</blockquote>
                                     </div>
                                     <div class="phi-image">
-                                        <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&q=80&w=600" alt="Water purifying basin">
+                                        <img src="t5.jpg" alt="Purity - matcha bowl and water">
                                     </div>
                                 </div>
                             </div>
@@ -470,7 +490,7 @@
                                         <blockquote class="zen-quote">"Tranquility is not the absence of noise, but the quiet center within the storm."</blockquote>
                                     </div>
                                     <div class="phi-image">
-                                        <img src="https://images.unsplash.com/photo-1495107334309-fcf20504a5ab?auto=format&fit=crop&q=80&w=600" alt="Zen stone garden">
+                                        <img src="t6.jpg" alt="Tranquility - zen rock garden">
                                     </div>
                                 </div>
                             </div>
@@ -513,7 +533,7 @@
                     <div class="shade-visual">
                         <div class="leaf-render card text-center">
                             <div class="shade-img-container" style="position: relative; margin-bottom: 20px; border-radius: var(--border-radius-md); overflow: hidden; height: 200px; width: 100%;">
-                                <img id="shade-showcase-img" src="https://images.unsplash.com/photo-1597318181409-cf64d0b5e8a2?auto=format&fit=crop&q=80&w=500" alt="Shaded farm" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition);">
+                                <img id="shade-showcase-img" src="t8.jpg" alt="Shaded farm" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition);">
                                 <div class="leaf-color-preview" id="leaf-preview" style="position: absolute; bottom: 16px; right: 16px; width: 50px; height: 50px; border-radius: var(--border-radius-circle); border: 2px solid var(--white); box-shadow: var(--shadow-sm); background-color: hsl(90, 40%, 45%); transition: var(--transition);"></div>
                             </div>
                             <h4 id="shade-title-desc" class="text-primary font-serif">Slightly Shaded Tea</h4>
@@ -552,15 +572,17 @@
             </section>
 
             <!-- Section 6: Weekly Tranquility (Newsletter & Daily Ritual) -->
-            <section class="section section-weekly-tranquility container">
-                <div class="card weekly-tranquility-card text-center">
-                    <span class="section-tag">WEEKLY TRANQUILITY</span>
-                    <h2 class="text-primary font-serif">Cultivate Your Daily Ritual</h2>
-                    <p class="text-muted">Enter your email below to subscribe to "The Daily Ritual" – our newsletter detailing tea meditations, traditional Japanese chawan artisans, and exclusive sales.</p>
-                    <form class="newsletter-inline" onsubmit="event.preventDefault(); addNotification('Welcome to The Daily Ritual!')">
-                        <input type="email" class="dark-input" placeholder="Enter your email address" required>
-                        <button type="submit" class="btn btn-primary">Subscribe</button>
-                    </form>
+            <section class="section section-weekly-tranquility">
+                <div class="container">
+                    <div class="weekly-tranquility-card text-center">
+                        <span class="section-tag">WEEKLY TRANQUILITY</span>
+                        <h2 class="text-primary font-serif">Cultivate Your Daily Ritual</h2>
+                        <p class="text-muted">Enter your email below to subscribe to "The Daily Ritual" &ndash; our newsletter detailing tea meditations, traditional Japanese chawan artisans, and exclusive sales.</p>
+                        <form class="newsletter-inline" onsubmit="event.preventDefault(); addNotification('Welcome to The Daily Ritual!')">
+                            <input type="email" class="dark-input" placeholder="Enter your email address" required>
+                            <button type="submit" class="btn btn-primary">Subscribe</button>
+                        </form>
+                    </div>
                 </div>
             </section>
 
@@ -620,7 +642,7 @@
         <div id="about" class="page-view hide">
             <!-- Section 1: About Hero -->
             <section class="hero-section text-center about-hero">
-                <div class="hero-bg" style="background-image: linear-gradient(rgba(18, 30, 20, 0.7), rgba(18, 30, 20, 0.75)), url('https://images.unsplash.com/photo-1528255915607-9012fda0f838?auto=format&fit=crop&q=80&w=1600');"></div>
+                <div class="hero-bg" style="background-image: linear-gradient(rgba(18, 30, 20, 0.68), rgba(18, 30, 20, 0.75)), url('ab.jpg');"></div>
                 <div class="hero-content container">
                     <span class="hero-badge">OUR ZEN HERITAGE</span>
                     <h1 class="hero-title">Centuries in the Making</h1>
@@ -632,7 +654,7 @@
             <section class="section section-story container">
                 <div class="grid grid-2 items-center">
                     <div class="story-img">
-                        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80&w=800" alt="Japanese Tea Plantation" class="rounded-img">
+                        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&q=80&w=800" alt="Zen Buddhist Monk with Tea" class="rounded-img">
                     </div>
                     <div class="story-text">
                         <span class="section-tag">OUR ORIGINS</span>
@@ -653,7 +675,7 @@
                     </div>
                     <div class="grid grid-3">
                         <div class="card farmer-card">
-                            <img src="https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&q=80&w=500" alt="Farming family">
+                            <img src="art.jpg" alt="Morimoto tea farm Uji">
                             <div class="farmer-info">
                                 <h3>The Morimoto Farm</h3>
                                 <span class="farmer-badge">Uji, Kyoto</span>
@@ -661,7 +683,7 @@
                             </div>
                         </div>
                         <div class="card farmer-card">
-                            <img src="https://images.unsplash.com/photo-1599940824399-b87987ceb72a?auto=format&fit=crop&q=80&w=500" alt="Tea harvesting">
+                            <img src="art2.jpg" alt="Yame tea harvesting cooperative">
                             <div class="farmer-info">
                                 <h3>The Yame Cooperative</h3>
                                 <span class="farmer-badge">Fukuoka</span>
@@ -669,7 +691,7 @@
                             </div>
                         </div>
                         <div class="card farmer-card">
-                            <img src="https://images.unsplash.com/photo-1556881286-fc6915169721?auto=format&fit=crop&q=80&w=500" alt="Volcanic tea field Kagoshima">
+                            <img src="art3.jpg" alt="Kagoshima volcanic tea field">
                             <div class="farmer-info">
                                 <h3>Kagoshima Organic Group</h3>
                                 <span class="farmer-badge">Kagoshima</span>
@@ -807,7 +829,7 @@
         <div id="services" class="page-view hide">
             <!-- Section 1: Services Hero -->
             <section class="hero-section text-center services-hero">
-                <div class="hero-bg" style="background-image: linear-gradient(rgba(18, 30, 20, 0.75), rgba(18, 30, 20, 0.8)), url('https://images.unsplash.com/photo-1556881286-fc6915169721?auto=format&fit=crop&q=80&w=1600');"></div>
+                <div class="hero-bg" style="background-image: linear-gradient(rgba(18, 30, 20, 0.72), rgba(18, 30, 20, 0.78)), url('ser.svg');"></div>
                 <div class="hero-content container">
                     <span class="hero-badge">OUR SERVICES & PROGRAMS</span>
                     <h1 class="hero-title">Experience Sado Matcha</h1>
@@ -879,7 +901,7 @@
             <section class="section section-vworkshops bg-light">
                 <div class="container grid grid-2 items-center">
                     <div class="vworkshops-img">
-                        <img src="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&q=80&w=800" alt="Authentic tea ceremony layout" class="rounded-img">
+                        <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&q=80&w=800" alt="Japanese tea ceremony online class" class="rounded-img">
                     </div>
                     <div class="vworkshops-text">
                         <span class="section-tag">LEARN FROM HOME</span>
@@ -902,7 +924,7 @@
                         <button class="btn btn-outline-dark" onclick="navigateTo('contact')">Inquire for Teams</button>
                     </div>
                     <div class="corporate-img">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800" alt="Mindful tea break for teams" class="rounded-img">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=800" alt="Team tea break corporate wellness" class="rounded-img">
                     </div>
                 </div>
             </section>
@@ -1036,7 +1058,7 @@
         <div id="contact" class="page-view hide">
             <!-- Contact Hero -->
             <section class="hero-section text-center contact-hero">
-                <div class="hero-bg" style="background-image: linear-gradient(rgba(18, 30, 20, 0.75), rgba(18, 30, 20, 0.8)), url('https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=1600');"></div>
+                <div class="hero-bg" style="background-image: linear-gradient(rgba(18, 30, 20, 0.72), rgba(18, 30, 20, 0.78)), url('https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&q=80&w=1600');"></div>
                 <div class="hero-content container">
                     <span class="hero-badge">GET IN TOUCH</span>
                     <h1 class="hero-title">Connect with Us</h1>
@@ -1086,7 +1108,7 @@
                             <p class="flex items-center"><i data-lucide="map-pin" class="contact-icon text-accent"></i> 15 Gionmachi Minamigawa, Higashiyama Ward, Kyoto, 605-0074, Japan</p>
                             <p class="flex items-center"><i data-lucide="phone" class="contact-icon text-accent"></i> +81 75-555-0199</p>
                             <p class="flex items-center"><i data-lucide="mail" class="contact-icon text-accent"></i> kyoto@sadomatcha.com</p>
-                            <button class="btn btn-outline-dark btn-sm margin-top-sm" onclick="addNotification('Directions loaded in map simulation!')">Get Directions</button>
+                            <button class="btn btn-outline-dark btn-sm margin-top-sm" onclick="showMapLocation('kyoto')">Get Directions</button>
                         </div>
                         
                         <div class="card location-card">
@@ -1094,16 +1116,12 @@
                             <p class="flex items-center"><i data-lucide="map-pin" class="contact-icon text-accent"></i> 450 Post St, San Francisco, CA 94102, United States</p>
                             <p class="flex items-center"><i data-lucide="phone" class="contact-icon text-accent"></i> +1 (415) 555-0128</p>
                             <p class="flex items-center"><i data-lucide="mail" class="contact-icon text-accent"></i> sf@sadomatcha.com</p>
-                            <button class="btn btn-outline-dark btn-sm margin-top-sm" onclick="addNotification('Directions loaded in map simulation!')">Get Directions</button>
+                            <button class="btn btn-outline-dark btn-sm margin-top-sm" onclick="showMapLocation('sf')">Get Directions</button>
                         </div>
 
-                        <!-- Map Mock -->
-                        <div class="map-mockup card">
-                            <div class="map-indicator">
-                                <i data-lucide="map-pin" class="text-primary map-pin-animation"></i>
-                                <span>Interactive Map Simulator</span>
-                            </div>
-                            <p class="map-help-text">Click Gion or Post St above to load mock route coordinates.</p>
+                        <!-- Interactive Leaflet Map -->
+                        <div class="card" style="padding: 10px; border-radius: var(--border-radius-md); overflow: hidden; background: var(--bg-card); border: 1px solid var(--border);">
+                            <div id="contact-map" style="height: 250px; width: 100%; border-radius: var(--border-radius-sm); z-index: 1;"></div>
                         </div>
                     </div>
                 </div>
@@ -1275,6 +1293,8 @@
                     <!-- Dashboard Topbar controls -->
                     <div class="dash-topbar flex justify-between items-center margin-bottom-md">
                         <div class="dash-breadcrumbs">
+                            <span class="breadcrumb-welcome">Welcome back, <strong>Tasting Master</strong> 🍵</span>
+                            <span style="color:var(--text-muted);margin:0 6px">/</span>
                             <span class="breadcrumb-parent">Sado Member Area</span> / 
                             <span class="breadcrumb-current" id="user-dash-breadcrumb">Matcha Deliveries</span>
                         </div>
@@ -1283,6 +1303,19 @@
                                 <i data-lucide="moon" id="dash-theme-icon-user"></i>
                             </button>
                             <button class="rtl-btn" onclick="toggleDirection()" id="user-dash-rtl-toggle">LTR</button>
+                            <!-- Profile Dropdown -->
+                            <div class="dash-profile-dropdown">
+                                <button class="dash-profile-btn" onclick="toggleProfileMenu('user-profile-menu')" aria-label="Profile menu">
+                                    <div class="dash-avatar-sm">TM</div>
+                                    <i data-lucide="chevron-down" style="width:14px;height:14px"></i>
+                                </button>
+                                <div class="dash-profile-menu" id="user-profile-menu">
+                                    <a href="#" onclick="switchDashboardTab(document.querySelector('#user-dashboard .dash-nav-link[onclick*=user-settings]'),\'user-settings\'); toggleProfileMenu(\'user-profile-menu\')"><i data-lucide="user"></i> My Profile</a>
+                                    <a href="#" onclick="navigateTo(\'home-1\');"><i data-lucide="home"></i> Go to Site</a>
+                                    <hr style="border:none;border-top:var(--border);margin:4px 0">
+                                    <a href="#" onclick="navigateTo(\'login-page\')" class="logout-link"><i data-lucide="log-out"></i> Logout</a>
+                                </div>
+                            </div>
                             <!-- Dashboard Mobile Menu Toggle -->
                             <button class="theme-btn dash-mobile-menu-toggle" onclick="toggleDashSidebar('user-dashboard')" aria-label="Toggle Dashboard Menu">
                                 <i data-lucide="menu"></i>
@@ -1344,7 +1377,6 @@
                                 </div>
                                 <div class="flex gap-sm margin-top-sm">
                                     <button class="btn btn-primary" onclick="addNotification('Subscription settings updated!')">Save Settings</button>
-                                    <button class="btn btn-outline" id="pause-sub-btn" onclick="toggleSubscriptionPause()">Pause Membership</button>
                                 </div>
                             </div>
                         </div>
@@ -1744,6 +1776,8 @@
                     <!-- Dashboard Topbar controls -->
                     <div class="dash-topbar flex justify-between items-center margin-bottom-md">
                         <div class="dash-breadcrumbs">
+                            <span class="breadcrumb-welcome">Welcome, <strong>Admin</strong> 🛡️</span>
+                            <span style="color:var(--text-muted);margin:0 6px">/</span>
                             <span class="breadcrumb-parent">Sado Admin Access</span> / 
                             <span class="breadcrumb-current" id="admin-dash-breadcrumb">Manage Members</span>
                         </div>
@@ -1752,6 +1786,18 @@
                                 <i data-lucide="moon" id="dash-theme-icon-admin"></i>
                             </button>
                             <button class="rtl-btn" onclick="toggleDirection()" id="admin-dash-rtl-toggle">LTR</button>
+                            <!-- Admin Profile Dropdown -->
+                            <div class="dash-profile-dropdown">
+                                <button class="dash-profile-btn" onclick="toggleProfileMenu('admin-profile-menu')" aria-label="Profile menu">
+                                    <div class="dash-avatar-sm admin">AD</div>
+                                    <i data-lucide="chevron-down" style="width:14px;height:14px"></i>
+                                </button>
+                                <div class="dash-profile-menu" id="admin-profile-menu">
+                                    <a href="#" onclick="navigateTo(\'home-1\')"><i data-lucide="home"></i> Go to Site</a>
+                                    <hr style="border:none;border-top:var(--border);margin:4px 0">
+                                    <a href="#" onclick="navigateTo(\'login-page\')" class="logout-link"><i data-lucide="log-out"></i> Logout</a>
+                                </div>
+                            </div>
                             <!-- Dashboard Mobile Menu Toggle -->
                             <button class="theme-btn dash-mobile-menu-toggle" onclick="toggleDashSidebar('admin-dashboard')" aria-label="Toggle Dashboard Menu">
                                 <i data-lucide="menu"></i>

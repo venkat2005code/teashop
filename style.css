@@ -2800,20 +2800,7 @@ p + .form-group,
         display: block;
     }
     
-    /* Dashboard responsive adjustments */
-    .dash-nav {
-        flex-direction: row !important;
-        overflow-x: auto !important;
-        white-space: nowrap !important;
-        padding-bottom: 8px !important;
-        -webkit-overflow-scrolling: touch !important;
-        gap: 8px !important;
-    }
-    
-    .dash-nav-link {
-        flex: 0 0 auto !important;
-        padding: 10px 16px !important;
-    }    /* Hide desktop toggles in mobile header */
+    /* Hide desktop toggles in mobile header */
     .header-controls #theme-toggle,
     .header-controls #rtl-toggle {
         display: none !important;
@@ -2960,4 +2947,465 @@ img, video, canvas, svg {
     color: var(--primary) !important;
     transform: translateY(-2px) !important;
     box-shadow: 0 4px 12px rgba(189, 162, 107, 0.25) !important;
+}
+
+/* ==================== DASHBOARD PROFILE DROPDOWN ==================== */
+.dash-profile-dropdown {
+    position: relative;
+}
+
+.dash-profile-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px 6px 6px;
+    border-radius: 50px;
+    border: var(--border);
+    background-color: var(--white);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.dash-profile-btn:hover {
+    background-color: var(--primary-xlight);
+    border-color: var(--primary);
+}
+
+.dash-avatar-sm {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--border-radius-circle);
+    background-color: var(--primary);
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+.dash-avatar-sm.admin {
+    background-color: var(--accent);
+    color: var(--primary);
+}
+
+.dash-profile-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background-color: var(--white);
+    border: var(--border);
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-md);
+    min-width: 190px;
+    z-index: 200;
+    padding: 6px 0;
+    animation: fadeIn 0.2s ease;
+}
+
+.dash-profile-menu.open {
+    display: block;
+}
+
+.dash-profile-menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    transition: var(--transition);
+}
+
+.dash-profile-menu a i {
+    width: 16px;
+    height: 16px;
+    color: var(--text-muted);
+}
+
+.dash-profile-menu a:hover {
+    background-color: var(--primary-xlight);
+    color: var(--primary);
+}
+
+.dash-profile-menu a.logout-link {
+    color: var(--red);
+}
+
+.dash-profile-menu a.logout-link i {
+    color: var(--red);
+}
+
+.dash-profile-menu a.logout-link:hover {
+    background-color: rgba(163, 78, 54, 0.08);
+}
+
+/* Breadcrumb welcome text */
+.breadcrumb-welcome {
+    color: var(--primary);
+    font-size: 0.95rem;
+}
+
+/* ==================== SCROLL INDICATOR REPOSITIONING ==================== */
+/* Scroll indicator sits inside hero-content - push it down below the buttons */
+.hero-content .scroll-indicator {
+    margin-top: 48px;
+}
+
+/* ==================== TERROIR CARD IMAGES ==================== */
+.terroir-img-box {
+    width: 100%;
+    height: 160px;
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.terroir-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.terroir-card:hover .terroir-card-img {
+    transform: scale(1.05);
+}
+
+/* ==================== NEWSLETTER LIGHT THEME CONTRAST FIX ==================== */
+/* Override the .newsletter-inline input for light theme (Home2 section) */
+.section-weekly-tranquility .newsletter-inline input {
+    background-color: var(--bg-cream);
+    border: 1.5px solid var(--primary);
+    color: var(--text-dark);
+    backdrop-filter: none;
+}
+
+.section-weekly-tranquility .newsletter-inline input::placeholder {
+    color: var(--text-muted);
+}
+
+.section-weekly-tranquility .newsletter-inline input:focus {
+    background-color: var(--white);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(189, 162, 107, 0.12);
+}
+
+/* ==================== DARK MODE - PROFILE DROPDOWN ==================== */
+[data-theme="dark"] .dash-profile-btn {
+    background-color: var(--bg-light);
+    border-color: rgba(255,255,255,0.1);
+}
+
+[data-theme="dark"] .dash-profile-btn:hover {
+    background-color: #243226;
+    border-color: var(--accent);
+}
+
+[data-theme="dark"] .dash-profile-menu {
+    background-color: #1e2a1f;
+    border-color: rgba(255,255,255,0.08);
+}
+
+[data-theme="dark"] .dash-profile-menu a {
+    color: var(--text-dark);
+}
+
+[data-theme="dark"] .dash-profile-menu a:hover {
+    background-color: #243226;
+    color: var(--accent);
+}
+
+/* ==================== DARK MODE - NEWSLETTER CONTRAST ==================== */
+[data-theme="dark"] .section-weekly-tranquility .newsletter-inline input {
+    background-color: #243226;
+    border-color: var(--accent);
+    color: var(--text-dark);
+}
+
+/* ==================== DARK MODE - BREADCRUMB WELCOME ==================== */
+[data-theme="dark"] .breadcrumb-welcome {
+    color: var(--accent-light);
+}
+
+/* ==================== ADDITIONAL RESPONSIVE & LAYOUT ALIGNMENT FIXES ==================== */
+
+/* Fix 1: Wrap philosophy tabs on mobile to prevent cropping */
+@media (max-width: 768px) {
+    .philosophy-tab-list {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    .philosophy-tab-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Fix 2: Prevent horizontal overflow of newsletter input inline form on mobile */
+@media (max-width: 480px) {
+    .newsletter-inline {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+    }
+    .newsletter-inline input {
+        width: 100% !important;
+        border-radius: var(--border-radius-sm) !important;
+    }
+    .newsletter-inline .btn {
+        width: 100% !important;
+        border-radius: var(--border-radius-sm) !important;
+    }
+}
+
+/* Fix 3: Keep vertical padding on sections that also use container utility class */
+.section.container {
+    padding: 100px 24px !important;
+}
+@media (max-width: 768px) {
+    .section.container {
+        padding: 60px 20px !important;
+    }
+}
+@media (max-width: 600px) {
+    .section.container {
+        padding: 40px 16px !important;
+    }
+}
+
+/* Fix 4: Prevent dashboard-wrapper container padding from overriding width on mobile */
+#user-dashboard .dashboard-wrapper.container,
+#admin-dashboard .dashboard-wrapper.container {
+    padding: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+/* Fix 5: Prevent grid squishing inside the dashboard on 1024px screens */
+@media (max-width: 1100px) {
+    #user-dashboard .grid-2,
+    #admin-dashboard .grid-2 {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+    }
+}
+
+/* Fix 6: Stack redeem reward items vertically on small mobile screens */
+@media (max-width: 480px) {
+    .rewards-redeem-card .wholesale-point {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+    }
+    .rewards-redeem-card .wholesale-point .wholesale-point-icon {
+        display: none !important; /* Hide icon to save extra horizontal space on 360px */
+    }
+    .rewards-redeem-card .wholesale-point .btn {
+        width: 100% !important;
+        align-self: stretch !important;
+        margin-top: 8px !important;
+    }
+}
+
+/* Fix 7: Remove horizontal scrolling from dashboards and force grid items to respect width */
+#user-dashboard, #admin-dashboard {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.grid > * {
+    min-width: 0 !important; /* Forces grid items to respect track width and prevents content like tables from overflowing */
+}
+
+/* Fix 8: Override dashboard card padding on mobile to save horizontal space and fit within 360px */
+@media (max-width: 600px) {
+    #user-dashboard .card,
+    #admin-dashboard .card {
+        padding: 20px 16px !important;
+    }
+}
+
+/* Fix 9: Stack dashboard topbar elements vertically on mobile and format controls neatly */
+@media (max-width: 600px) {
+    .dash-topbar {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+        padding-bottom: 16px !important;
+        margin-bottom: 24px !important;
+        border-bottom: var(--border) !important;
+    }
+    .dash-breadcrumbs {
+        text-align: center !important;
+        font-size: 0.85rem !important;
+        line-height: 1.4 !important;
+    }
+    .breadcrumb-welcome {
+        display: block !important;
+        margin-bottom: 4px !important;
+    }
+    .dash-controls {
+        width: 100% !important;
+        justify-content: center !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+    .dash-controls .theme-btn,
+    .dash-controls .rtl-btn,
+    .dash-controls .dash-mobile-menu-toggle {
+        width: 40px !important;
+        height: 40px !important;
+        min-width: 40px !important;
+        border-radius: var(--border-radius-circle) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    .dash-controls .dash-profile-btn {
+        height: 40px !important;
+        padding: 4px 10px 4px 4px !important;
+        border-radius: 20px !important;
+        display: flex !important;
+        align-items: center !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
+    }
+    .dash-controls .dash-avatar-sm {
+        width: 32px !important;
+        height: 32px !important;
+        min-width: 32px !important;
+        font-size: 0.75rem !important;
+    }
+}
+
+/* Fix 10: Stack whisking timer control buttons on small screens to fit card width */
+@media (max-width: 480px) {
+    .timer-controls {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 8px !important;
+    }
+    .timer-controls .btn {
+        width: 100% !important;
+    }
+}
+
+/* Fix 11: Dark Theme Text Visibility Overrides */
+[data-theme="dark"] .text-primary {
+    color: var(--accent-light) !important;
+}
+
+[data-theme="dark"] .kpi-val {
+    color: var(--accent) !important;
+}
+
+/* Ensure all status badges have high contrast white/light text */
+.status-badge {
+    color: var(--text-light) !important;
+}
+
+/* Fix 12: Instrument Selectors (Image-Free View) styling */
+.instrument-selector-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.instrument-selector-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background-color: var(--white);
+    border: 1px solid rgba(35, 52, 37, 0.08);
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    text-align: start;
+    width: 100%;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.instrument-selector-item:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
+}
+
+.instrument-selector-item.active-selector {
+    border-color: var(--accent);
+    background-color: var(--primary-xlight);
+    box-shadow: 0 4px 15px rgba(189, 162, 107, 0.15);
+}
+
+.selector-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.selector-number {
+    font-size: 1.25rem;
+    font-weight: 700;
+    font-family: var(--font-serif);
+    color: var(--accent);
+    opacity: 0.8;
+}
+
+.selector-details h3 {
+    font-size: 1.15rem;
+    margin: 0 0 2px 0;
+    color: var(--primary);
+    font-family: var(--font-serif);
+}
+
+.selector-details span {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.selector-jp {
+    font-size: 1.5rem;
+    font-family: 'Noto Serif JP', serif;
+    color: var(--accent);
+    opacity: 0.3;
+    font-weight: 600;
+    transition: opacity 0.3s ease;
+}
+
+.instrument-selector-item.active-selector .selector-jp {
+    opacity: 0.8;
+}
+
+.display-pane-card {
+    height: 100%;
+    min-height: 280px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+[data-theme="dark"] .instrument-selector-item {
+    background-color: #1e2a1f;
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .instrument-selector-item.active-selector {
+    background-color: #243226;
+    border-color: var(--accent);
+}
+
+[data-theme="dark"] .instrument-selector-item .selector-details h3 {
+    color: var(--text-dark);
 }
