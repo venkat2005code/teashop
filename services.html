@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sado Matcha - Specialty Japanese Tea &amp; Ceremony Shop</title>
+<!-- Favicon -->
+<link href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23233425%22/&gt;&lt;text y=%2274%22 x=%2216%22 font-size=%2268%22 fill=%22%23bda26b%22 font-family=%22serif%22&gt;茶&lt;/text&gt;&lt;/svg&gt;" rel="icon" type="image/svg+xml"/>
+<meta content="Experience the serenity of authentic ceremonial grade Japanese matcha and traditional tea ceremonies. Join our Tea Club for curated monthly deliveries." name="description"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&amp;family=Noto+Serif+JP:wght@300;400;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- Stylesheet -->
+<link href="style.css" rel="stylesheet"/>
+<!-- Leaflet Map library -->
+<link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
+<script crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+<!-- Header Navigation -->
+<header class="header">
+<div class="header-container">
+<!-- Logo -->
+<a class="logo-link" href="index.html">
+<div class="logo-box">
+<span class="logo-kanji">茶</span>
+<div class="logo-text">
+<span class="logo-title">SADO MATCHA</span>
+<span class="logo-subtitle">茶の湯 Specialty Shop</span>
+</div>
+</div>
+</a>
+<!-- Navigation Menu -->
+<nav class="nav-menu">
+<ul class="nav-list">
+<!-- Home Dropdown -->
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="nav-home">
+<span>Home</span> <i class="nav-icon" data-lucide="chevron-down"></i>
+</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="index.html">Home 1</a></li>
+<li><a class="dropdown-item" href="home-2.html">Home 2</a></li>
+</ul>
+</li>
+<li class="nav-item"><a class="nav-link" href="about.html" id="nav-about">About</a></li>
+<li class="nav-item"><a class="nav-link" href="services.html" id="nav-tea-experiences">Services</a></li>
+<li class="nav-item"><a class="nav-link" href="subscriptions.html" id="nav-subscriptions">Subscriptions</a></li>
+<li class="nav-item"><a class="nav-link" href="shop.html" id="nav-shop">Shop</a></li>
+<li class="nav-item"><a class="nav-link" href="blog.html" id="nav-blog">Blog</a></li>
+<li class="nav-item"><a class="nav-link" href="contact.html" id="nav-contact">Contact</a></li>
+<!-- Dashboard Dropdown -->
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="nav-dashboard">
+<span>Dashboard</span> <i class="nav-icon" data-lucide="chevron-down"></i>
+</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="user-dashboard.html">User Dashboard</a></li>
+<li><a class="dropdown-item" href="admin-dashboard.html">Admin Dashboard</a></li>
+</ul>
+</li>
+<li class="nav-item mobile-only mobile-controls-wrapper">
+<button class="btn btn-primary btn-block mobile-login-btn" onclick="window.location.href='login.html'">Login / Sign Up</button>
+<div class="mobile-toggles-row">
+<!-- Mobile Dark / Light Theme Toggle -->
+<button aria-label="Toggle Dark/Light Theme" class="theme-btn" id="mobile-theme-toggle" onclick="toggleTheme()">
+<i data-lucide="moon" id="mobile-theme-icon"></i>
+</button>
+<!-- Mobile LTR/RTL Toggle Button -->
+<button aria-label="Toggle Layout Direction" class="rtl-btn" id="mobile-rtl-toggle">LTR</button>
+</div>
+</li>
+</ul>
+</nav>
+<!-- Right Controls -->
+<div class="header-controls">
+<!-- Dark / Light Theme Toggle -->
+<button aria-label="Toggle Dark/Light Theme" class="theme-btn" id="theme-toggle" onclick="toggleTheme()">
+<i data-lucide="moon" id="theme-icon"></i>
+</button>
+<!-- LTR/RTL Toggle Button -->
+<button aria-label="Toggle Layout Direction" class="rtl-btn" id="rtl-toggle">LTR</button>
+<!-- Login Button -->
+<button class="btn btn-primary login-btn" onclick="window.location.href='login.html'">Login</button>
+<!-- Mobile Menu Toggle -->
+<button aria-label="Toggle Mobile Menu" class="theme-btn mobile-menu-toggle" id="mobile-menu-btn" onclick="toggleMobileMenu()" style="display: none;">
+<i data-lucide="menu" id="mobile-menu-icon"></i>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Containers (Dynamic Pages) -->
+<main class="main-content">
+<!-- ==================== HOME 1: CEREMONY FOCUS ==================== -->
+
+<!-- ==================== HOME 2: MINDFUL WELLNESS ==================== -->
+
+<!-- ==================== ABOUT PAGE ==================== -->
+
+<!-- ==================== SERVICES PAGE ==================== -->
+
+<!-- ==================== CONTACT PAGE ==================== -->
+
+<!-- ==================== USER DASHBOARD ==================== -->
+
+<!-- ==================== ADMIN DASHBOARD ==================== -->
+
+<!-- ==================== LOGIN PAGE ==================== -->
+
+<!-- ==================== REGISTER PAGE ==================== -->
+
+
+        <div id="tea-experiences" class="page-view">
+            <section class="hero-section text-center services-hero">
+                <div class="hero-bg" style="background-image: linear-gradient(rgba(18, 30, 20, 0.72), rgba(18, 30, 20, 0.78)), url('https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&q=80&w=1600');"></div>
+                <div class="hero-content container">
+                    <span class="hero-badge">OUR SERVICES</span>
+                    <h1 class="hero-title">Tea Experiences</h1>
+                    <p class="hero-description">Discover the profound tranquility of Chado through guided tasting sessions, immersive ceremonies, and master consultations.</p>
+                </div>
+            </section>
+
+            <section class="section container">
+                <div class="section-header text-center">
+                    <span class="section-tag">GUIDED JOURNEYS</span>
+                    <h2 class="section-title">Specialty Tasting Sessions</h2>
+                    <p class="section-subtitle">Experience a curated flight of our rarest single-origin matchas.</p>
+                </div>
+                <div class="grid grid-2 items-center margin-bottom-xl">
+                    <div class="experience-img">
+                        <img src="img_service_tasting.jpg" alt="Matcha tasting" class="rounded-img" style="width:100%; height:auto;">
+                    </div>
+                    <div class="experience-text">
+                        <h3 class="text-primary font-serif">The Uji Flight</h3>
+                        <p>A 45-minute guided tasting exploring three distinct expressions of Uji matcha. Learn to identify the subtle differences in umami, sweetness, and astringency derived from varying shading techniques and soil compositions.</p>
+                        <button class="btn btn-outline-dark" onclick="window.location.href='contact.html'">Book a Tasting</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-2 items-center margin-bottom-xl" style="direction: rtl;">
+                    <div class="experience-img">
+                        <img src="img_service_ceremony.jpg" alt="Tea Ceremony" class="rounded-img" style="width:100%; height:auto;">
+                    </div>
+                    <div class="experience-text" style="direction: ltr;">
+                        <span class="section-tag">TRADITION</span>
+                        <h3 class="text-primary font-serif">Japanese Tea Ceremony</h3>
+                        <p>Immerse yourself in a full, traditional Chado experience. Our certified tea masters will guide you through the intricate etiquette and profound philosophy of harmony, respect, purity, and tranquility.</p>
+                        <button class="btn btn-primary" onclick="window.location.href='contact.html'">Reserve Your Seat</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-2 items-center">
+                    <div class="experience-img">
+                        <img src="img_service_consultation.jpg" alt="Master Consultation" class="rounded-img" style="width:100%; height:auto;">
+                    </div>
+                    <div class="experience-text">
+                        <span class="section-tag">EXPERT GUIDANCE</span>
+                        <h3 class="text-primary font-serif">Tea Master Consultations</h3>
+                        <p>Private 1-on-1 consultations for true tea scholars. Refine your whisking technique, learn advanced water temperature control, or get tailored recommendations for pairing matcha with traditional wagashi (sweets).</p>
+                        <button class="btn btn-outline-dark" onclick="window.location.href='contact.html'">Schedule Consultation</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+<!-- Footer -->
+<footer class="footer-block bg-dark text-light">
+<div class="container footer-grid">
+<div class="footer-about">
+<div class="footer-logo-box" style="margin-bottom: 24px;">
+<a class="logo-link" href="index.html">
+<div class="logo-box">
+<span class="logo-kanji">茶</span>
+<div class="logo-text">
+<span class="logo-title">SADO MATCHA</span>
+<span class="logo-subtitle">茶の湯 Specialty Shop</span>
+</div>
+</div>
+</a>
+</div>
+<p class="footer-desc">Honoring Japanese heritage, delivering premium ceremonial stone-ground tea, and creating global wellness connections.</p>
+</div>
+<div class="footer-links">
+<h4>Explore</h4>
+<ul>
+<li><a href="index.html">Home 1</a></li>
+<li><a href="home-2.html">Home 2</a></li>
+<li><a href="about.html">About Us</a></li>
+<li><a href="services.html">Our Services</a></li>
+<li><a href="subscriptions.html">Subscriptions</a></li>
+<li><a href="shop.html">Shop</a></li>
+<li><a href="blog.html">Blog</a></li>
+</ul>
+</div>
+<div class="footer-links">
+<h4>Community</h4>
+<ul>
+<li><a href="user-dashboard.html">Member Area</a></li>
+<li><a href="contact.html">Find Workshop</a></li>
+<li><a href="about.html">Tea Masters</a></li>
+<li><a href="subscriptions.html">Wholesale Blends</a></li>
+</ul>
+</div>
+<div class="footer-newsletter">
+<h4>Join The Ritual</h4>
+<p>Sign up to receive mindfulness exercises, tea recipes, and 10% off your first order.</p>
+<form class="newsletter-form" onsubmit="event.preventDefault(); addNotification('Thank you for subscribing!')">
+<input placeholder="Your email address" required="" type="email"/>
+<button aria-label="Subscribe" class="btn btn-primary" type="submit"><i data-lucide="arrow-right"></i></button>
+</form>
+</div>
+</div>
+<div class="footer-bottom text-center container">
+<p>© 2026 Sado Matcha. All rights reserved. Created with mindfulness in Kyoto.</p>
+</div>
+</footer>
+</main>
+<!-- Global Notification Container -->
+<div class="notification-container" id="notification-container"></div>
+<!-- Login Modal -->
+<div class="modal-overlay hidden" id="login-modal" onclick="closeLoginModalOnOverlay(event)">
+<div class="modal-box card">
+<button aria-label="Close modal" class="modal-close-btn" onclick="closeLoginModal()"><i data-lucide="x"></i></button>
+<div class="modal-header text-center">
+<span class="logo-kanji">茶</span>
+<h2>Welcome to Sado</h2>
+<p>Access your tasting journal, manage subscriptions, or schedule ceremony workshops.</p>
+</div>
+<form onsubmit="handleLogin(event)">
+<div class="form-group">
+<label for="login-email">Email Address</label>
+<input id="login-email" placeholder="E.g., scholar@matcha.com" required="" type="email"/>
+</div>
+<div class="form-group">
+<label for="login-password">Password</label>
+<input id="login-password" placeholder="••••••••" required="" type="password"/>
+</div>
+<div class="flex justify-between items-center margin-top-sm">
+<label class="checkbox-container">
+<input type="checkbox"/> Remember me
+                    </label>
+<a class="forgot-pass" href="#" onclick="addNotification('Password reset simulation sent!')">Forgot Password?</a>
+</div>
+<button class="btn btn-primary btn-block margin-top-sm" type="submit">Enter Tea Room</button>
+</form>
+<div class="modal-footer text-center margin-top-sm">
+<p>Not a tea club member? <a href="#" onclick="navigateTo('services'); closeLoginModal();">Join Sado Tea Club</a></p>
+</div>
+</div>
+</div>
+<!-- Scripts -->
+<script src="app.js"></script>
+</body>
+</html>

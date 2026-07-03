@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sado Matcha - Specialty Japanese Tea &amp; Ceremony Shop</title>
+<!-- Favicon -->
+<link href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23233425%22/&gt;&lt;text y=%2274%22 x=%2216%22 font-size=%2268%22 fill=%22%23bda26b%22 font-family=%22serif%22&gt;茶&lt;/text&gt;&lt;/svg&gt;" rel="icon" type="image/svg+xml"/>
+<meta content="Experience the serenity of authentic ceremonial grade Japanese matcha and traditional tea ceremonies. Join our Tea Club for curated monthly deliveries." name="description"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&amp;family=Noto+Serif+JP:wght@300;400;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- Stylesheet -->
+<link href="style.css" rel="stylesheet"/>
+<!-- Leaflet Map library -->
+<link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
+<script crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+
+<!-- Main Content Containers (Dynamic Pages) -->
+<main class="main-content">
+<!-- ==================== HOME 1: CEREMONY FOCUS ==================== -->
+
+<!-- ==================== HOME 2: MINDFUL WELLNESS ==================== -->
+
+<!-- ==================== ABOUT PAGE ==================== -->
+
+<!-- ==================== SERVICES PAGE ==================== -->
+
+<!-- ==================== CONTACT PAGE ==================== -->
+
+<!-- ==================== USER DASHBOARD ==================== -->
+
+<!-- ==================== ADMIN DASHBOARD ==================== -->
+
+<!-- ==================== LOGIN PAGE ==================== -->
+
+<!-- ==================== REGISTER PAGE ==================== -->
+
+<div class="page-view" id="admin-dashboard">
+<div class="dashboard-wrapper container">
+<!-- Admin Sidebar -->
+<aside class="dash-sidebar">
+<div class="dash-logo" style="margin-bottom: 32px; padding-bottom: 24px; border-bottom: var(--border);">
+<a class="logo-link" href="index.html">
+<div class="logo-box">
+<span class="logo-kanji">茶</span>
+<div class="logo-text">
+<span class="logo-title">SADO MATCHA</span>
+<span class="logo-subtitle">茶の湯 Specialty Shop</span>
+</div>
+</div>
+</a>
+</div>
+<nav class="dash-nav">
+<a class="dash-nav-link active" href="#" onclick="switchAdminTab(this, 'admin-members')">
+<i data-lucide="users"></i> <span>Manage Members</span>
+</a>
+<a class="dash-nav-link" href="#" onclick="switchAdminTab(this, 'admin-inventory')">
+<i data-lucide="package"></i> <span>Inventory Control</span>
+</a>
+<a class="dash-nav-link" href="#" onclick="switchAdminTab(this, 'admin-bookings')">
+<i data-lucide="calendar-check"></i> <span>Workshop Approvals</span>
+</a>
+<a class="dash-nav-link" href="#" onclick="switchAdminTab(this, 'admin-analytics')">
+<i data-lucide="trending-up"></i> <span>Revenue &amp; Analytics</span>
+</a>
+<a class="dash-nav-link" href="#" onclick="switchAdminTab(this, 'admin-orders')">
+<i data-lucide="shopping-bag"></i> <span>Order Management</span>
+</a>
+<a class="dash-nav-link" href="#" onclick="switchAdminTab(this, 'admin-sourcing')">
+<i data-lucide="leaf"></i> <span>Cultivar Sourcing</span>
+</a>
+<a class="dash-nav-link" href="#" onclick="switchAdminTab(this, 'admin-staff')">
+<i data-lucide="key"></i> <span>Staff Settings</span>
+</a>
+
+
+<a class="dash-nav-link" href="#" onclick="switchAdminTab(this, 'admin-staff')"><i data-lucide="user"></i> <span>Profile</span></a>
+<a class="dash-nav-link" href="login.html" style="margin-top: auto; color: #e74c3c;"><i data-lucide="log-out"></i> <span>Logout</span></a>
+</nav>
+</aside>
+<!-- Admin Main Body -->
+<div class="dash-main-body">
+<!-- Dashboard Topbar controls -->
+<div class="dash-topbar flex justify-between items-center margin-bottom-md">
+<div class="dash-breadcrumbs">
+<span class="breadcrumb-welcome">Welcome, <strong>Admin</strong> 🛡️</span>
+<span style="color:var(--text-muted);margin:0 6px">/</span>
+<span class="breadcrumb-parent">Sado Admin Access</span> / 
+                            <span class="breadcrumb-current" id="admin-dash-breadcrumb">Manage Members</span>
+</div>
+<div class="dash-controls flex items-center gap-sm">
+<button aria-label="Toggle Dark/Light Theme" class="theme-btn" onclick="toggleTheme()">
+<i data-lucide="moon" id="dash-theme-icon-admin"></i>
+</button>
+<button class="rtl-btn" id="admin-dash-rtl-toggle" onclick="toggleDirection()">LTR</button>
+<!-- Admin Profile Dropdown -->
+<div class="dash-profile-dropdown">
+<button aria-label="Profile menu" class="dash-profile-btn" onclick="toggleProfileMenu('admin-profile-menu')">
+<div class="dash-avatar-sm admin">AD</div>
+<i data-lucide="chevron-down" style="width:14px;height:14px"></i>
+</button>
+<div class="dash-profile-menu" id="admin-profile-menu">
+<a href="#" onclick="navigateTo (\'home-1\')"><i data-lucide="home"></i> Go to Site</a>
+
+</div>
+</div>
+<!-- Dashboard Mobile Menu Toggle -->
+<button aria-label="Toggle Dashboard Menu" class="theme-btn dash-mobile-menu-toggle" onclick="toggleDashSidebar('admin-dashboard')">
+<i data-lucide="menu"></i>
+</button>
+</div>
+</div>
+<!-- Tab 1: Member Management -->
+<div class="dash-tab-pane active" id="admin-members">
+<div class="dash-pane-header flex justify-between items-center">
+<div>
+<h2>Member Management</h2>
+<p>Review subscription statuses, order logs, and membership durations.</p>
+</div>
+<button class="btn btn-primary btn-sm" onclick="addNotification('New member invitation feature coming soon!')">+ Add Member</button>
+</div>
+<div class="grid grid-3 text-center admin-kpis margin-bottom-md">
+<div class="card kpi-card">
+<span class="kpi-label">Active Members</span>
+<span class="kpi-val" style="color: var(--primary);">384</span>
+<span class="kpi-change text-green">+14.2% retention</span>
+</div>
+<div class="card kpi-card">
+<span class="kpi-label">Monthly Orders Placed</span>
+<span class="kpi-val">512</span>
+<span class="kpi-change text-green">1.33 orders/user</span>
+</div>
+<div class="card kpi-card">
+<span class="kpi-label">Pending Invitations</span>
+<span class="kpi-val">18</span>
+<span class="kpi-change text-orange">Action required</span>
+</div>
+</div>
+<div class="grid grid-2 margin-bottom-md">
+<div class="card table-card">
+<table class="admin-table">
+<thead>
+<tr>
+<th>Member Name</th>
+<th>Tier</th>
+<th>Deliveries</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody id="admin-members-tbody">
+<!-- Populated dynamically via JS -->
+</tbody>
+</table>
+</div>
+<div class="card chart-card">
+<h3 class="text-primary font-serif">Member Subscription Tiers</h3>
+<div class="canvas-box" style="height: 220px;">
+<canvas height="200" id="admin-members-chart" width="350"></canvas>
+</div>
+</div>
+</div>
+</div>
+<!-- Tab 2: Inventory Control -->
+<div class="dash-tab-pane" id="admin-inventory">
+<div class="dash-pane-header">
+<h2>Inventory Control</h2>
+<p>Adjust stock levels for tins, chasen bamboo whisks, ceramic bowls, and sets.</p>
+</div>
+<div class="grid grid-3" id="admin-inventory-grid">
+<!-- Populated dynamically via JS -->
+</div>
+<div class="grid grid-3 text-center admin-kpis margin-top-md margin-bottom-md">
+<div class="card kpi-card">
+<span class="kpi-label">Total SKUs</span>
+<span class="kpi-val">6 Items</span>
+<span class="kpi-change text-muted">All active</span>
+</div>
+<div class="card kpi-card">
+<span class="kpi-label">Total Inventory Value</span>
+<span class="kpi-val" style="color: var(--primary);">$4,820.00</span>
+<span class="kpi-change text-green">Avg turnover 18 days</span>
+</div>
+<div class="card kpi-card">
+<span class="kpi-label">Reorder Recommendations</span>
+<span class="kpi-val" style="color: var(--red);">2 Items</span>
+<span class="kpi-change text-orange">Chasen &amp; Nishio Matcha</span>
+</div>
+</div>
+<div class="card chart-card margin-top-md">
+<h3 class="text-primary font-serif">Stock Levels vs Reorder Thresholds</h3>
+<div class="canvas-box" style="height: 180px;">
+<canvas height="160" id="admin-inventory-chart" width="700"></canvas>
+</div>
+</div>
+</div>
+<!-- Tab 3: Workshop Approvals -->
+<div class="dash-tab-pane" id="admin-bookings">
+<div class="dash-pane-header">
+<h2>Workshop Schedule &amp; Approvals</h2>
+<p>Accept or reschedule member bookings and verify dispatch of shipping kits.</p>
+</div>
+<div class="grid grid-3 text-center admin-kpis margin-bottom-md">
+<div class="card kpi-card">
+<span class="kpi-label">Pending Approvals</span>
+<span class="kpi-val" style="color: var(--accent);">8 Requests</span>
+<span class="kpi-change text-orange">Requires teacher assignment</span>
+</div>
+<div class="card kpi-card">
+<span class="kpi-label">Active Teachers</span>
+<span class="kpi-val">3 Certified</span>
+<span class="kpi-change text-green">Riko, Kenji, Satoshi</span>
+</div>
+<div class="card kpi-card">
+<span class="kpi-label">Tea Kits Dispatched</span>
+<span class="kpi-val">12 Shipped</span>
+<span class="kpi-change text-green">100% on-time delivery</span>
+</div>
+</div>
+<div class="grid grid-2 margin-top-md">
+<div class="card table-card">
+<table class="admin-table">
+<thead>
+<tr>
+<th>Guest Name</th>
+<th>Ceremony Topic</th>
+<th>Special Requests</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody id="admin-bookings-tbody">
+<!-- Populated dynamically via JS -->
+</tbody>
+</table>
+</div>
+<div class="card chart-card">
+<h3 class="text-primary font-serif">Workshop Bookings by Topic</h3>
+<div class="canvas-box" style="height: 220px;">
+<canvas height="200" id="admin-bookings-chart" width="350"></canvas>
+</div>
+</div>
+</div>
+</div>
+<!-- Tab 4: Revenue & Analytics -->
+<div class="dash-tab-pane" id="admin-analytics">
+<div class="dash-pane-header">
+<h2>Revenue Metrics &amp; Analytics</h2>
+<p>Track membership growth, shop orders, and virtual workshop sales.</p>
+</div>
+<!-- KPI Row -->
+<div class="grid grid-4 text-center admin-kpis">
+<div class="card kpi-card">
+<span class="kpi-label">Monthly Revenue</span>
+<span class="kpi-val">$18,450.00</span>
+<span class="kpi-change text-green">+14.2% vs last month</span>
+</div>
+<div class="card kpi-card">
+<span class="kpi-label">Active Members</span>
+<span class="kpi-val" id="admin-kpi-active">384</span>
+<span class="kpi-change text-green">+8 new this week</span>
+</div>
+<div class="card kpi-card">
+<span class="kpi-label">Low Stock Alert</span>
+<span class="kpi-val" id="admin-kpi-low-stock">2 Items</span>
+<span class="kpi-change text-orange">Needs replenishment</span>
+</div>
+<div class="card kpi-card">
+<span class="kpi-label">Workshop Bookings</span>
+<span class="kpi-val" id="admin-kpi-workshops">24</span>
+<span class="kpi-change text-green">8 pending approvals</span>
+</div>
+</div>
+<!-- Charts -->
+<div class="grid grid-2 margin-top-md">
+<div class="card chart-card">
+<h3 class="text-primary font-serif">Membership Growth</h3>
+<div class="canvas-box" style="height: 200px;">
+<canvas height="180" id="membership-chart" width="350"></canvas>
+</div>
+</div>
+<div class="card chart-card">
+<h3 class="text-primary font-serif">Category Revenue Split</h3>
+<div class="canvas-box" style="height: 200px;">
+<canvas height="180" id="category-chart" width="350"></canvas>
+</div>
+</div>
+</div>
+</div>
+<!-- Tab 5: Order Management -->
+<div class="dash-tab-pane" id="admin-orders">
+<div class="dash-pane-header">
+<h2>Order Management</h2>
+<p>Track e-commerce transactions, verify packaging status, and dispatch DHL shipping tracking codes.</p>
+</div>
+<div class="grid grid-3 text-center admin-kpis margin-bottom-md">
+<div class="card kpi-card">
+<span class="kpi-label">Orders Pending Dispatch</span>
+<span class="kpi-val" style="color: var(--accent);">14 Orders</span>
+<span class="kpi-change text-orange">Pack queue busy</span>
+</div>
+<div class="card kpi-card">
+<span class="kpi-label">Average Pack Speed</span>
+<span class="kpi-val">1.2 Days</span>
+<span class="kpi-change text-green">Within SLA limits</span>
+</div>
+<div class="card kpi-card">
+<span class="kpi-label">Fulfilled This Week</span>
+<span class="kpi-val">84 Shipments</span>
+<span class="kpi-change text-green">100% Yamato Tracked</span>
+</div>
+</div>
+<div class="grid grid-2">
+<div class="card chart-card">
+<h3 class="text-primary font-serif">Order Volume Trends</h3>
+<div class="canvas-box" style="height: 200px;">
+<canvas height="180" id="admin-orders-chart" width="350"></canvas>
+</div>
+</div>
+<div class="card table-card">
+<h3 class="text-primary font-serif">Recent Customer Orders</h3>
+<table class="admin-table margin-top-sm">
+<thead>
+<tr>
+<th>Customer</th>
+<th>Items</th>
+<th>Total</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Alice Smith</strong><br/><small>alice@gmail.com</small></td>
+<td>Imperial Uji (x2)</td>
+<td>$76.00</td>
+<td><span class="status-badge" style="background-color: var(--accent); color: var(--primary);">Pending Pack</span></td>
+<td><button class="btn btn-primary btn-sm" onclick="addNotification('Order shipped!')">Ship</button></td>
+</tr>
+<tr>
+<td><strong>Bob Johnson</strong><br/><small>bob@yahoo.com</small></td>
+<td>Ceremonial Bowl (x1)</td>
+<td>$45.00</td>
+<td><span class="status-badge" style="background-color: var(--accent); color: var(--primary);">Pending Pack</span></td>
+<td><button class="btn btn-primary btn-sm" onclick="addNotification('Order shipped!')">Ship</button></td>
+</tr>
+<tr>
+<td><strong>Clara Diaz</strong><br/><small>clara@icloud.com</small></td>
+<td>Bamboo Whisk (x1)</td>
+<td>$25.00</td>
+<td><span class="status-badge" style="background-color: var(--primary); color: var(--text-light);">Shipped</span></td>
+<td><button class="btn btn-outline-dark btn-sm" disabled="">Shipped</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Tab 6: Cultivar Sourcing -->
+<div class="dash-tab-pane" id="admin-sourcing">
+<div class="dash-pane-header">
+<h2>Cultivar Sourcing</h2>
+<p>Monitor farm partnerships in Uji, Fukuoka, and Nishio. Analyze crop yields and moisture control parameters.</p>
+</div>
+<div class="grid grid-3 text-center admin-kpis margin-bottom-md">
+<div class="card kpi-card">
+<span class="kpi-label">Active Partner Cooperatives</span>
+<span class="kpi-val" style="color: var(--primary);">4 Farms</span>
+<span class="kpi-change text-green">100% direct trade</span>
+</div>
+<div class="card kpi-card">
+<span class="kpi-label">Average Crop Quality Score</span>
+<span class="kpi-val" style="color: var(--accent);">9.8 / 10</span>
+<span class="kpi-change text-green">Extraordinary rating</span>
+</div>
+<div class="card kpi-card">
+<span class="kpi-label">Total Tencha Harvested</span>
+<span class="kpi-val">1,240 kg</span>
+<span class="kpi-change text-muted">Spring Flush 2026</span>
+</div>
+</div>
+<div class="grid grid-2">
+<div class="card table-card">
+<h3 class="text-primary font-serif">Partner Cooperatives &amp; Moisture</h3>
+<table class="admin-table margin-top-sm">
+<thead>
+<tr>
+<th>Farm Cooperative</th>
+<th>Location</th>
+<th>Primary Cultivar</th>
+<th>Avg Moisture</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sato Organic Coop</strong></td>
+<td>Uji, Kyoto</td>
+<td>Okumidori / Samidori</td>
+<td>4.1% <small>(Ideal)</small></td>
+</tr>
+<tr>
+<td><strong>Yame Tea Hill Group</strong></td>
+<td>Fukuoka</td>
+<td>Yabukita</td>
+<td>4.3% <small>(Ideal)</small></td>
+</tr>
+<tr>
+<td><strong>Nishio Eco Farms</strong></td>
+<td>Aichi Prefecture</td>
+<td>Samidori</td>
+<td>4.2% <small>(Ideal)</small></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="card chart-card">
+<h3 class="text-primary font-serif">Cultivar Annual Yield Split</h3>
+<div class="canvas-box" style="height: 200px;">
+<canvas height="180" id="admin-sourcing-chart" width="350"></canvas>
+</div>
+</div>
+</div>
+</div>
+<!-- Tab 7: Staff Settings -->
+<div class="dash-tab-pane" id="admin-staff">
+<div class="dash-pane-header">
+<h2>Staff Settings &amp; System Logs</h2>
+<p>Manage administrative credentials, audit system settings, and inspect system log actions.</p>
+</div>
+<div class="grid grid-3 text-center admin-kpis margin-bottom-md">
+<div class="card kpi-card">
+<span class="kpi-label">Staff Members</span>
+<span class="kpi-val">5 Accounts</span>
+<span class="kpi-change text-muted">All active</span>
+</div>
+<div class="card kpi-card">
+<span class="kpi-label">System Performance</span>
+<span class="kpi-val" style="color: var(--primary);">99.9%</span>
+<span class="kpi-change text-green">Healthy response</span>
+</div>
+<div class="card kpi-card">
+<span class="kpi-label">API Health Status</span>
+<span class="kpi-val" style="color: var(--accent);">Online</span>
+<span class="kpi-change text-green">All services sync</span>
+</div>
+</div>
+<div class="grid grid-2">
+<div class="card chart-card">
+<h3 class="text-primary font-serif">Administrative Actions Volume</h3>
+<div class="canvas-box" style="height: 200px;">
+<canvas height="180" id="admin-staff-chart" width="350"></canvas>
+</div>
+</div>
+<div class="card table-card">
+<h3 class="text-primary font-serif">Authorized Staff Access</h3>
+<table class="admin-table margin-top-sm">
+<thead>
+<tr>
+<th>Admin User</th>
+<th>Role</th>
+<th>Last Login</th>
+<th>IP Address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Master Kenji</strong></td>
+<td>Super Administrator</td>
+<td>Today, 14:24</td>
+<td>192.168.1.42</td>
+</tr>
+<tr>
+<td><strong>Dr. Satoshi</strong></td>
+<td>Inventory / Quality Admin</td>
+<td>Yesterday, 10:12</td>
+<td>192.168.1.18</td>
+</tr>
+<tr>
+<td><strong>Riko Ceremony</strong></td>
+<td>Booking Coordinator</td>
+<td>Jun 11, 2026</td>
+<td>192.168.1.99</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></main>
+<!-- Global Notification Container -->
+<div class="notification-container" id="notification-container"></div>
+<!-- Login Modal -->
+<div class="modal-overlay hidden" id="login-modal" onclick="closeLoginModalOnOverlay(event)">
+<div class="modal-box card">
+<button aria-label="Close modal" class="modal-close-btn" onclick="closeLoginModal()"><i data-lucide="x"></i></button>
+<div class="modal-header text-center">
+<span class="logo-kanji">茶</span>
+<h2>Welcome to Sado</h2>
+<p>Access your tasting journal, manage subscriptions, or schedule ceremony workshops.</p>
+</div>
+<form onsubmit="handleLogin(event)">
+<div class="form-group">
+<label for="login-email">Email Address</label>
+<input id="login-email" placeholder="E.g., scholar@matcha.com" required="" type="email"/>
+</div>
+<div class="form-group">
+<label for="login-password">Password</label>
+<input id="login-password" placeholder="••••••••" required="" type="password"/>
+</div>
+<div class="flex justify-between items-center margin-top-sm">
+<label class="checkbox-container">
+<input type="checkbox"/> Remember me
+                    </label>
+<a class="forgot-pass" href="#" onclick="addNotification('Password reset simulation sent!')">Forgot Password?</a>
+</div>
+<button class="btn btn-primary btn-block margin-top-sm" type="submit">Enter Tea Room</button>
+</form>
+<div class="modal-footer text-center margin-top-sm">
+<p>Not a tea club member? <a href="#" onclick="navigateTo('services'); closeLoginModal();">Join Sado Tea Club</a></p>
+</div>
+</div>
+</div>
+<!-- Scripts -->
+<script src="app.js"></script>
+</body>
+</html>

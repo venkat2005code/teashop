@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sado Matcha - Specialty Japanese Tea &amp; Ceremony Shop</title>
+<!-- Favicon -->
+<link href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23233425%22/&gt;&lt;text y=%2274%22 x=%2216%22 font-size=%2268%22 fill=%22%23bda26b%22 font-family=%22serif%22&gt;茶&lt;/text&gt;&lt;/svg&gt;" rel="icon" type="image/svg+xml"/>
+<meta content="Experience the serenity of authentic ceremonial grade Japanese matcha and traditional tea ceremonies. Join our Tea Club for curated monthly deliveries." name="description"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&amp;family=Noto+Serif+JP:wght@300;400;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- Stylesheet -->
+<link href="style.css" rel="stylesheet"/>
+<!-- Leaflet Map library -->
+<link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
+<script crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+<!-- Header Navigation -->
+<header class="header">
+<div class="header-container">
+<!-- Logo -->
+<a class="logo-link" href="index.html">
+<div class="logo-box">
+<span class="logo-kanji">茶</span>
+<div class="logo-text">
+<span class="logo-title">SADO MATCHA</span>
+<span class="logo-subtitle">茶の湯 Specialty Shop</span>
+</div>
+</div>
+</a>
+<!-- Navigation Menu -->
+<nav class="nav-menu">
+<ul class="nav-list">
+<!-- Home Dropdown -->
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="nav-home">
+<span>Home</span> <i class="nav-icon" data-lucide="chevron-down"></i>
+</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="index.html">Home 1</a></li>
+<li><a class="dropdown-item" href="home-2.html">Home 2</a></li>
+</ul>
+</li>
+<li class="nav-item"><a class="nav-link" href="about.html" id="nav-about">About</a></li>
+<li class="nav-item"><a class="nav-link" href="services.html" id="nav-tea-experiences">Services</a></li>
+<li class="nav-item"><a class="nav-link" href="subscriptions.html" id="nav-subscriptions">Subscriptions</a></li>
+<li class="nav-item"><a class="nav-link" href="shop.html" id="nav-shop">Shop</a></li>
+<li class="nav-item"><a class="nav-link" href="blog.html" id="nav-blog">Blog</a></li>
+<li class="nav-item"><a class="nav-link" href="contact.html" id="nav-contact">Contact</a></li>
+<!-- Dashboard Dropdown -->
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="nav-dashboard">
+<span>Dashboard</span> <i class="nav-icon" data-lucide="chevron-down"></i>
+</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="user-dashboard.html">User Dashboard</a></li>
+<li><a class="dropdown-item" href="admin-dashboard.html">Admin Dashboard</a></li>
+</ul>
+</li>
+<li class="nav-item mobile-only mobile-controls-wrapper">
+<button class="btn btn-primary btn-block mobile-login-btn" onclick="window.location.href='login.html'">Login / Sign Up</button>
+<div class="mobile-toggles-row">
+<!-- Mobile Dark / Light Theme Toggle -->
+<button aria-label="Toggle Dark/Light Theme" class="theme-btn" id="mobile-theme-toggle" onclick="toggleTheme()">
+<i data-lucide="moon" id="mobile-theme-icon"></i>
+</button>
+<!-- Mobile LTR/RTL Toggle Button -->
+<button aria-label="Toggle Layout Direction" class="rtl-btn" id="mobile-rtl-toggle">LTR</button>
+</div>
+</li>
+</ul>
+</nav>
+<!-- Right Controls -->
+<div class="header-controls">
+<!-- Dark / Light Theme Toggle -->
+<button aria-label="Toggle Dark/Light Theme" class="theme-btn" id="theme-toggle" onclick="toggleTheme()">
+<i data-lucide="moon" id="theme-icon"></i>
+</button>
+<!-- LTR/RTL Toggle Button -->
+<button aria-label="Toggle Layout Direction" class="rtl-btn" id="rtl-toggle">LTR</button>
+<!-- Login Button -->
+<button class="btn btn-primary login-btn" onclick="window.location.href='login.html'">Login</button>
+<!-- Mobile Menu Toggle -->
+<button aria-label="Toggle Mobile Menu" class="theme-btn mobile-menu-toggle" id="mobile-menu-btn" onclick="toggleMobileMenu()" style="display: none;">
+<i data-lucide="menu" id="mobile-menu-icon"></i>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Containers (Dynamic Pages) -->
+<main class="main-content">
+<!-- ==================== HOME 1: CEREMONY FOCUS ==================== -->
+
+<!-- ==================== HOME 2: MINDFUL WELLNESS ==================== -->
+
+<!-- ==================== ABOUT PAGE ==================== -->
+
+<!-- ==================== SERVICES PAGE ==================== -->
+
+<!-- ==================== CONTACT PAGE ==================== -->
+
+<!-- ==================== USER DASHBOARD ==================== -->
+
+<!-- ==================== ADMIN DASHBOARD ==================== -->
+
+<!-- ==================== LOGIN PAGE ==================== -->
+
+<!-- ==================== REGISTER PAGE ==================== -->
+
+
+        <div id="blog" class="page-view">
+            <section class="hero-section text-center blog-hero">
+                <div class="hero-bg" style="background-image: linear-gradient(rgba(18, 30, 20, 0.72), rgba(18, 30, 20, 0.78)), url('img_blog_hero.png');"></div>
+                <div class="hero-content container">
+                    <span class="hero-badge text-accent">THE JOURNAL</span>
+                    <h1 class="hero-title font-serif">Sado Blog</h1>
+                    <p class="hero-description">Stories, recipes, and insights from the world of Japanese tea.</p>
+                </div>
+            </section>
+
+            <!-- Section 2: Category Nav -->
+            <section class="section" style="padding: 24px 0; border-bottom: 1px solid var(--border-color); background-color: var(--white);">
+                <div class="container flex justify-center items-center" style="gap: 16px; flex-wrap: wrap;">
+                    <a href="#" class="btn btn-primary btn-sm" style="border-radius: 50px;">All Posts</a>
+                    <a href="#" class="btn btn-outline-dark btn-sm" style="border-radius: 50px;">Guides</a>
+                    <a href="#" class="btn btn-outline-dark btn-sm" style="border-radius: 50px;">Origins</a>
+                    <a href="#" class="btn btn-outline-dark btn-sm" style="border-radius: 50px;">Science</a>
+                    <a href="#" class="btn btn-outline-dark btn-sm" style="border-radius: 50px;">Lifestyle</a>
+                </div>
+            </section>
+
+            <!-- Section 1: Featured Post -->
+            <section class="section container" style="padding-top: 60px; padding-bottom: 60px;">
+                <div class="card" style="display: flex; flex-wrap: wrap; padding: 0; overflow: hidden; border: none; box-shadow: var(--shadow-md);">
+                    <div style="flex: 1 1 50%; min-width: 300px;">
+                        <img src="blog_img_1_featured.jpeg" alt="Featured Post" style="width: 100%; height: 100%; object-fit: cover; min-height: 400px;">
+                    </div>
+                    <div style="flex: 1 1 50%; padding: 48px; display: flex; flex-direction: column; justify-content: center; background-color: var(--bg-cream);">
+                        <span class="text-accent" style="font-size: 0.9rem; font-weight: 600; letter-spacing: 2px;">FEATURED GUIDE</span>
+                        <h2 class="font-serif text-primary margin-top-sm" style="font-size: 2.5rem; line-height: 1.2;">The Art of Whisking: Achieving the Perfect Froth</h2>
+                        <p class="text-muted margin-top-md" style="font-size: 1.1rem; line-height: 1.6;">Mastering the W-motion to create a rich, jade micro-foam for your daily Usucha. Discover the subtle wrist techniques that transform ordinary matcha into a ceremonial experience.</p>
+                        <div class="margin-top-md flex items-center gap-sm">
+                            <img src="https://ui-avatars.com/api/?name=Kenji+T&background=2A3B2A&color=fff" alt="Author" style="width: 40px; height: 40px; border-radius: 50%;">
+                            <div>
+                                <div style="font-weight: 600; font-size: 0.9rem;">Kenji Takahashi</div>
+                                <div class="text-muted" style="font-size: 0.8rem;">Oct 12 • 5 min read</div>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-link margin-top-md" style="color: var(--primary); text-decoration: none; font-weight: 600; align-self: flex-start; display: flex; align-items: center; gap: 8px;">Read Full Guide <i data-lucide="arrow-right" style="width: 16px;"></i></a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Recent Articles Grid -->
+            <section class="section container" style="padding-top: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 32px;">
+                    <h2 class="font-serif text-primary" style="font-size: 2rem;">Latest Stories</h2>
+                </div>
+                <div class="grid grid-3">
+                    <!-- Post 1 -->
+                    <div class="card blog-card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+                        <img src="blog_img_2_terroir.jpeg" alt="Blog Post" style="width: 100%; height: 240px; object-fit: cover;">
+                        <div style="padding: 24px; flex-grow: 1; display: flex; flex-direction: column;">
+                            <span class="text-accent" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">Origin</span>
+                            <h3 class="margin-top-sm font-serif text-primary" style="font-size: 1.4rem;">Uji vs Yame: Understanding Matcha Terroirs</h3>
+                            <p class="text-muted margin-top-sm" style="font-size: 0.9rem; flex-grow: 1;">Explore how climate and volcanic soil shape the distinct flavor profiles of Japan's top tea regions.</p>
+                            <a href="#" class="btn btn-link margin-top-md" style="color: var(--primary); text-decoration: none; font-weight: 600; display: inline-block;">Read More &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Post 2 -->
+                    <div class="card blog-card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+                        <img src="blog_img_3_science.jpeg" alt="Blog Post" style="width: 100%; height: 240px; object-fit: cover;">
+                        <div style="padding: 24px; flex-grow: 1; display: flex; flex-direction: column;">
+                            <span class="text-accent" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">Science</span>
+                            <h3 class="margin-top-sm font-serif text-primary" style="font-size: 1.4rem;">L-Theanine and the Science of Calm Energy</h3>
+                            <p class="text-muted margin-top-sm" style="font-size: 0.9rem; flex-grow: 1;">Why matcha gives you sustained focus without the jitters associated with coffee.</p>
+                            <a href="#" class="btn btn-link margin-top-md" style="color: var(--primary); text-decoration: none; font-weight: 600; display: inline-block;">Read More &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Post 3 -->
+                    <div class="card blog-card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+                        <img src="blog_img_4_altar.jpeg" alt="Blog Post" style="width: 100%; height: 240px; object-fit: cover;">
+                        <div style="padding: 24px; flex-grow: 1; display: flex; flex-direction: column;">
+                            <span class="text-accent" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">Lifestyle</span>
+                            <h3 class="margin-top-sm font-serif text-primary" style="font-size: 1.4rem;">Curating Your Home Altar for Tea</h3>
+                            <p class="text-muted margin-top-sm" style="font-size: 0.9rem; flex-grow: 1;">How to create a dedicated, peaceful space in your home for morning meditation and tea.</p>
+                            <a href="#" class="btn btn-link margin-top-md" style="color: var(--primary); text-decoration: none; font-weight: 600; display: inline-block;">Read More &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Post 4 -->
+                    <div class="card blog-card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+                        <img src="blog_img_5_antioxidants.jpeg" alt="Blog Post" style="width: 100%; height: 240px; object-fit: cover;">
+                        <div style="padding: 24px; flex-grow: 1; display: flex; flex-direction: column;">
+                            <span class="text-accent" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">Science</span>
+                            <h3 class="margin-top-sm font-serif text-primary" style="font-size: 1.4rem;">Antioxidants 101: The Power of EGCG</h3>
+                            <p class="text-muted margin-top-sm" style="font-size: 0.9rem; flex-grow: 1;">Breaking down the scientific benefits of the most abundant catechin found in stone-ground green tea.</p>
+                            <a href="#" class="btn btn-link margin-top-md" style="color: var(--primary); text-decoration: none; font-weight: 600; display: inline-block;">Read More &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Post 5 -->
+                    <div class="card blog-card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+                        <img src="blog_img_6_chawan.png" alt="Blog Post" style="width: 100%; height: 240px; object-fit: cover;">
+                        <div style="padding: 24px; flex-grow: 1; display: flex; flex-direction: column;">
+                            <span class="text-accent" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">Guide</span>
+                            <h3 class="margin-top-sm font-serif text-primary" style="font-size: 1.4rem;">Choosing the Right Chawan</h3>
+                            <p class="text-muted margin-top-sm" style="font-size: 0.9rem; flex-grow: 1;">From raku to hagi ware: how the shape, glaze, and origin of your bowl influences the tea experience.</p>
+                            <a href="#" class="btn btn-link margin-top-md" style="color: var(--primary); text-decoration: none; font-weight: 600; display: inline-block;">Read More &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Post 6 -->
+                    <div class="card blog-card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+                        <img src="blog_img_7_farmers.jpeg" alt="Blog Post" style="width: 100%; height: 240px; object-fit: cover;">
+                        <div style="padding: 24px; flex-grow: 1; display: flex; flex-direction: column;">
+                            <span class="text-accent" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">Origin</span>
+                            <h3 class="margin-top-sm font-serif text-primary" style="font-size: 1.4rem;">A Day with the Farmers of Shirakawa</h3>
+                            <p class="text-muted margin-top-sm" style="font-size: 0.9rem; flex-grow: 1;">We traveled to the misty hills of Kyoto to meet the families who have been cultivating tea for centuries.</p>
+                            <a href="#" class="btn btn-link margin-top-md" style="color: var(--primary); text-decoration: none; font-weight: 600; display: inline-block;">Read More &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Newsletter -->
+            <section class="section" style="background-color: var(--primary); color: #ffffff; margin-top: 40px; padding: 80px 0;">
+                <div class="container text-center" style="max-width: 600px;">
+                    <span style="font-size: 0.9rem; letter-spacing: 2px; color: var(--accent); font-weight: 600;">JOIN THE CLUB</span>
+                    <h2 class="font-serif margin-top-sm" style="font-size: 2.5rem; color: #ffffff;">Subscribe to The Journal</h2>
+                    <p class="margin-top-md" style="color: #ffffff; opacity: 0.8; font-size: 1.1rem; line-height: 1.6;">Receive weekly insights, exclusive recipes, and meditation guides delivered straight to your inbox. Plus, enjoy 10% off your first harvest purchase.</p>
+                    <form class="margin-top-md" style="display: flex; gap: 8px; justify-content: center; max-width: 400px; margin-left: auto; margin-right: auto;" onsubmit="event.preventDefault(); addNotification('Thank you for subscribing to The Journal!')">
+                        <input type="email" placeholder="Enter your email address" required style="flex-grow: 1; padding: 12px 16px; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; background: rgba(255,255,255,0.05); color: white;">
+                        <button type="submit" class="btn btn-primary" style="background-color: var(--accent); color: var(--primary); border: none;">Subscribe</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+<!-- Footer -->
+<footer class="footer-block bg-dark text-light">
+<div class="container footer-grid">
+<div class="footer-about">
+<div class="footer-logo-box" style="margin-bottom: 24px;">
+<a class="logo-link" href="index.html">
+<div class="logo-box">
+<span class="logo-kanji">茶</span>
+<div class="logo-text">
+<span class="logo-title">SADO MATCHA</span>
+<span class="logo-subtitle">茶の湯 Specialty Shop</span>
+</div>
+</div>
+</a>
+</div>
+<p class="footer-desc">Honoring Japanese heritage, delivering premium ceremonial stone-ground tea, and creating global wellness connections.</p>
+</div>
+<div class="footer-links">
+<h4>Explore</h4>
+<ul>
+<li><a href="index.html">Home 1</a></li>
+<li><a href="home-2.html">Home 2</a></li>
+<li><a href="about.html">About Us</a></li>
+<li><a href="services.html">Our Services</a></li>
+<li><a href="subscriptions.html">Subscriptions</a></li>
+<li><a href="shop.html">Shop</a></li>
+<li><a href="blog.html">Blog</a></li>
+</ul>
+</div>
+<div class="footer-links">
+<h4>Community</h4>
+<ul>
+<li><a href="user-dashboard.html">Member Area</a></li>
+<li><a href="contact.html">Find Workshop</a></li>
+<li><a href="about.html">Tea Masters</a></li>
+<li><a href="subscriptions.html">Wholesale Blends</a></li>
+</ul>
+</div>
+<div class="footer-newsletter">
+<h4>Join The Ritual</h4>
+<p>Sign up to receive mindfulness exercises, tea recipes, and 10% off your first order.</p>
+<form class="newsletter-form" onsubmit="event.preventDefault(); addNotification('Thank you for subscribing!')">
+<input placeholder="Your email address" required="" type="email"/>
+<button aria-label="Subscribe" class="btn btn-primary" type="submit"><i data-lucide="arrow-right"></i></button>
+</form>
+</div>
+</div>
+<div class="footer-bottom text-center container">
+<p>© 2026 Sado Matcha. All rights reserved. Created with mindfulness in Kyoto.</p>
+</div>
+</footer>
+</main>
+<!-- Global Notification Container -->
+<div class="notification-container" id="notification-container"></div>
+<!-- Login Modal -->
+<div class="modal-overlay hidden" id="login-modal" onclick="closeLoginModalOnOverlay(event)">
+<div class="modal-box card">
+<button aria-label="Close modal" class="modal-close-btn" onclick="closeLoginModal()"><i data-lucide="x"></i></button>
+<div class="modal-header text-center">
+<span class="logo-kanji">茶</span>
+<h2>Welcome to Sado</h2>
+<p>Access your tasting journal, manage subscriptions, or schedule ceremony workshops.</p>
+</div>
+<form onsubmit="handleLogin(event)">
+<div class="form-group">
+<label for="login-email">Email Address</label>
+<input id="login-email" placeholder="E.g., scholar@matcha.com" required="" type="email"/>
+</div>
+<div class="form-group">
+<label for="login-password">Password</label>
+<input id="login-password" placeholder="••••••••" required="" type="password"/>
+</div>
+<div class="flex justify-between items-center margin-top-sm">
+<label class="checkbox-container">
+<input type="checkbox"/> Remember me
+                    </label>
+<a class="forgot-pass" href="#" onclick="addNotification('Password reset simulation sent!')">Forgot Password?</a>
+</div>
+<button class="btn btn-primary btn-block margin-top-sm" type="submit">Enter Tea Room</button>
+</form>
+<div class="modal-footer text-center margin-top-sm">
+<p>Not a tea club member? <a href="#" onclick="navigateTo('services'); closeLoginModal();">Join Sado Tea Club</a></p>
+</div>
+</div>
+</div>
+<!-- Scripts -->
+<script src="app.js"></script>
+</body>
+</html>

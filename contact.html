@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sado Matcha - Specialty Japanese Tea &amp; Ceremony Shop</title>
+<!-- Favicon -->
+<link href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23233425%22/&gt;&lt;text y=%2274%22 x=%2216%22 font-size=%2268%22 fill=%22%23bda26b%22 font-family=%22serif%22&gt;茶&lt;/text&gt;&lt;/svg&gt;" rel="icon" type="image/svg+xml"/>
+<meta content="Experience the serenity of authentic ceremonial grade Japanese matcha and traditional tea ceremonies. Join our Tea Club for curated monthly deliveries." name="description"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&amp;family=Noto+Serif+JP:wght@300;400;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- Stylesheet -->
+<link href="style.css" rel="stylesheet"/>
+<!-- Leaflet Map library -->
+<link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
+<script crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+<!-- Header Navigation -->
+<header class="header">
+<div class="header-container">
+<!-- Logo -->
+<a class="logo-link" href="index.html">
+<div class="logo-box">
+<span class="logo-kanji">茶</span>
+<div class="logo-text">
+<span class="logo-title">SADO MATCHA</span>
+<span class="logo-subtitle">茶の湯 Specialty Shop</span>
+</div>
+</div>
+</a>
+<!-- Navigation Menu -->
+<nav class="nav-menu">
+<ul class="nav-list">
+<!-- Home Dropdown -->
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="nav-home">
+<span>Home</span> <i class="nav-icon" data-lucide="chevron-down"></i>
+</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="index.html">Home 1</a></li>
+<li><a class="dropdown-item" href="home-2.html">Home 2</a></li>
+</ul>
+</li>
+<li class="nav-item"><a class="nav-link" href="about.html" id="nav-about">About</a></li>
+<li class="nav-item"><a class="nav-link" href="services.html" id="nav-tea-experiences">Services</a></li>
+<li class="nav-item"><a class="nav-link" href="subscriptions.html" id="nav-subscriptions">Subscriptions</a></li>
+<li class="nav-item"><a class="nav-link" href="shop.html" id="nav-shop">Shop</a></li>
+<li class="nav-item"><a class="nav-link" href="blog.html" id="nav-blog">Blog</a></li>
+<li class="nav-item"><a class="nav-link" href="contact.html" id="nav-contact">Contact</a></li>
+<!-- Dashboard Dropdown -->
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="nav-dashboard">
+<span>Dashboard</span> <i class="nav-icon" data-lucide="chevron-down"></i>
+</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="user-dashboard.html">User Dashboard</a></li>
+<li><a class="dropdown-item" href="admin-dashboard.html">Admin Dashboard</a></li>
+</ul>
+</li>
+<li class="nav-item mobile-only mobile-controls-wrapper">
+<button class="btn btn-primary btn-block mobile-login-btn" onclick="window.location.href='login.html'">Login / Sign Up</button>
+<div class="mobile-toggles-row">
+<!-- Mobile Dark / Light Theme Toggle -->
+<button aria-label="Toggle Dark/Light Theme" class="theme-btn" id="mobile-theme-toggle" onclick="toggleTheme()">
+<i data-lucide="moon" id="mobile-theme-icon"></i>
+</button>
+<!-- Mobile LTR/RTL Toggle Button -->
+<button aria-label="Toggle Layout Direction" class="rtl-btn" id="mobile-rtl-toggle">LTR</button>
+</div>
+</li>
+</ul>
+</nav>
+<!-- Right Controls -->
+<div class="header-controls">
+<!-- Dark / Light Theme Toggle -->
+<button aria-label="Toggle Dark/Light Theme" class="theme-btn" id="theme-toggle" onclick="toggleTheme()">
+<i data-lucide="moon" id="theme-icon"></i>
+</button>
+<!-- LTR/RTL Toggle Button -->
+<button aria-label="Toggle Layout Direction" class="rtl-btn" id="rtl-toggle">LTR</button>
+<!-- Login Button -->
+<button class="btn btn-primary login-btn" onclick="window.location.href='login.html'">Login</button>
+<!-- Mobile Menu Toggle -->
+<button aria-label="Toggle Mobile Menu" class="theme-btn mobile-menu-toggle" id="mobile-menu-btn" onclick="toggleMobileMenu()" style="display: none;">
+<i data-lucide="menu" id="mobile-menu-icon"></i>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Containers (Dynamic Pages) -->
+<main class="main-content">
+<!-- ==================== HOME 1: CEREMONY FOCUS ==================== -->
+
+<!-- ==================== HOME 2: MINDFUL WELLNESS ==================== -->
+
+<!-- ==================== ABOUT PAGE ==================== -->
+
+<!-- ==================== SERVICES PAGE ==================== -->
+
+<!-- ==================== CONTACT PAGE ==================== -->
+
+<!-- ==================== USER DASHBOARD ==================== -->
+
+<!-- ==================== ADMIN DASHBOARD ==================== -->
+
+<!-- ==================== LOGIN PAGE ==================== -->
+
+<!-- ==================== REGISTER PAGE ==================== -->
+
+<div class="page-view" id="contact">
+<!-- Contact Hero -->
+<section class="hero-section text-center contact-hero">
+<div class="hero-bg" style="background-image: linear-gradient(rgba(18, 30, 20, 0.72), rgba(18, 30, 20, 0.78)), url('https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&q=80&w=1600');"></div>
+<div class="hero-content container">
+<span class="hero-badge">GET IN TOUCH</span>
+<h1 class="hero-title">Connect with Us</h1>
+<p class="hero-description">Reach out with questions about our tea club, wholesale orders, or tea workshops.</p>
+</div>
+</section>
+<!-- Contact Forms & Maps -->
+<section class="section section-contact-body container">
+<div class="grid grid-2">
+<!-- Form Card -->
+<div class="card contact-form-card">
+<h2 class="text-primary font-serif">Send a Message</h2>
+<p>Fill out the form below, and our tea facilitators will respond to your message within 24 hours.</p>
+<form id="contact-form" onsubmit="handleContactSubmit(event)">
+<div class="form-group">
+<label for="c-name">Full Name</label>
+<input id="c-name" placeholder="E.g., Jin Tanaka" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="c-email">Email Address</label>
+<input id="c-email" placeholder="E.g., jin@tanaka.com" required="" type="email"/>
+</div>
+<div class="form-group">
+<label for="c-preference">Matcha Experience</label>
+<select id="c-preference">
+<option value="none">Choose option...</option>
+<option value="beginner">I am a beginner</option>
+<option value="regular">Drink matcha regularly</option>
+<option value="expert">Certified tea practitioner</option>
+<option value="wholesale">B2B / Wholesale inquiry</option>
+</select>
+</div>
+<div class="form-group">
+<label for="c-message">Your Message</label>
+<textarea id="c-message" placeholder="Share your message or questions..." required="" rows="5"></textarea>
+</div>
+<button class="btn btn-primary btn-block" type="submit">Send Message</button>
+</form>
+</div>
+<!-- Map/Locations Card -->
+<div class="contact-details-box">
+<div class="card location-card">
+<h3 class="text-primary font-serif">Sado Kyoto Tea House</h3>
+<p><i class="contact-icon text-accent" data-lucide="map-pin"></i> 15 Gionmachi Minamigawa, Higashiyama Ward, Kyoto, 605-0074, Japan</p>
+<p><i class="contact-icon text-accent" data-lucide="phone"></i> +81 75-555-0199</p>
+<p><i class="contact-icon text-accent" data-lucide="mail"></i> kyoto@sadomatcha.com</p>
+<button class="btn btn-outline-dark btn-sm margin-top-sm" onclick="showMapLocation('kyoto')">Get Directions</button>
+</div>
+<div class="card location-card">
+<h3 class="text-primary font-serif">Sado San Francisco Ritual Room</h3>
+<p><i class="contact-icon text-accent" data-lucide="map-pin"></i> 450 Post St, San Francisco, CA 94102, United States</p>
+<p><i class="contact-icon text-accent" data-lucide="phone"></i> +1 (415) 555-0128</p>
+<p><i class="contact-icon text-accent" data-lucide="mail"></i> sf@sadomatcha.com</p>
+<button class="btn btn-outline-dark btn-sm margin-top-sm" onclick="showMapLocation('sf')">Get Directions</button>
+</div>
+<!-- Interactive Leaflet Map -->
+<div class="card" style="padding: 10px; border-radius: var(--border-radius-md); overflow: hidden; background: var(--bg-card); border: 1px solid var(--border); margin-top: 24px; position: relative; z-index: 1;">
+<div id="contact-map" style="height: 250px; width: 100%; border-radius: var(--border-radius-sm); z-index: 1;"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Frequently Asked Questions (FAQ) -->
+<section class="section section-faq bg-light">
+<div class="container">
+<div class="section-header text-center">
+<span class="section-tag">COMMON INQUIRIES</span>
+<h2 class="section-title">Frequently Asked Questions</h2>
+<p class="section-subtitle">Find immediate answers regarding shipping, storage, and workshop preparations.</p>
+</div>
+<div class="grid grid-2 faq-grid" style="gap: 30px; margin-top: 40px;">
+<div class="card faq-card" style="padding: 28px; border-radius: var(--border-radius-md);">
+<h3 class="text-primary font-serif" style="font-size: 1.15rem; margin-bottom: 10px;">How should I store my ceremonial matcha?</h3>
+<p class="text-muted" style="font-size: 0.9rem; line-height: 1.6;">To preserve the vibrant green color and delicate flavor, seal the tin tightly and store it in the refrigerator. Consume within 6 to 8 weeks after opening for peak freshness.</p>
+</div>
+<div class="card faq-card" style="padding: 28px; border-radius: var(--border-radius-md);">
+<h3 class="text-primary font-serif" style="font-size: 1.15rem; margin-bottom: 10px;">Can I change or cancel my monthly delivery?</h3>
+<p class="text-muted" style="font-size: 0.9rem; line-height: 1.6;">Yes, you can pause, skip, or modify your subscription tiers anytime via the User Dashboard under the "Matcha Deliveries" section, or by reaching out to our support team.</p>
+</div>
+<div class="card faq-card" style="padding: 28px; border-radius: var(--border-radius-md);">
+<h3 class="text-primary font-serif" style="font-size: 1.15rem; margin-bottom: 10px;">What should I prepare for a virtual tea workshop?</h3>
+<p class="text-muted" style="font-size: 0.9rem; line-height: 1.6;">Your Ceremony Kit contains everything needed: matcha, a bamboo whisk (Chasen), and a scoop (Chashaku). You only need to prepare hot water (approx. 80°C/176°F) and a wide bowl.</p>
+</div>
+<div class="card faq-card" style="padding: 28px; border-radius: var(--border-radius-md);">
+<h3 class="text-primary font-serif" style="font-size: 1.15rem; margin-bottom: 10px;">Do you ship internationally?</h3>
+<p class="text-muted" style="font-size: 0.9rem; line-height: 1.6;">Yes, we ship our fresh stone-ground matcha worldwide directly from Kyoto using temperature-controlled express packaging to ensure optimal quality is maintained during transit.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Tea House Etiquette -->
+<section class="section section-etiquette container">
+<div class="section-header text-center">
+<span class="section-tag">VISITING US</span>
+<h2 class="section-title">Tea Room Etiquette</h2>
+<p class="section-subtitle">To maintain the serene atmosphere of Chado (The Way of Tea), we kindly ask our guests to observe these traditional guidelines.</p>
+</div>
+<div class="grid grid-4 etiquette-grid" style="margin-top: 40px; gap: 24px;">
+<div class="card etiquette-card text-center" style="padding: 36px 24px; border-radius: var(--border-radius-md); display: flex; flex-direction: column; align-items: center;">
+<div class="etiquette-icon-box" style="width: 54px; height: 54px; border-radius: var(--border-radius-circle); background-color: var(--primary-xlight); color: var(--primary); display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+<i data-lucide="sparkles" style="width: 22px; height: 22px;"></i>
+</div>
+<h4 class="text-primary font-serif" style="margin-bottom: 10px; font-size: 1.1rem;">No Fragrances</h4>
+<p class="text-muted" style="font-size: 0.85rem; line-height: 1.55;">Please refrain from wearing strong perfumes or colognes, as they interfere with the delicate aroma of the matcha.</p>
+</div>
+<div class="card etiquette-card text-center" style="padding: 36px 24px; border-radius: var(--border-radius-md); display: flex; flex-direction: column; align-items: center;">
+<div class="etiquette-icon-box" style="width: 54px; height: 54px; border-radius: var(--border-radius-circle); background-color: var(--primary-xlight); color: var(--primary); display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+<i data-lucide="footprints" style="width: 22px; height: 22px;"></i>
+</div>
+<h4 class="text-primary font-serif" style="margin-bottom: 10px; font-size: 1.1rem;">Clean Socks</h4>
+<p class="text-muted" style="font-size: 0.85rem; line-height: 1.55;">Please wear clean white socks when stepping onto the traditional tatami mats to preserve the delicate straw fibers.</p>
+</div>
+<div class="card etiquette-card text-center" style="padding: 36px 24px; border-radius: var(--border-radius-md); display: flex; flex-direction: column; align-items: center;">
+<div class="etiquette-icon-box" style="width: 54px; height: 54px; border-radius: var(--border-radius-circle); background-color: var(--primary-xlight); color: var(--primary); display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+<i data-lucide="volume-x" style="width: 22px; height: 22px;"></i>
+</div>
+<h4 class="text-primary font-serif" style="margin-bottom: 10px; font-size: 1.1rem;">Quiet Reflection</h4>
+<p class="text-muted" style="font-size: 0.85rem; line-height: 1.55;">Speak in quiet, gentle tones to allow yourself and others to fully immerse in the meditative quality of the ceremony.</p>
+</div>
+<div class="card etiquette-card text-center" style="padding: 36px 24px; border-radius: var(--border-radius-md); display: flex; flex-direction: column; align-items: center;">
+<div class="etiquette-icon-box" style="width: 54px; height: 54px; border-radius: var(--border-radius-circle); background-color: var(--primary-xlight); color: var(--primary); display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+<i data-lucide="shield-alert" style="width: 22px; height: 22px;"></i>
+</div>
+<h4 class="text-primary font-serif" style="margin-bottom: 10px; font-size: 1.1rem;">Remove Jewelry</h4>
+<p class="text-muted" style="font-size: 0.85rem; line-height: 1.55;">Remove rings, watches, and bracelets before handling the historic, handmade tea bowls to prevent scratching.</p>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="footer-block bg-dark text-light">
+<div class="container footer-grid">
+<div class="footer-about">
+<div class="footer-logo-box" style="margin-bottom: 24px;">
+<a class="logo-link" href="index.html">
+<div class="logo-box">
+<span class="logo-kanji">茶</span>
+<div class="logo-text">
+<span class="logo-title">SADO MATCHA</span>
+<span class="logo-subtitle">茶の湯 Specialty Shop</span>
+</div>
+</div>
+</a>
+</div>
+<p class="footer-desc">Direct-trade, stone-ground ceremonial matcha sourced sustainably from family cooperatives in Uji, Kyoto.</p>
+</div>
+<div class="footer-links">
+<h4>Explore</h4>
+<ul>
+<li><a href="index.html">Home 1</a></li>
+<li><a href="home-2.html">Home 2</a></li>
+<li><a href="about.html">About Us</a></li>
+<li><a href="services.html">Our Services</a></li>
+<li><a href="subscriptions.html">Subscriptions</a></li>
+<li><a href="shop.html">Shop</a></li>
+<li><a href="blog.html">Blog</a></li>
+</ul>
+</div>
+<div class="footer-links">
+<h4>Community</h4>
+<ul>
+<li><a href="user-dashboard.html">Member Area</a></li>
+<li><a href="contact.html">Find Workshop</a></li>
+<li><a href="about.html">Tea Masters</a></li>
+<li><a href="subscriptions.html">Wholesale Blends</a></li>
+</ul>
+</div>
+<div class="footer-newsletter">
+<h4>Join The Ritual</h4>
+<p>Sign up to receive mindfulness exercises, tea recipes, and 10% off your first order.</p>
+<form class="newsletter-form" onsubmit="event.preventDefault(); addNotification('Thank you for subscribing!')">
+<input placeholder="Your email address" required="" type="email"/>
+<button aria-label="Subscribe" class="btn btn-primary" type="submit"><i data-lucide="arrow-right"></i></button>
+</form>
+</div>
+</div>
+<div class="footer-bottom text-center container">
+<p>© 2026 Sado Matcha. All rights reserved. Created with mindfulness in Kyoto.</p>
+</div>
+</footer>
+</div></main>
+<!-- Global Notification Container -->
+<div class="notification-container" id="notification-container"></div>
+<!-- Login Modal -->
+<div class="modal-overlay hidden" id="login-modal" onclick="closeLoginModalOnOverlay(event)">
+<div class="modal-box card">
+<button aria-label="Close modal" class="modal-close-btn" onclick="closeLoginModal()"><i data-lucide="x"></i></button>
+<div class="modal-header text-center">
+<span class="logo-kanji">茶</span>
+<h2>Welcome to Sado</h2>
+<p>Access your tasting journal, manage subscriptions, or schedule ceremony workshops.</p>
+</div>
+<form onsubmit="handleLogin(event)">
+<div class="form-group">
+<label for="login-email">Email Address</label>
+<input id="login-email" placeholder="E.g., scholar@matcha.com" required="" type="email"/>
+</div>
+<div class="form-group">
+<label for="login-password">Password</label>
+<input id="login-password" placeholder="••••••••" required="" type="password"/>
+</div>
+<div class="flex justify-between items-center margin-top-sm">
+<label class="checkbox-container">
+<input type="checkbox"/> Remember me
+                    </label>
+<a class="forgot-pass" href="#" onclick="addNotification('Password reset simulation sent!')">Forgot Password?</a>
+</div>
+<button class="btn btn-primary btn-block margin-top-sm" type="submit">Enter Tea Room</button>
+</form>
+<div class="modal-footer text-center margin-top-sm">
+<p>Not a tea club member? <a href="#" onclick="navigateTo('services'); closeLoginModal();">Join Sado Tea Club</a></p>
+</div>
+</div>
+</div>
+<!-- Scripts -->
+<script src="app.js"></script>
+</body>
+</html>

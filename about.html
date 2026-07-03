@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sado Matcha - Specialty Japanese Tea &amp; Ceremony Shop</title>
+<!-- Favicon -->
+<link href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23233425%22/&gt;&lt;text y=%2274%22 x=%2216%22 font-size=%2268%22 fill=%22%23bda26b%22 font-family=%22serif%22&gt;茶&lt;/text&gt;&lt;/svg&gt;" rel="icon" type="image/svg+xml"/>
+<meta content="Experience the serenity of authentic ceremonial grade Japanese matcha and traditional tea ceremonies. Join our Tea Club for curated monthly deliveries." name="description"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&amp;family=Noto+Serif+JP:wght@300;400;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- Stylesheet -->
+<link href="style.css" rel="stylesheet"/>
+<!-- Leaflet Map library -->
+<link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
+<script crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+<!-- Header Navigation -->
+<header class="header">
+<div class="header-container">
+<!-- Logo -->
+<a class="logo-link" href="index.html">
+<div class="logo-box">
+<span class="logo-kanji">茶</span>
+<div class="logo-text">
+<span class="logo-title">SADO MATCHA</span>
+<span class="logo-subtitle">茶の湯 Specialty Shop</span>
+</div>
+</div>
+</a>
+<!-- Navigation Menu -->
+<nav class="nav-menu">
+<ul class="nav-list">
+<!-- Home Dropdown -->
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="nav-home">
+<span>Home</span> <i class="nav-icon" data-lucide="chevron-down"></i>
+</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="index.html">Home 1</a></li>
+<li><a class="dropdown-item" href="home-2.html">Home 2</a></li>
+</ul>
+</li>
+<li class="nav-item"><a class="nav-link" href="about.html" id="nav-about">About</a></li>
+<li class="nav-item"><a class="nav-link" href="services.html" id="nav-tea-experiences">Services</a></li>
+<li class="nav-item"><a class="nav-link" href="subscriptions.html" id="nav-subscriptions">Subscriptions</a></li>
+<li class="nav-item"><a class="nav-link" href="shop.html" id="nav-shop">Shop</a></li>
+<li class="nav-item"><a class="nav-link" href="blog.html" id="nav-blog">Blog</a></li>
+<li class="nav-item"><a class="nav-link" href="contact.html" id="nav-contact">Contact</a></li>
+<!-- Dashboard Dropdown -->
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="nav-dashboard">
+<span>Dashboard</span> <i class="nav-icon" data-lucide="chevron-down"></i>
+</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="user-dashboard.html">User Dashboard</a></li>
+<li><a class="dropdown-item" href="admin-dashboard.html">Admin Dashboard</a></li>
+</ul>
+</li>
+<li class="nav-item mobile-only mobile-controls-wrapper">
+<button class="btn btn-primary btn-block mobile-login-btn" onclick="window.location.href='login.html'">Login / Sign Up</button>
+<div class="mobile-toggles-row">
+<!-- Mobile Dark / Light Theme Toggle -->
+<button aria-label="Toggle Dark/Light Theme" class="theme-btn" id="mobile-theme-toggle" onclick="toggleTheme()">
+<i data-lucide="moon" id="mobile-theme-icon"></i>
+</button>
+<!-- Mobile LTR/RTL Toggle Button -->
+<button aria-label="Toggle Layout Direction" class="rtl-btn" id="mobile-rtl-toggle">LTR</button>
+</div>
+</li>
+</ul>
+</nav>
+<!-- Right Controls -->
+<div class="header-controls">
+<!-- Dark / Light Theme Toggle -->
+<button aria-label="Toggle Dark/Light Theme" class="theme-btn" id="theme-toggle" onclick="toggleTheme()">
+<i data-lucide="moon" id="theme-icon"></i>
+</button>
+<!-- LTR/RTL Toggle Button -->
+<button aria-label="Toggle Layout Direction" class="rtl-btn" id="rtl-toggle">LTR</button>
+<!-- Login Button -->
+<button class="btn btn-primary login-btn" onclick="window.location.href='login.html'">Login</button>
+<!-- Mobile Menu Toggle -->
+<button aria-label="Toggle Mobile Menu" class="theme-btn mobile-menu-toggle" id="mobile-menu-btn" onclick="toggleMobileMenu()" style="display: none;">
+<i data-lucide="menu" id="mobile-menu-icon"></i>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Containers (Dynamic Pages) -->
+<main class="main-content">
+<!-- ==================== HOME 1: CEREMONY FOCUS ==================== -->
+<!-- ==================== HOME 2: MINDFUL WELLNESS ==================== -->
+<!-- ==================== ABOUT PAGE ==================== -->
+<!-- ==================== SERVICES PAGE ==================== -->
+<!-- ==================== CONTACT PAGE ==================== -->
+<!-- ==================== USER DASHBOARD ==================== -->
+<!-- ==================== ADMIN DASHBOARD ==================== -->
+<!-- ==================== LOGIN PAGE ==================== -->
+<!-- ==================== REGISTER PAGE ==================== -->
+<div class="page-view" id="about">
+<!-- Section 1: About Hero -->
+<section class="hero-section text-center about-hero">
+<div class="hero-bg" style="background-image: linear-gradient(rgba(18, 30, 20, 0.68), rgba(18, 30, 20, 0.75)), url('https://images.unsplash.com/photo-1563822249548-9a72b6353cd1?auto=format&fit=crop&q=80&w=1600');"></div>
+<div class="hero-content container">
+<span class="hero-badge">OUR ZEN HERITAGE</span>
+<h1 class="hero-title">Centuries in the Making</h1>
+<p class="hero-description">Discover Sado Matcha's roots – bridging ancient Uji tradition with modern sustainable cultivation.</p>
+</div>
+</section>
+<!-- Section 2: The Origin Story -->
+<section class="section section-story container">
+<div class="grid grid-2 items-center">
+<div class="story-img">
+<img alt="Zen Buddhist Monk with Tea" class="rounded-img" src="img_about_monk.jpg"/>
+</div>
+<div class="story-text">
+<span class="section-tag">OUR ORIGINS</span>
+<h2 class="section-title">From Eisai's Seeds to Sado</h2>
+<img src="img_about_eisai.jpg" alt="Zen Master Eisai" style="width:100%; border-radius: var(--border-radius-md); margin-bottom: 24px;">
+<p>In the 12th century, the Zen Master Eisai returned from China to Japan with tea seeds and a simple philosophy: "Tea is the ultimate mental medicine." Sado Matcha was founded to revive this original, meditative vision of tea.</p>
+<p>We believe that preparing matcha isn't a chore; it is an act of active meditation. It encourages you to slow down, listen to the water boil, breathe deeply, and connect with the present moment.</p>
+</div>
+</div>
+</section><section class="section section-philosophy bg-light">
+<div class="container">
+<div class="section-header text-center">
+<span class="section-tag">FOUR PRINCIPLES</span>
+<h2 class="section-title">The Philosophy of Chado</h2>
+<p class="section-subtitle">Introduced by Sen no Rikyu, these four Zen tenets form the spiritual spine of every matcha preparation.</p>
+</div>
+<div class="philosophy-tabs">
+<div class="philosophy-tab-list">
+<button class="philosophy-tab-btn active" onclick="switchPhilosophyTab('wa')">和 (Wa) - Harmony</button>
+<button class="philosophy-tab-btn" onclick="switchPhilosophyTab('kei')">敬 (Kei) - Respect</button>
+<button class="philosophy-tab-btn" onclick="switchPhilosophyTab('sei')">清 (Sei) - Purity</button>
+<button class="philosophy-tab-btn" onclick="switchPhilosophyTab('jaku')">寂 (Jaku) - Tranquility</button>
+</div>
+<div class="philosophy-tab-content card">
+<!-- Wa Content -->
+<div class="philosophy-pane active" id="phi-wa">
+<div class="grid grid-2 items-center">
+<div class="phi-text">
+<h3 class="text-primary">Harmony with Nature and Guest</h3>
+<p>Wa stands for the harmony between the host, the guest, and the natural elements. In the tea ceremony room (chashitsu), seasonal decorations, flowers (chabana), and scrolls are selected to resonate with the current climate, reinforcing the feeling of oneness with nature.</p>
+<blockquote class="zen-quote">"Harmony is the gentle union of heart and environment, finding balance in the present moment."</blockquote>
+</div>
+<div class="phi-image">
+<img alt="Harmony - Japanese tea ceremony" src="img_phil_harmony.jpg"/>
+</div>
+</div>
+</div>
+<!-- Kei Content -->
+<div class="philosophy-pane" id="phi-kei">
+<div class="grid grid-2 items-center">
+<div class="phi-text">
+<h3 class="text-primary">Respect for All Things</h3>
+<p>Kei is the principle of respect. It demands that we treat every person, utensil, and ingredient with equal reverence. In the tea room, social statuses are cast aside; everyone bows to each other, acknowledging the dignity of all human and non-human entities.</p>
+<blockquote class="zen-quote">"Respect is realizing that every object, guest, and scoop of tea contains the spark of life."</blockquote>
+</div>
+<div class="phi-image">
+<img alt="Respect - traditional Japanese bow" src="img_phil_respect.jpg"/>
+</div>
+</div>
+</div>
+<!-- Sei Content -->
+<div class="philosophy-pane" id="phi-sei">
+<div class="grid grid-2 items-center">
+<div class="phi-text">
+<h3 class="text-primary">Purity of Heart and Mind</h3>
+<p>Sei represents purity. It is demonstrated physically by washing hands and rinsing mouths before entering the tea house, and symbolically by the host wiping clean the tea bowl and caddy. It signifies purging the mind of worldly worries and greed.</p>
+<blockquote class="zen-quote">"Purity is wiping away the dust of the world, leaving only a clean glass to reflect the soul."</blockquote>
+</div>
+<div class="phi-image">
+<img alt="Purity - matcha bowl and water" src="img_phil_purity.jpg"/>
+</div>
+</div>
+</div>
+<!-- Jaku Content -->
+<div class="philosophy-pane" id="phi-jaku">
+<div class="grid grid-2 items-center">
+<div class="phi-text">
+<h3 class="text-primary">Tranquility in Action</h3>
+<p>Jaku is the ultimate stage: tranquility or peace of mind. It is not a passive silence, but a profound calm achieved when harmony, respect, and purity are integrated. In Jaku, the host and guest share a silent, shared appreciation of the tea bowl.</p>
+<blockquote class="zen-quote">"Tranquility is not the absence of noise, but the quiet center within the storm."</blockquote>
+</div>
+<div class="phi-image">
+<img alt="Tranquility - zen rock garden" src="img_phil_tranquility.jpg"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Our Organic Cooperatives -->
+<section class="section section-farmers bg-light">
+<div class="container">
+<div class="section-header text-center">
+<span class="section-tag">DIRECT PARTNERSHIPS</span>
+<h2 class="section-title">Our Organic Family Farmers</h2>
+<p class="section-subtitle">We partner directly with multi-generational organic farming cooperatives in Uji, Kagoshima, and Yame.</p>
+</div>
+<div class="grid grid-3">
+<div class="card farmer-card">
+<img alt="Morimoto tea farm Uji" src="img_field_uji.jpg"/>
+<div class="farmer-info">
+<h3>The Morimoto Farm</h3>
+<span class="farmer-badge">Uji, Kyoto</span>
+<p>Specializing in shaded Okumidori cultivars. The Morimoto family uses natural leaf mulch and zero synthetic pesticides.</p>
+</div>
+</div>
+<div class="card farmer-card">
+<img alt="Yame tea harvesting cooperative" src="img_field_yame.jpg"/>
+<div class="farmer-info">
+<h3>The Yame Cooperative</h3>
+<span class="farmer-badge">Fukuoka</span>
+<p>An association of nine family farms specializing in high-altitude organic Tencha leaves that produce floral aromas.</p>
+</div>
+</div>
+<div class="card farmer-card">
+<img alt="Kagoshima volcanic tea field" src="img_field_kagoshima.jpg"/>
+<div class="farmer-info">
+<h3>Kagoshima Organic Group</h3>
+<span class="farmer-badge">Kagoshima</span>
+<p>Farming in volcanic ash soil, creating leaves exceptionally rich in iron, minerals, and robust metabolic catechins.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: The Craft of Stone Grinding -->
+<section class="section section-craft container">
+<div class="grid grid-2 items-center">
+<div class="craft-text">
+<span class="section-tag">GRANITE MILLING</span>
+<h2 class="section-title">30 RPM: The Speed of Calm</h2>
+<p>After being shaded, hand-picked, and dried, the leaf veins are removed to isolate pure 'Tencha'. This Tencha is then ground using massive, rotating granite wheels.</p>
+<p>To prevent friction heat from scorching the leaves and ruining the vivid green chlorophyll, these stone mills rotate slowly, at exactly 30 RPM. It takes a full hour to produce a single 30g tin of Sado Matcha.</p>
+<ul class="bullet-list">
+<li><i class="text-accent" data-lucide="check"></i> Preserves delicate nutrients &amp; antioxidants</li>
+<li><i class="text-accent" data-lucide="check"></i> Minimizes heat oxidation</li>
+<li><i class="text-accent" data-lucide="check"></i> Cultivates an incredibly fine, silky texture (5-10 microns)</li>
+</ul>
+</div>
+<div class="craft-img">
+<img alt="Stone grinding tencha leaves" class="rounded-img" src="img_about_grinding.jpg"/>
+</div>
+</div>
+</section>
+<!-- Section 5: Meet the Tea Masters -->
+<section class="section section-masters bg-light">
+<div class="container">
+<div class="section-header text-center">
+<span class="section-tag">MASTER BLENDERS</span>
+<h2 class="section-title">Our Certified Tea Masters</h2>
+<p class="section-subtitle">We collaborate with top-level certified tea masters to verify flavor consistency, grading, and roasting (hiire).</p>
+</div>
+<div class="grid grid-3">
+<div class="card master-card text-center">
+<div class="master-img-box">
+<img alt="Master Kenji Sato" class="master-img" src="img_master_kenji.jpg"/>
+</div>
+<h3>Master Kenji Sato</h3>
+<span class="master-title">15th Generation Uji Blender</span>
+<p>Kenji-san judges our spring harvest, creating custom blends that balance robust sweetness and smooth creaminess.</p>
+</div>
+<div class="card master-card text-center">
+<div class="master-img-box">
+<img alt="Chano-yu Master Riko" class="master-img" src="img_master_riko.jpg"/>
+</div>
+<h3>Chano-yu Master Riko</h3>
+<span class="master-title">Certified Ceremony Instructor</span>
+<p>Riko-sensei hosts our monthly workshops, guiding members in the spiritual core of the Japanese tea ceremony.</p>
+</div>
+<div class="card master-card text-center">
+<div class="master-img-box">
+<img alt="Dr. Satoshi Tanaka" class="master-img" src="img_master_satoshi.jpg"/>
+</div>
+<h3>Dr. Satoshi Tanaka</h3>
+<span class="master-title">Tea Chemical Researcher</span>
+<p>Satoshi verifies the antioxidant concentration and ensures our organic certification conforms to strict USDA/JAS criteria.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 6: Sustainability commitment -->
+<section class="section section-sustain container">
+<div class="card sustainability-card text-center">
+<span class="section-tag">ECO STEWARDSHIP</span>
+<h2>Caring for the Earth</h2>
+<p class="max-w-md">Our commitment goes beyond organic farming. Sado tins are fully recyclable, our refill pouches are 100% compostable, and 3% of our revenue supports traditional bamboo weaving communities in Takayama, Nara, preservation of the chasen-craft.</p>
+<div class="sustain-icons">
+<div class="s-icon"><i data-lucide="recycle"></i><span>100% Recyclable Tins</span></div>
+<div class="s-icon"><i data-lucide="leaf"></i><span>Certified Organic Crops</span></div>
+<div class="s-icon"><i data-lucide="package"></i><span>Compostable Refill Packs</span></div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="footer-block bg-dark text-light">
+<div class="container footer-grid">
+<div class="footer-about">
+<div class="footer-logo-box" style="margin-bottom: 24px;">
+<a class="logo-link" href="index.html">
+<div class="logo-box">
+<span class="logo-kanji">茶</span>
+<div class="logo-text">
+<span class="logo-title">SADO MATCHA</span>
+<span class="logo-subtitle">茶の湯 Specialty Shop</span>
+</div>
+</div>
+</a>
+</div>
+<p class="footer-desc">Direct-trade, stone-ground ceremonial matcha sourced sustainably from family cooperatives in Uji, Kyoto.</p>
+</div>
+<div class="footer-links">
+<h4>Explore</h4>
+<ul>
+<li><a href="index.html">Home 1</a></li>
+<li><a href="home-2.html">Home 2</a></li>
+<li><a href="about.html">About Us</a></li>
+<li><a href="services.html">Our Services</a></li>
+<li><a href="subscriptions.html">Subscriptions</a></li>
+<li><a href="shop.html">Shop</a></li>
+<li><a href="blog.html">Blog</a></li>
+</ul>
+</div>
+<div class="footer-links">
+<h4>Community</h4>
+<ul>
+<li><a href="user-dashboard.html">Member Area</a></li>
+<li><a href="contact.html">Find Workshop</a></li>
+<li><a href="about.html">Tea Masters</a></li>
+<li><a href="subscriptions.html">Wholesale Blends</a></li>
+</ul>
+</div>
+<div class="footer-newsletter">
+<h4>Join The Ritual</h4>
+<p>Sign up to receive mindfulness exercises, tea recipes, and 10% off your first order.</p>
+<form class="newsletter-form" onsubmit="event.preventDefault(); addNotification('Thank you for subscribing!')">
+<input placeholder="Your email address" required="" type="email"/>
+<button aria-label="Subscribe" class="btn btn-primary" type="submit"><i data-lucide="arrow-right"></i></button>
+</form>
+</div>
+</div>
+<div class="footer-bottom text-center container">
+<p>© 2026 Sado Matcha. All rights reserved. Created with mindfulness in Kyoto.</p>
+</div>
+</footer>
+</div></main>
+<!-- Global Notification Container -->
+<div class="notification-container" id="notification-container"></div>
+<!-- Login Modal -->
+<div class="modal-overlay hidden" id="login-modal" onclick="closeLoginModalOnOverlay(event)">
+<div class="modal-box card">
+<button aria-label="Close modal" class="modal-close-btn" onclick="closeLoginModal()"><i data-lucide="x"></i></button>
+<div class="modal-header text-center">
+<span class="logo-kanji">茶</span>
+<h2>Welcome to Sado</h2>
+<p>Access your tasting journal, manage subscriptions, or schedule ceremony workshops.</p>
+</div>
+<form onsubmit="handleLogin(event)">
+<div class="form-group">
+<label for="login-email">Email Address</label>
+<input id="login-email" placeholder="E.g., scholar@matcha.com" required="" type="email"/>
+</div>
+<div class="form-group">
+<label for="login-password">Password</label>
+<input id="login-password" placeholder="••••••••" required="" type="password"/>
+</div>
+<div class="flex justify-between items-center margin-top-sm">
+<label class="checkbox-container">
+<input type="checkbox"/> Remember me
+                    </label>
+<a class="forgot-pass" href="#" onclick="addNotification('Password reset simulation sent!')">Forgot Password?</a>
+</div>
+<button class="btn btn-primary btn-block margin-top-sm" type="submit">Enter Tea Room</button>
+</form>
+<div class="modal-footer text-center margin-top-sm">
+<p>Not a tea club member? <a href="#" onclick="navigateTo('services'); closeLoginModal();">Join Sado Tea Club</a></p>
+</div>
+</div>
+</div>
+<!-- Scripts -->
+<script src="app.js"></script>
+</body>
+</html>

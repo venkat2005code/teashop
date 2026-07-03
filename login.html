@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sado Matcha - Specialty Japanese Tea &amp; Ceremony Shop</title>
+<!-- Favicon -->
+<link href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23233425%22/&gt;&lt;text y=%2274%22 x=%2216%22 font-size=%2268%22 fill=%22%23bda26b%22 font-family=%22serif%22&gt;茶&lt;/text&gt;&lt;/svg&gt;" rel="icon" type="image/svg+xml"/>
+<meta content="Experience the serenity of authentic ceremonial grade Japanese matcha and traditional tea ceremonies. Join our Tea Club for curated monthly deliveries." name="description"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&amp;family=Noto+Serif+JP:wght@300;400;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- Stylesheet -->
+<link href="style.css" rel="stylesheet"/>
+<!-- Leaflet Map library -->
+<link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
+<script crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+
+<!-- Main Content Containers (Dynamic Pages) -->
+<main class="main-content">
+<!-- ==================== HOME 1: CEREMONY FOCUS ==================== -->
+
+<!-- ==================== HOME 2: MINDFUL WELLNESS ==================== -->
+
+<!-- ==================== ABOUT PAGE ==================== -->
+
+<!-- ==================== SERVICES PAGE ==================== -->
+
+<!-- ==================== CONTACT PAGE ==================== -->
+
+<!-- ==================== USER DASHBOARD ==================== -->
+
+<!-- ==================== ADMIN DASHBOARD ==================== -->
+
+<!-- ==================== LOGIN PAGE ==================== -->
+
+<!-- ==================== REGISTER PAGE ==================== -->
+
+<div class="page-view" id="login-page" style="position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 80px 24px; background-color: var(--bg-cream);">
+<!-- Page controls in top right -->
+<div class="login-page-controls" style="position: absolute; top: 24px; right: 24px; display: flex; gap: 12px; z-index: 100;">
+<button aria-label="Toggle Dark/Light Theme" class="theme-btn" onclick="toggleTheme()">
+<i data-lucide="moon" id="dash-theme-icon-login"></i>
+</button>
+<button class="rtl-btn" id="login-dash-rtl-toggle" onclick="toggleDirection()">LTR</button>
+</div>
+<!-- Login Form Container -->
+<div class="card" style="max-width: 480px; width: 100%; padding: 48px 40px; box-shadow: var(--shadow-lg); background-color: var(--white); border-radius: var(--border-radius-md); text-align: center; border: var(--border);">
+<a class="logo-link" href="index.html" style="text-decoration: none; display: inline-block;">
+<div class="logo-box" style="justify-content: center; margin-bottom: 24px;">
+<span class="logo-kanji">茶</span>
+<div class="logo-text" style="text-align: start;">
+<span class="logo-title">SADO MATCHA</span>
+<span class="logo-subtitle">茶の湯 Specialty Shop</span>
+</div>
+</div>
+</a>
+<h2 class="font-serif text-primary" style="font-size: 2rem; margin-bottom: 8px;">Welcome to Sado</h2>
+<p class="text-muted" style="font-size: 0.9rem; margin-bottom: 32px;">Access your tasting journal, manage subscriptions, or schedule ceremony workshops.</p>
+<form onsubmit="handleLogin(event)">
+<div class="form-group" style="text-align: start; margin-bottom: 20px;">
+<label for="login-page-email" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: var(--primary);">Email Address</label>
+<input class="form-control" id="login-page-email" placeholder="E.g., scholar@matcha.com" required="" style="width: 100%; padding: 12px 16px; border: var(--border); border-radius: var(--border-radius-sm); background-color: var(--bg-cream);" type="email"/>
+</div>
+<div class="form-group" style="text-align: start; margin-bottom: 20px;">
+<label for="login-page-password" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: var(--primary);">Password</label>
+<input class="form-control" id="login-page-password" placeholder="••••••••" required="" style="width: 100%; padding: 12px 16px; border: var(--border); border-radius: var(--border-radius-sm); background-color: var(--bg-cream);" type="password"/>
+</div>
+<div class="flex justify-between items-center" style="margin-top: 16px; margin-bottom: 24px; font-size: 0.85rem; color: var(--text-muted);">
+<label class="checkbox-container" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+<input type="checkbox"/> Remember me
+                        </label>
+<a class="forgot-pass" href="#" onclick="addNotification('Password reset simulation sent!')" style="color: var(--accent); font-weight: 500;">Forgot Password?</a>
+</div>
+<button class="btn btn-primary btn-block" style="width: 100%; margin-bottom: 24px;" type="submit">Enter Tea Room</button>
+</form>
+<!-- Social Logins -->
+<div style="margin: 24px 0; display: flex; align-items: center; justify-content: center; gap: 12px;">
+<span style="height: 1px; background-color: var(--border); flex-grow: 1;"></span>
+<span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Or continue with</span>
+<span style="height: 1px; background-color: var(--border); flex-grow: 1;"></span>
+</div>
+<div style="display: flex; gap: 16px; margin-bottom: 32px;">
+<button class="btn btn-outline btn-block" onclick="addNotification('Connecting with Google...')" style="flex: 1; border-color: var(--border); color: var(--text-dark); background: transparent; padding: 10px 16px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem; font-weight: 500;">
+<svg height="18" style="min-width: 18px;" viewbox="0 0 24 24" width="18"><path d="M12 5.04c1.66 0 3.2.57 4.38 1.69l3.27-3.27C17.68 1.54 14.98 1 12 1 7.35 1 3.37 3.67 1.39 7.56l3.89 3.02C6.21 7.42 8.87 5.04 12 5.04z" fill="#EA4335"></path><path d="M23.49 12.27c0-.81-.07-1.59-.2-2.36H12v4.51h6.44c-.28 1.48-1.12 2.73-2.38 3.58l3.69 2.87c2.16-1.99 3.74-4.92 3.74-8.6z" fill="#4285F4"></path><path d="M5.28 14.78a6.99 6.99 0 0 1 0-4.14L1.39 7.62a11.96 11.96 0 0 0 0 8.76l3.89-3.01l.002.002z" fill="#FBBC05"></path><path d="M12 23c3.24 0 5.97-1.07 7.96-2.92l-3.69-2.87c-1.02.68-2.33 1.09-3.96 1.09-3.13 0-5.79-2.38-6.73-5.54l-3.89 3.02C3.37 20.33 7.35 23 12 23z" fill="#34A853"></path></svg>
+                        Google
+                    </button>
+<button class="btn btn-outline btn-block" onclick="addNotification('Connecting with Facebook...')" style="flex: 1; border-color: var(--border); color: var(--text-dark); background: transparent; padding: 10px 16px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem; font-weight: 500;">
+<svg fill="#1877F2" height="18" style="min-width: 18px;" viewbox="0 0 24 24" width="18"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+                        Facebook
+                    </button>
+</div>
+<div class="margin-top-sm" style="font-size: 0.9rem; color: var(--text-muted);">
+                    Don't have an account? <a href="register.html" style="color: var(--accent); font-weight: 600; text-decoration: none;">Sign up</a>
+</div>
+</div>
+</div></main>
+<!-- Global Notification Container -->
+<div class="notification-container" id="notification-container"></div>
+<!-- Login Modal -->
+<div class="modal-overlay hidden" id="login-modal" onclick="closeLoginModalOnOverlay(event)">
+<div class="modal-box card">
+<button aria-label="Close modal" class="modal-close-btn" onclick="closeLoginModal()"><i data-lucide="x"></i></button>
+<div class="modal-header text-center">
+<span class="logo-kanji">茶</span>
+<h2>Welcome to Sado</h2>
+<p>Access your tasting journal, manage subscriptions, or schedule ceremony workshops.</p>
+</div>
+<form onsubmit="handleLogin(event)">
+<div class="form-group">
+<label for="login-email">Email Address</label>
+<input id="login-email" placeholder="E.g., scholar@matcha.com" required="" type="email"/>
+</div>
+<div class="form-group">
+<label for="login-password">Password</label>
+<input id="login-password" placeholder="••••••••" required="" type="password"/>
+</div>
+<div class="flex justify-between items-center margin-top-sm">
+<label class="checkbox-container">
+<input type="checkbox"/> Remember me
+                    </label>
+<a class="forgot-pass" href="#" onclick="addNotification('Password reset simulation sent!')">Forgot Password?</a>
+</div>
+<button class="btn btn-primary btn-block margin-top-sm" type="submit">Enter Tea Room</button>
+</form>
+<div class="modal-footer text-center margin-top-sm">
+<p>Not a tea club member? <a href="#" onclick="navigateTo('services'); closeLoginModal();">Join Sado Tea Club</a></p>
+</div>
+</div>
+</div>
+<!-- Scripts -->
+<script src="app.js"></script>
+</body>
+</html>

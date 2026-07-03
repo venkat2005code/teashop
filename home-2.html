@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sado Matcha - Specialty Japanese Tea &amp; Ceremony Shop</title>
+<!-- Favicon -->
+<link href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23233425%22/&gt;&lt;text y=%2274%22 x=%2216%22 font-size=%2268%22 fill=%22%23bda26b%22 font-family=%22serif%22&gt;茶&lt;/text&gt;&lt;/svg&gt;" rel="icon" type="image/svg+xml"/>
+<meta content="Experience the serenity of authentic ceremonial grade Japanese matcha and traditional tea ceremonies. Join our Tea Club for curated monthly deliveries." name="description"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&amp;family=Noto+Serif+JP:wght@300;400;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- Stylesheet -->
+<link href="style.css" rel="stylesheet"/>
+<!-- Leaflet Map library -->
+<link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
+<script crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+<!-- Header Navigation -->
+<header class="header">
+<div class="header-container">
+<!-- Logo -->
+<a class="logo-link" href="index.html">
+<div class="logo-box">
+<span class="logo-kanji">茶</span>
+<div class="logo-text">
+<span class="logo-title">SADO MATCHA</span>
+<span class="logo-subtitle">茶の湯 Specialty Shop</span>
+</div>
+</div>
+</a>
+<!-- Navigation Menu -->
+<nav class="nav-menu">
+<ul class="nav-list">
+<!-- Home Dropdown -->
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="nav-home">
+<span>Home</span> <i class="nav-icon" data-lucide="chevron-down"></i>
+</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="index.html">Home 1</a></li>
+<li><a class="dropdown-item" href="home-2.html">Home 2</a></li>
+</ul>
+</li>
+<li class="nav-item"><a class="nav-link" href="about.html" id="nav-about">About</a></li>
+<li class="nav-item"><a class="nav-link" href="services.html" id="nav-tea-experiences">Services</a></li>
+<li class="nav-item"><a class="nav-link" href="subscriptions.html" id="nav-subscriptions">Subscriptions</a></li>
+<li class="nav-item"><a class="nav-link" href="shop.html" id="nav-shop">Shop</a></li>
+<li class="nav-item"><a class="nav-link" href="blog.html" id="nav-blog">Blog</a></li>
+<li class="nav-item"><a class="nav-link" href="contact.html" id="nav-contact">Contact</a></li>
+<!-- Dashboard Dropdown -->
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="nav-dashboard">
+<span>Dashboard</span> <i class="nav-icon" data-lucide="chevron-down"></i>
+</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="user-dashboard.html">User Dashboard</a></li>
+<li><a class="dropdown-item" href="admin-dashboard.html">Admin Dashboard</a></li>
+</ul>
+</li>
+<li class="nav-item mobile-only mobile-controls-wrapper">
+<button class="btn btn-primary btn-block mobile-login-btn" onclick="window.location.href='login.html'">Login / Sign Up</button>
+<div class="mobile-toggles-row">
+<!-- Mobile Dark / Light Theme Toggle -->
+<button aria-label="Toggle Dark/Light Theme" class="theme-btn" id="mobile-theme-toggle" onclick="toggleTheme()">
+<i data-lucide="moon" id="mobile-theme-icon"></i>
+</button>
+<!-- Mobile LTR/RTL Toggle Button -->
+<button aria-label="Toggle Layout Direction" class="rtl-btn" id="mobile-rtl-toggle">LTR</button>
+</div>
+</li>
+</ul>
+</nav>
+<!-- Right Controls -->
+<div class="header-controls">
+<!-- Dark / Light Theme Toggle -->
+<button aria-label="Toggle Dark/Light Theme" class="theme-btn" id="theme-toggle" onclick="toggleTheme()">
+<i data-lucide="moon" id="theme-icon"></i>
+</button>
+<!-- LTR/RTL Toggle Button -->
+<button aria-label="Toggle Layout Direction" class="rtl-btn" id="rtl-toggle">LTR</button>
+<!-- Login Button -->
+<button class="btn btn-primary login-btn" onclick="window.location.href='login.html'">Login</button>
+<!-- Mobile Menu Toggle -->
+<button aria-label="Toggle Mobile Menu" class="theme-btn mobile-menu-toggle" id="mobile-menu-btn" onclick="toggleMobileMenu()" style="display: none;">
+<i data-lucide="menu" id="mobile-menu-icon"></i>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Containers (Dynamic Pages) -->
+<main class="main-content">
+<!-- ==================== HOME 1: CEREMONY FOCUS ==================== -->
+<!-- ==================== HOME 2: MINDFUL WELLNESS ==================== -->
+<!-- ==================== ABOUT PAGE ==================== -->
+<!-- ==================== SERVICES PAGE ==================== -->
+<!-- ==================== CONTACT PAGE ==================== -->
+<!-- ==================== USER DASHBOARD ==================== -->
+<!-- ==================== ADMIN DASHBOARD ==================== -->
+<!-- ==================== LOGIN PAGE ==================== -->
+<!-- ==================== REGISTER PAGE ==================== -->
+<div class="page-view" id="home-2">
+<!-- Section 1: Minimalist Hero Banner -->
+<section class="hero-section text-center home-2-hero">
+<div class="hero-bg" style="background-image: linear-gradient(rgba(18, 30, 20, 0.72), rgba(18, 30, 20, 0.78)), url('https://images.unsplash.com/photo-1598112524888-068d87ba29f5?auto=format&fit=crop&q=80&w=1600');"></div>
+<div class="hero-content container">
+<span class="hero-badge text-accent">ZEN MIND, MATCHA HEALTH</span>
+<h1 class="hero-title font-serif">Quiet Your World</h1>
+<p class="hero-description">Cultivate clean energy and dynamic focus. Discover the unique synergy of L-Theanine and caffeine in our shade-grown matcha.</p>
+<div class="hero-actions">
+<button class="btn btn-primary btn-lg" onclick="window.location.href='user-dashboard.html'">Start Tasting Journal</button>
+<button class="btn btn-outline btn-lg" onclick="window.location.href='subscriptions.html'">View Ritual Tiers</button>
+</div>
+</div>
+</section>
+<!-- Section 2: Matcha Origin Terroirs -->
+<section class="section section-terroir container">
+<div class="section-header text-center">
+<span class="section-tag">JAPANESE TERROIRS</span>
+<h2 class="section-title">The Three Sacred Regions</h2>
+<p class="section-subtitle">The climate, volcanic soil, and mist of these locations create unique profiles in our stone-ground tencha leaves.</p>
+</div>
+<div class="grid grid-3">
+<div class="card terroir-card text-center">
+<div class="terroir-img-box">
+<img alt="Uji Kyoto tea fields" class="terroir-card-img" src="img_field_uji.jpg"/>
+</div>
+<div class="terroir-kanji text-primary">宇治</div>
+<h3>Kyoto Uji</h3>
+<p class="terroir-detail">The birthplace of matcha. Uji's cool river mists shade the leaves naturally, producing unparalleled deep umami, sweetness, and smooth mouthfeel.</p>
+<span class="terroir-metric">Umami: High • Astringency: Low</span>
+</div>
+<div class="card terroir-card text-center">
+<div class="terroir-img-box">
+<img alt="Fukuoka Yame tea terraces" class="terroir-card-img" src="img_field_yame.jpg"/>
+</div>
+<div class="terroir-kanji text-primary">八女</div>
+<h3>Fukuoka Yame</h3>
+<p class="terroir-detail">Grown on high terraced hillsides. Yame's massive temperature fluctuations produce leaves rich in volatile oils, lending a highly floral, sweet bean aroma.</p>
+<span class="terroir-metric">Umami: Medium • Aroma: Floral</span>
+</div>
+<div class="card terroir-card text-center">
+<div class="terroir-img-box">
+<img alt="Aichi Nishio matcha fields" class="terroir-card-img" src="img_field_nishio.jpg"/>
+</div>
+<div class="terroir-kanji text-primary">西尾</div>
+<h3>Aichi Nishio</h3>
+<p class="terroir-detail">Sourced from wind-sheltered fields. Nishio's mineral-rich soils cultivate deep chlorophyll levels, creating a bright green leaf with a robust, bold matcha flavor.</p>
+<span class="terroir-metric">Umami: Medium • Body: Intense</span>
+</div>
+</div>
+</section>
+<!-- Section 3: The Philosophy of Chado (Interactive Tabs) -->
+
+<!-- Section 4: Interactive Shade-Growth Slider -->
+<section class="section section-shade bg-light" style="padding: 80px 0;">
+  <div class="container">
+    <div class="card" style="border-radius: var(--border-radius-lg); padding: 48px; box-shadow: var(--shadow-md); background: var(--bg-card); display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
+       
+       <!-- Left Side: Title & Description -->
+       <div class="shade-text-side">
+          <span class="section-tag" style="margin-bottom: 12px; display: inline-block;">SHADE CULTURE</span>
+          <h2 class="section-title" style="margin-bottom: 16px; font-size: 2.2rem;">The Science of Darkness</h2>
+          <p class="section-desc" style="margin-bottom: 32px; font-size: 1.05rem;">Before harvesting, tea bushes are covered under straw or vinyl nets to block sunlight. Use the slider to see how shading days dynamically shift tea chemistry, increasing sweet L-Theanine and bright green chlorophyll.</p>
+          
+          <!-- Dynamic Description -->
+          <div style="background: rgba(73, 94, 87, 0.05); padding: 24px; border-radius: var(--border-radius-md); border-left: 4px solid var(--primary); display: flex; gap: 20px; align-items: center;">
+            <div class="leaf-color-preview" id="leaf-preview" style="width: 60px; height: 60px; flex-shrink: 0; border-radius: var(--border-radius-circle); border: 3px solid var(--white); box-shadow: var(--shadow-sm); background-color: hsl(90, 40%, 45%); transition: var(--transition);"></div>
+            <div>
+                <h4 class="text-primary font-serif" id="shade-title-desc" style="margin-bottom: 6px;">Slightly Shaded Tea</h4>
+                <p class="text-muted" id="shade-p-desc" style="font-size: 0.9rem; margin-bottom: 0; line-height: 1.5;">At 10 days, catechins begin converting into sweet amino acids. Color becomes a lighter pea-green. Flavor is fresh and moderately earthy.</p>
+            </div>
+          </div>
+       </div>
+
+       <!-- Right Side: Interactive Controls -->
+       <div class="shade-control-side">
+          <div class="flex items-center justify-between" style="margin-bottom: 24px;">
+            <label class="shade-label-row font-serif text-primary" for="shade-slider" style="font-size: 1.2rem; font-weight: 500; margin: 0;">Shading Duration</label>
+            <span class="badge" id="shade-days-val" style="font-size: 1.05rem; padding: 8px 20px; background: var(--primary); color: var(--white);">10 Days</span>
+          </div>
+          
+          <input class="slider-input" id="shade-slider" max="30" min="0" oninput="updateShadeSimulation(this.value)" step="5" type="range" value="10" style="margin-bottom: 40px; width: 100%; cursor: pointer;" />
+          
+          <div class="shade-metrics" style="display: flex; flex-direction: column; gap: 24px;">
+            <!-- Chlorophyll -->
+            <div class="shade-metric-row" style="display: flex; align-items: center; justify-content: space-between;">
+              <span class="metric-name" style="width: 45%; font-size: 0.95rem; font-weight: 600; color: var(--text-dark);">Chlorophyll (Color)</span>
+              <div class="metric-bar-bg" style="width: 55%; height: 10px; background: #e2e8f0; border-radius: 5px; overflow: hidden;"><div class="metric-bar" id="bar-chlorophyll" style="width: 30%; height: 100%; background: #22c55e; transition: width 0.4s ease;"></div></div>
+            </div>
+            <!-- L-Theanine -->
+            <div class="shade-metric-row" style="display: flex; align-items: center; justify-content: space-between;">
+              <span class="metric-name" style="width: 45%; font-size: 0.95rem; font-weight: 600; color: var(--text-dark);">L-Theanine (Calm)</span>
+              <div class="metric-bar-bg" style="width: 55%; height: 10px; background: #e2e8f0; border-radius: 5px; overflow: hidden;"><div class="metric-bar" id="bar-theanine" style="width: 25%; height: 100%; background: #3b82f6; transition: width 0.4s ease;"></div></div>
+            </div>
+            <!-- Catechins -->
+            <div class="shade-metric-row" style="display: flex; align-items: center; justify-content: space-between;">
+              <span class="metric-name" style="width: 45%; font-size: 0.95rem; font-weight: 600; color: var(--text-dark);">Catechins (Briskness)</span>
+              <div class="metric-bar-bg" style="width: 55%; height: 10px; background: #e2e8f0; border-radius: 5px; overflow: hidden;"><div class="metric-bar" id="bar-catechins" style="width: 80%; height: 100%; background: #eab308; transition: width 0.4s ease;"></div></div>
+            </div>
+          </div>
+       </div>
+
+    </div>
+  </div>
+</section>
+<!-- Section 5: Matcha Alchemy (Health Benefits Grid) -->
+<section class="section section-alchemy bg-light">
+<div class="container">
+<div class="section-header text-center">
+<span class="section-tag">WELLNESS PATHWAYS</span>
+<h2 class="section-title">The Matcha Alchemy</h2>
+<p class="section-subtitle">Matcha leaves are entirely consumed, unlike brewed tea, giving you 100% of their therapeutic properties.</p>
+</div>
+<div class="grid grid-3">
+<div class="card benefit-card">
+<div class="benefit-icon-box"><i data-lucide="zap"></i></div>
+<h3>Clean Sustained Energy</h3>
+<p>Matcha contains caffeine combined with L-Theanine. This slows down caffeine absorption, providing 4-6 hours of steady energy without jitters or coffee crashes.</p>
+</div>
+<div class="card benefit-card">
+<div class="benefit-icon-box"><i data-lucide="shield"></i></div>
+<h3>EGCG &amp; Antioxidants</h3>
+<p>Packed with Epigallocatechin Gallate (EGCG), a powerful catechin that helps lower cellular inflammation, fights oxidative stress, and boosts immune defence.</p>
+</div>
+<div class="card benefit-card">
+<div class="benefit-icon-box"><i data-lucide="activity"></i></div>
+<h3>Metabolic Activation</h3>
+<p>Clinical studies show that drinking pure green tea regularly can increase thermogenesis (the body's rate of burning calories) and enhance fat oxidation during exercise.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 6: Weekly Tranquility (Newsletter & Daily Ritual) -->
+<section class="section section-weekly-tranquility">
+<div class="container">
+<div class="weekly-tranquility-card text-center">
+<span class="section-tag">WEEKLY TRANQUILITY</span>
+<h2 class="text-primary font-serif">Cultivate Your Daily Ritual</h2>
+<p class="text-muted">Enter your email below to subscribe to "The Daily Ritual" – our newsletter detailing tea meditations, traditional Japanese chawan artisans, and exclusive sales.</p>
+<form class="newsletter-inline" onsubmit="event.preventDefault(); addNotification('Welcome to The Daily Ritual!')">
+<input class="dark-input" placeholder="Enter your email address" required="" type="email"/>
+<button class="btn btn-primary" type="submit">Subscribe</button>
+</form>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="footer-block bg-dark text-light">
+<div class="container footer-grid">
+<div class="footer-about">
+<div class="footer-logo-box" style="margin-bottom: 24px;">
+<a class="logo-link" href="index.html">
+<div class="logo-box">
+<span class="logo-kanji">茶</span>
+<div class="logo-text">
+<span class="logo-title">SADO MATCHA</span>
+<span class="logo-subtitle">茶の湯 Specialty Shop</span>
+</div>
+</div>
+</a>
+</div>
+<p class="footer-desc">Crafting slow-paced rituals in a high-speed world. Premium ceremonial matcha sourced from organic fields.</p>
+</div>
+<div class="footer-links">
+<h4>Explore</h4>
+<ul>
+<li><a href="index.html">Home 1</a></li>
+<li><a href="home-2.html">Home 2</a></li>
+<li><a href="about.html">About Us</a></li>
+<li><a href="services.html">Our Services</a></li>
+<li><a href="subscriptions.html">Subscriptions</a></li>
+<li><a href="shop.html">Shop</a></li>
+<li><a href="blog.html">Blog</a></li>
+</ul>
+</div>
+<div class="footer-links">
+<h4>Community</h4>
+<ul>
+<li><a href="user-dashboard.html">Member Area</a></li>
+<li><a href="contact.html">Find Workshop</a></li>
+<li><a href="about.html">Tea Masters</a></li>
+<li><a href="subscriptions.html">Wholesale Blends</a></li>
+</ul>
+</div>
+<div class="footer-newsletter">
+<h4>Join The Ritual</h4>
+<p>Sign up to receive mindfulness exercises, tea recipes, and 10% off your first order.</p>
+<form class="newsletter-form" onsubmit="event.preventDefault(); addNotification('Thank you for subscribing!')">
+<input placeholder="Your email address" required="" type="email"/>
+<button aria-label="Subscribe" class="btn btn-primary" type="submit"><i data-lucide="arrow-right"></i></button>
+</form>
+</div>
+</div>
+<div class="footer-bottom text-center container">
+<p>© 2026 Sado Matcha. All rights reserved. Created with mindfulness in Kyoto.</p>
+</div>
+</footer>
+</div></main>
+<!-- Global Notification Container -->
+<div class="notification-container" id="notification-container"></div>
+<!-- Login Modal -->
+<div class="modal-overlay hidden" id="login-modal" onclick="closeLoginModalOnOverlay(event)">
+<div class="modal-box card">
+<button aria-label="Close modal" class="modal-close-btn" onclick="closeLoginModal()"><i data-lucide="x"></i></button>
+<div class="modal-header text-center">
+<span class="logo-kanji">茶</span>
+<h2>Welcome to Sado</h2>
+<p>Access your tasting journal, manage subscriptions, or schedule ceremony workshops.</p>
+</div>
+<form onsubmit="handleLogin(event)">
+<div class="form-group">
+<label for="login-email">Email Address</label>
+<input id="login-email" placeholder="E.g., scholar@matcha.com" required="" type="email"/>
+</div>
+<div class="form-group">
+<label for="login-password">Password</label>
+<input id="login-password" placeholder="••••••••" required="" type="password"/>
+</div>
+<div class="flex justify-between items-center margin-top-sm">
+<label class="checkbox-container">
+<input type="checkbox"/> Remember me
+                    </label>
+<a class="forgot-pass" href="#" onclick="addNotification('Password reset simulation sent!')">Forgot Password?</a>
+</div>
+<button class="btn btn-primary btn-block margin-top-sm" type="submit">Enter Tea Room</button>
+</form>
+<div class="modal-footer text-center margin-top-sm">
+<p>Not a tea club member? <a href="#" onclick="navigateTo('services'); closeLoginModal();">Join Sado Tea Club</a></p>
+</div>
+</div>
+</div>
+<!-- Scripts -->
+<script src="app.js"></script>
+</body>
+</html>

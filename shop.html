@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sado Matcha - Specialty Japanese Tea &amp; Ceremony Shop</title>
+<!-- Favicon -->
+<link href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23233425%22/&gt;&lt;text y=%2274%22 x=%2216%22 font-size=%2268%22 fill=%22%23bda26b%22 font-family=%22serif%22&gt;茶&lt;/text&gt;&lt;/svg&gt;" rel="icon" type="image/svg+xml"/>
+<meta content="Experience the serenity of authentic ceremonial grade Japanese matcha and traditional tea ceremonies. Join our Tea Club for curated monthly deliveries." name="description"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&amp;family=Noto+Serif+JP:wght@300;400;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- Stylesheet -->
+<link href="style.css" rel="stylesheet"/>
+<!-- Leaflet Map library -->
+<link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
+<script crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+<!-- Header Navigation -->
+<header class="header">
+<div class="header-container">
+<!-- Logo -->
+<a class="logo-link" href="index.html">
+<div class="logo-box">
+<span class="logo-kanji">茶</span>
+<div class="logo-text">
+<span class="logo-title">SADO MATCHA</span>
+<span class="logo-subtitle">茶の湯 Specialty Shop</span>
+</div>
+</div>
+</a>
+<!-- Navigation Menu -->
+<nav class="nav-menu">
+<ul class="nav-list">
+<!-- Home Dropdown -->
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="nav-home">
+<span>Home</span> <i class="nav-icon" data-lucide="chevron-down"></i>
+</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="index.html">Home 1</a></li>
+<li><a class="dropdown-item" href="home-2.html">Home 2</a></li>
+</ul>
+</li>
+<li class="nav-item"><a class="nav-link" href="about.html" id="nav-about">About</a></li>
+<li class="nav-item"><a class="nav-link" href="services.html" id="nav-tea-experiences">Services</a></li>
+<li class="nav-item"><a class="nav-link" href="subscriptions.html" id="nav-subscriptions">Subscriptions</a></li>
+<li class="nav-item"><a class="nav-link" href="shop.html" id="nav-shop">Shop</a></li>
+<li class="nav-item"><a class="nav-link" href="blog.html" id="nav-blog">Blog</a></li>
+<li class="nav-item"><a class="nav-link" href="contact.html" id="nav-contact">Contact</a></li>
+<!-- Dashboard Dropdown -->
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="nav-dashboard">
+<span>Dashboard</span> <i class="nav-icon" data-lucide="chevron-down"></i>
+</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="user-dashboard.html">User Dashboard</a></li>
+<li><a class="dropdown-item" href="admin-dashboard.html">Admin Dashboard</a></li>
+</ul>
+</li>
+<li class="nav-item mobile-only mobile-controls-wrapper">
+<button class="btn btn-primary btn-block mobile-login-btn" onclick="window.location.href='login.html'">Login / Sign Up</button>
+<div class="mobile-toggles-row">
+<!-- Mobile Dark / Light Theme Toggle -->
+<button aria-label="Toggle Dark/Light Theme" class="theme-btn" id="mobile-theme-toggle" onclick="toggleTheme()">
+<i data-lucide="moon" id="mobile-theme-icon"></i>
+</button>
+<!-- Mobile LTR/RTL Toggle Button -->
+<button aria-label="Toggle Layout Direction" class="rtl-btn" id="mobile-rtl-toggle">LTR</button>
+</div>
+</li>
+</ul>
+</nav>
+<!-- Right Controls -->
+<div class="header-controls">
+<!-- Dark / Light Theme Toggle -->
+<button aria-label="Toggle Dark/Light Theme" class="theme-btn" id="theme-toggle" onclick="toggleTheme()">
+<i data-lucide="moon" id="theme-icon"></i>
+</button>
+<!-- LTR/RTL Toggle Button -->
+<button aria-label="Toggle Layout Direction" class="rtl-btn" id="rtl-toggle">LTR</button>
+<!-- Login Button -->
+<button class="btn btn-primary login-btn" onclick="window.location.href='login.html'">Login</button>
+<!-- Mobile Menu Toggle -->
+<button aria-label="Toggle Mobile Menu" class="theme-btn mobile-menu-toggle" id="mobile-menu-btn" onclick="toggleMobileMenu()" style="display: none;">
+<i data-lucide="menu" id="mobile-menu-icon"></i>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Containers (Dynamic Pages) -->
+<main class="main-content">
+
+
+
+        <div id="shop" class="page-view">
+            <section class="hero-section text-center shop-hero">
+                <div class="hero-bg" style="background-image: linear-gradient(rgba(18, 30, 20, 0.72), rgba(18, 30, 20, 0.78)), url('img_shop_hero.png');"></div>
+                <div class="hero-content container">
+                    <span class="hero-badge text-accent">OUR COLLECTION</span>
+                    <h1 class="hero-title font-serif">The Tea Shop</h1>
+                    <p class="hero-description">Browse our selection of premium organic matcha and handcrafted ceremonial teaware.</p>
+                </div>
+            </section>
+
+            <section class="section bg-light" style="padding-top: 60px;">
+                <div class="container">
+                    <div class="shop-controls flex justify-between items-center" style="flex-wrap: wrap; gap: 16px; margin-bottom: 40px;">
+                        <div class="shop-filters gap-sm flex" style="flex-wrap: wrap;">
+                        <button class="btn btn-primary btn-sm">All Products</button>
+                        <button class="btn btn-outline-dark btn-sm">Matcha</button>
+                        <button class="btn btn-outline-dark btn-sm">Teaware</button>
+                    </div>
+                    <div class="shop-sort">
+                        <select class="form-control" style="width:auto; padding: 6px 12px; border-radius: var(--border-radius-sm);">
+                            <option>Sort by: Featured</option>
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-3">
+                    <div class="card product-card">
+                        <div class="product-img-box">
+                            <img src="img_product_imperial.jpg" alt="Imperial Uji Matcha" class="product-img">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Imperial Uji Ceremonial</h3>
+                            <div class="product-meta">Kyoto, Uji • Okumidori</div>
+                            <div class="product-footer margin-top-sm">
+                                <span class="product-price">$45.00</span>
+                                <button class="btn btn-icon btn-primary" onclick="addNotification('Added to bag!')" aria-label="Add to cart"><i data-lucide="shopping-bag"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card product-card">
+                        <div class="product-img-box">
+                            <img src="img_product_fukuoka.jpg" alt="Fukuoka Premium Matcha" class="product-img">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Fukuoka Reserve</h3>
+                            <div class="product-meta">Yame, Fukuoka • Yabukita</div>
+                            <div class="product-footer margin-top-sm">
+                                <span class="product-price">$38.00</span>
+                                <button class="btn btn-icon btn-primary" onclick="addNotification('Added to bag!')" aria-label="Add to cart"><i data-lucide="shopping-bag"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card product-card">
+                        <div class="product-img-box">
+                            <img src="img_product_ceremonial.jpg" alt="Organic Ceremonial Matcha" class="product-img">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Organic Nishio</h3>
+                            <div class="product-meta">Nishio, Aichi • Samidori</div>
+                            <div class="product-footer margin-top-sm">
+                                <span class="product-price">$35.00</span>
+                                <button class="btn btn-icon btn-primary" onclick="addNotification('Added to bag!')" aria-label="Add to cart"><i data-lucide="shopping-bag"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card product-card">
+                        <div class="product-img-box">
+                            <img src="img_product_chawan.jpg" alt="Handmade Chawan" class="product-img">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Kuro Raku Chawan</h3>
+                            <div class="product-meta">Handmade Ceramic Bowl</div>
+                            <div class="product-footer margin-top-sm">
+                                <span class="product-price">$85.00</span>
+                                <button class="btn btn-icon btn-primary" onclick="addNotification('Added to bag!')" aria-label="Add to cart"><i data-lucide="shopping-bag"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card product-card">
+                        <div class="product-img-box">
+                            <img src="img_product_chasen.jpg" alt="Bamboo Chasen" class="product-img">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Takayama Chasen</h3>
+                            <div class="product-meta">100-Prong Bamboo Whisk</div>
+                            <div class="product-footer margin-top-sm">
+                                <span class="product-price">$28.00</span>
+                                <button class="btn btn-icon btn-primary" onclick="addNotification('Added to bag!')" aria-label="Add to cart"><i data-lucide="shopping-bag"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card product-card">
+                        <div class="product-img-box">
+                            <img src="img_traditional_set.jpg" alt="Traditional Japanese Tea Set" class="product-img">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Kyoto Traditional Set</h3>
+                            <div class="product-meta">Complete 4-Piece Ceremony Kit</div>
+                            <div class="product-footer margin-top-sm">
+                                <span class="product-price">$145.00</span>
+                                <button class="btn btn-icon btn-primary" onclick="addNotification('Added to bag!')" aria-label="Add to cart"><i data-lucide="shopping-bag"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </section>
+        </div>
+<!-- Footer -->
+<footer class="footer-block bg-dark text-light">
+<div class="container footer-grid">
+<div class="footer-about">
+<div class="footer-logo-box" style="margin-bottom: 24px;">
+<a class="logo-link" href="index.html">
+<div class="logo-box">
+<span class="logo-kanji">茶</span>
+<div class="logo-text">
+<span class="logo-title">SADO MATCHA</span>
+<span class="logo-subtitle">茶の湯 Specialty Shop</span>
+</div>
+</div>
+</a>
+</div>
+<p class="footer-desc">Honoring Japanese heritage, delivering premium ceremonial stone-ground tea, and creating global wellness connections.</p>
+</div>
+<div class="footer-links">
+<h4>Explore</h4>
+<ul>
+<li><a href="index.html">Home 1</a></li>
+<li><a href="home-2.html">Home 2</a></li>
+<li><a href="about.html">About Us</a></li>
+<li><a href="services.html">Our Services</a></li>
+<li><a href="subscriptions.html">Subscriptions</a></li>
+<li><a href="shop.html">Shop</a></li>
+<li><a href="blog.html">Blog</a></li>
+</ul>
+</div>
+<div class="footer-links">
+<h4>Community</h4>
+<ul>
+<li><a href="user-dashboard.html">Member Area</a></li>
+<li><a href="contact.html">Find Workshop</a></li>
+<li><a href="about.html">Tea Masters</a></li>
+<li><a href="subscriptions.html">Wholesale Blends</a></li>
+</ul>
+</div>
+<div class="footer-newsletter">
+<h4>Join The Ritual</h4>
+<p>Sign up to receive mindfulness exercises, tea recipes, and 10% off your first order.</p>
+<form class="newsletter-form" onsubmit="event.preventDefault(); addNotification('Thank you for subscribing!')">
+<input placeholder="Your email address" required="" type="email"/>
+<button aria-label="Subscribe" class="btn btn-primary" type="submit"><i data-lucide="arrow-right"></i></button>
+</form>
+</div>
+</div>
+<div class="footer-bottom text-center container">
+<p>© 2026 Sado Matcha. All rights reserved. Created with mindfulness in Kyoto.</p>
+</div>
+</footer>
+</main>
+<!-- Global Notification Container -->
+<div class="notification-container" id="notification-container"></div>
+<!-- Login Modal -->
+<div class="modal-overlay hidden" id="login-modal" onclick="closeLoginModalOnOverlay(event)">
+<div class="modal-box card">
+<button aria-label="Close modal" class="modal-close-btn" onclick="closeLoginModal()"><i data-lucide="x"></i></button>
+<div class="modal-header text-center">
+<span class="logo-kanji">茶</span>
+<h2>Welcome to Sado</h2>
+<p>Access your tasting journal, manage subscriptions, or schedule ceremony workshops.</p>
+</div>
+<form onsubmit="handleLogin(event)">
+<div class="form-group">
+<label for="login-email">Email Address</label>
+<input id="login-email" placeholder="E.g., scholar@matcha.com" required="" type="email"/>
+</div>
+<div class="form-group">
+<label for="login-password">Password</label>
+<input id="login-password" placeholder="••••••••" required="" type="password"/>
+</div>
+<div class="flex justify-between items-center margin-top-sm">
+<label class="checkbox-container">
+<input type="checkbox"/> Remember me
+                    </label>
+<a class="forgot-pass" href="#" onclick="addNotification('Password reset simulation sent!')">Forgot Password?</a>
+</div>
+<button class="btn btn-primary btn-block margin-top-sm" type="submit">Enter Tea Room</button>
+</form>
+<div class="modal-footer text-center margin-top-sm">
+<p>Not a tea club member? <a href="#" onclick="navigateTo('services'); closeLoginModal();">Join Sado Tea Club</a></p>
+</div>
+</div>
+</div>
+<!-- Scripts -->
+<script src="app.js"></script>
+</body>
+</html>

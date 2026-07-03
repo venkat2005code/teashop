@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sado Matcha - Specialty Japanese Tea &amp; Ceremony Shop</title>
+<!-- Favicon -->
+<link href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23233425%22/&gt;&lt;text y=%2274%22 x=%2216%22 font-size=%2268%22 fill=%22%23bda26b%22 font-family=%22serif%22&gt;茶&lt;/text&gt;&lt;/svg&gt;" rel="icon" type="image/svg+xml"/>
+<meta content="Experience the serenity of authentic ceremonial grade Japanese matcha and traditional tea ceremonies. Join our Tea Club for curated monthly deliveries." name="description"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&amp;family=Noto+Serif+JP:wght@300;400;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- Stylesheet -->
+<link href="style.css" rel="stylesheet"/>
+<!-- Leaflet Map library -->
+<link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
+<script crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+
+<!-- Main Content Containers (Dynamic Pages) -->
+<main class="main-content">
+<!-- ==================== HOME 1: CEREMONY FOCUS ==================== -->
+
+<!-- ==================== HOME 2: MINDFUL WELLNESS ==================== -->
+
+<!-- ==================== ABOUT PAGE ==================== -->
+
+<!-- ==================== SERVICES PAGE ==================== -->
+
+<!-- ==================== CONTACT PAGE ==================== -->
+
+<!-- ==================== USER DASHBOARD ==================== -->
+
+<!-- ==================== ADMIN DASHBOARD ==================== -->
+
+<!-- ==================== LOGIN PAGE ==================== -->
+
+<!-- ==================== REGISTER PAGE ==================== -->
+
+<div class="page-view" id="user-dashboard">
+<div class="dashboard-wrapper container">
+<!-- Dashboard Sidebar -->
+<aside class="dash-sidebar">
+<div class="dash-logo" style="margin-bottom: 32px; padding-bottom: 24px; border-bottom: var(--border);">
+<a class="logo-link" href="index.html">
+<div class="logo-box">
+<span class="logo-kanji">茶</span>
+<div class="logo-text">
+<span class="logo-title">SADO MATCHA</span>
+<span class="logo-subtitle">茶の湯 Specialty Shop</span>
+</div>
+</div>
+</a>
+</div>
+<nav class="dash-nav">
+<a class="dash-nav-link active" href="#" onclick="switchDashboardTab(this, 'user-deliveries')">
+<i data-lucide="truck"></i> <span>Matcha Deliveries</span>
+</a>
+<a class="dash-nav-link" href="#" onclick="switchDashboardTab(this, 'user-brewing')">
+<i data-lucide="cup-soda"></i> <span>Brewing Guide</span>
+</a>
+<a class="dash-nav-link" href="#" onclick="switchDashboardTab(this, 'user-tasting')">
+<i data-lucide="book-open"></i> <span>Tasting Journal</span>
+</a>
+<a class="dash-nav-link" href="#" onclick="switchDashboardTab(this, 'user-workshops')">
+<i data-lucide="calendar"></i> <span>Workshops</span>
+</a>
+<a class="dash-nav-link" href="#" onclick="switchDashboardTab(this, 'user-orders')">
+<i data-lucide="history"></i> <span>Order History</span>
+</a>
+<a class="dash-nav-link" href="#" onclick="switchDashboardTab(this, 'user-rewards')">
+<i data-lucide="gift"></i> <span>Loyalty Rewards</span>
+</a>
+<a class="dash-nav-link" href="#" onclick="switchDashboardTab(this, 'user-settings')">
+<i data-lucide="settings"></i> <span>Profile Settings</span>
+</a>
+
+
+<a class="dash-nav-link" href="#" onclick="switchDashboardTab(this, 'user-settings')"><i data-lucide="user"></i> <span>Profile</span></a>
+<a class="dash-nav-link" href="login.html" style="margin-top: auto; color: #e74c3c;"><i data-lucide="log-out"></i> <span>Logout</span></a>
+</nav>
+</aside>
+<!-- Dashboard Content Area -->
+<div class="dash-main-body">
+<!-- Dashboard Topbar controls -->
+<div class="dash-topbar flex justify-between items-center margin-bottom-md">
+<div class="dash-breadcrumbs">
+<span class="breadcrumb-welcome">Welcome back, <strong>Tasting Master</strong> 🍵</span>
+<span style="color:var(--text-muted);margin:0 6px">/</span>
+<span class="breadcrumb-parent">Sado Member Area</span> / 
+                            <span class="breadcrumb-current" id="user-dash-breadcrumb">Matcha Deliveries</span>
+</div>
+<div class="dash-controls flex items-center gap-sm">
+<button aria-label="Toggle Dark/Light Theme" class="theme-btn" onclick="toggleTheme()">
+<i data-lucide="moon" id="dash-theme-icon-user"></i>
+</button>
+<button class="rtl-btn" id="user-dash-rtl-toggle" onclick="toggleDirection()">LTR</button>
+<!-- Profile Dropdown -->
+<div class="dash-profile-dropdown">
+<button aria-label="Profile menu" class="dash-profile-btn" onclick="toggleProfileMenu('user-profile-menu')">
+<div class="dash-avatar-sm">TM</div>
+<i data-lucide="chevron-down" style="width:14px;height:14px"></i>
+</button>
+<div class="dash-profile-menu" id="user-profile-menu">
+<a href="#" onclick="switchDashboardTab(document.querySelector('#user-dashboard .dash-nav-link[onclick*=user-settings]'),\'user-settings\'); toggleProfileMenu(\'user-profile-menu\')"><i data-lucide="user"></i> My Profile</a>
+<a href="#" onclick="navigateTo(\'home-1\');"><i data-lucide="home"></i> Go to Site</a>
+
+</div>
+</div>
+<!-- Dashboard Mobile Menu Toggle -->
+<button aria-label="Toggle Dashboard Menu" class="theme-btn dash-mobile-menu-toggle" onclick="toggleDashSidebar('user-dashboard')">
+<i data-lucide="menu"></i>
+</button>
+</div>
+</div>
+<!-- Tab 1: Matcha Deliveries -->
+<div class="dash-tab-pane active" id="user-deliveries">
+<div class="dash-pane-header">
+<h2>Subscription Management</h2>
+<p>Customize your monthly deliveries, change flavors, or edit delivery schedule details.</p>
+</div>
+<div class="grid grid-2">
+<!-- Box Preview -->
+<div class="card box-preview-card">
+<h3 class="text-primary font-serif">Next Shipment</h3>
+<div class="shipment-status-row">
+<div class="shipment-counter">
+<span class="days-remaining">12</span>
+<span class="days-label">Days Left</span>
+</div>
+<div class="shipment-status-info">
+<span class="status-badge">SHIPPING PREPARATION</span>
+<p>Estimated Arrival: <strong>June 25, 2026</strong></p>
+<p>Carrier: <strong>Express Yamato/DHL</strong></p>
+</div>
+</div>
+<div class="box-contents-detail">
+<h4>What's in your Box this Month:</h4>
+<ul class="box-item-list">
+<li><i class="text-primary" data-lucide="package-check"></i> <span id="user-sub-blend">Imperial Uji Ceremonial (30g tin)</span></li>
+<li><i class="text-primary" data-lucide="package-check"></i> 2 Organic Sweet Green Tea Wafers (Bonus)</li>
+<li><i class="text-primary" data-lucide="package-check"></i> Sado Brewing Journal Insert</li>
+</ul>
+</div>
+</div>
+<!-- Box Customizer -->
+<div class="card customizer-card">
+<h3 class="text-primary font-serif">Customize Blend</h3>
+<p>Select your next month's matcha cultivar blend. Highgrade options shade longer for sweetness.</p>
+<div class="form-group margin-top-sm">
+<label for="select-blend">Matcha Cultivar Selection</label>
+<select class="form-control" id="select-blend" onchange="updateSubBlend(this.value)">
+<option value="Imperial Uji Ceremonial (Okumidori)">Imperial Uji Ceremonial (Okumidori) - Sweet, Creamy</option>
+<option value="Fukuoka Reserve (Yabukita)">Fukuoka Reserve (Yabukita) - Floral, Nutty</option>
+<option value="Organic Nishio (Samidori)">Organic Nishio (Samidori) - Earthy, Rich</option>
+</select>
+</div>
+<div class="form-group">
+<label for="select-freq">Delivery Frequency</label>
+<select class="form-control" id="select-freq">
+<option value="monthly">Every 30 Days (Standard)</option>
+<option value="bimonthly">Every 60 Days</option>
+<option value="fortnightly">Every 14 Days (Aficionado)</option>
+</select>
+</div>
+<div class="flex gap-sm margin-top-sm">
+<button class="btn btn-primary" onclick="addNotification('Subscription settings updated!')">Save Settings</button>
+</div>
+</div>
+</div>
+<div class="card chart-card margin-top-md">
+<h3 class="text-primary font-serif">Subscription Delivery Frequency</h3>
+<div class="canvas-box" style="height: 180px;">
+<canvas height="160" id="user-deliveries-chart" width="700"></canvas>
+</div>
+</div>
+</div>
+<!-- Tab 2: Brewing Guide -->
+<div class="dash-tab-pane" id="user-brewing">
+<div class="dash-pane-header">
+<h2>Brewing Tutorials</h2>
+<p>Follow our traditional preparation guide and use the interactive whisking timer to get perfect microfoam.</p>
+</div>
+<div class="grid grid-2">
+<!-- Whisking Timer -->
+<div class="card timer-card text-center">
+<h3 class="text-primary font-serif">Interactive Whisking Timer</h3>
+<p>Sift 2g of matcha. Add 70ml of hot water (80°C). Whisk vigorously in a W/M shape. Start the timer!</p>
+<div class="timer-container-visual margin-top-md">
+<svg class="progress-ring" height="160" width="160">
+<circle class="progress-ring-bg" cx="80" cy="80" fill="transparent" r="72" stroke="rgba(0,0,0,0.1)" stroke-width="8"></circle>
+<circle class="progress-ring-circle" cx="80" cy="80" fill="transparent" id="timer-progress-ring" r="72" stroke="var(--primary)" stroke-dasharray="452.39" stroke-dashoffset="0" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="timer-counter-display">
+<span id="timer-time">30</span>
+<small>seconds</small>
+</div>
+<!-- Whisk animation -->
+<div class="whisk-indicator-icon" id="whisk-icon"><i data-lucide="cup-soda"></i></div>
+</div>
+<div class="timer-controls margin-top-md">
+<button class="btn btn-primary" id="btn-timer-start" onclick="startWhiskTimer()"><i data-lucide="play"></i> Start Whisk</button>
+<button class="btn btn-outline" disabled="" id="btn-timer-pause" onclick="pauseWhiskTimer()"><i data-lucide="pause"></i> Pause</button>
+<button class="btn btn-outline-dark" id="btn-timer-reset" onclick="resetWhiskTimer()"><i data-lucide="rotate-ccw"></i> Reset</button>
+</div>
+</div>
+<!-- Preparation Steps -->
+<div class="card steps-card">
+<h3 class="text-primary font-serif">Brewing Instructions</h3>
+<div class="brewing-steps-timeline">
+<div class="step-line-item">
+<div class="step-num">1</div>
+<div class="step-detail">
+<strong>Warm the Chawan:</strong> Pour hot water into your bowl, swirl it, and pour out. Wipe dry. This prevents the cold bowl from instantly lowering the tea temp.
+                                        </div>
+</div>
+<div class="step-line-item">
+<div class="step-num">2</div>
+<div class="step-detail">
+<strong>Sift the Matcha:</strong> Scoop 2 scoops of powder (approx. 2g) through a fine metal sifter. This removes any small lumps, helping it dissolve smoothly.
+                                        </div>
+</div>
+<div class="step-line-item">
+<div class="step-num">3</div>
+<div class="step-detail">
+<strong>Pour Water:</strong> Add 70ml of water heated to exactly 80°C. Boiling water ruins the L-theanine, making the tea taste overly bitter.
+                                        </div>
+</div>
+<div class="step-line-item">
+<div class="step-num">4</div>
+<div class="step-detail">
+<strong>Whisk Vigorously:</strong> Use the bamboo whisk. Keep it floating above the bottom of the bowl and whisk with back-and-forth wrist movements for 30s until frothy.
+                                        </div>
+</div>
+</div>
+</div>
+</div>
+<div class="card chart-card margin-top-md">
+<h3 class="text-primary font-serif">Brew Temperature Consistency</h3>
+<div class="canvas-box" style="height: 180px;">
+<canvas height="160" id="user-brewing-chart" width="700"></canvas>
+</div>
+</div>
+</div>
+<!-- Tab 3: Tasting Journal -->
+<div class="dash-tab-pane" id="user-tasting">
+<div class="dash-pane-header">
+<h2>My Tasting Journal</h2>
+<p>Log your tasting sessions, customize flavor profiles, and visualize notes on the dynamic flavor wheel.</p>
+</div>
+<div class="grid grid-2">
+<!-- New Journal Entry Form -->
+<div class="card journal-form-card">
+<h3 class="text-primary font-serif">Add Tasting Note</h3>
+<form id="tasting-form" onsubmit="addTastingNote(event)">
+<div class="form-group">
+<label for="t-blend">Matcha Blend / Origin</label>
+<input id="t-blend" placeholder="E.g., Spring Harvest Kyoto" required="" type="text"/>
+</div>
+<div class="flavor-sliders">
+<div class="flavor-slider-row">
+<span class="label">Umami</span>
+<input class="slider-input-sm" id="sl-umami" max="5" min="1" oninput="updateSlidersChart()" type="range" value="3"/>
+</div>
+<div class="flavor-slider-row">
+<span class="label">Sweetness</span>
+<input class="slider-input-sm" id="sl-sweet" max="5" min="1" oninput="updateSlidersChart()" type="range" value="3"/>
+</div>
+<div class="flavor-slider-row">
+<span class="label">Astringency</span>
+<input class="slider-input-sm" id="sl-astringency" max="5" min="1" oninput="updateSlidersChart()" type="range" value="2"/>
+</div>
+<div class="flavor-slider-row">
+<span class="label">Bitterness</span>
+<input class="slider-input-sm" id="sl-bitter" max="5" min="1" oninput="updateSlidersChart()" type="range" value="2"/>
+</div>
+<div class="flavor-slider-row">
+<span class="label">Texture</span>
+<input class="slider-input-sm" id="sl-texture" max="5" min="1" oninput="updateSlidersChart()" type="range" value="3"/>
+</div>
+</div>
+<div class="form-group margin-top-sm">
+<label for="t-notes">Aroma &amp; Taste Notes</label>
+<textarea id="t-notes" placeholder="E.g., Sweet grass, toasted nuts, incredibly smooth foam..." required="" rows="2"></textarea>
+</div>
+<button class="btn btn-primary btn-block" type="submit">Add to Journal</button>
+</form>
+</div>
+<!-- Visualizer & History -->
+<div class="card journal-history-card">
+<h3 class="text-primary font-serif">Flavor Visualizer</h3>
+<div class="canvas-box text-center">
+<canvas height="220" id="flavor-radar-chart" width="220"></canvas>
+</div>
+<h4 class="margin-top-md text-primary font-serif">Tasting Frequency Analytics</h4>
+<div class="canvas-box margin-bottom-sm" style="height: 160px;">
+<canvas height="150" id="user-journal-chart" width="350"></canvas>
+</div>
+<h4 class="margin-top-md text-primary font-serif">Past Tasting Notes</h4>
+<div class="journal-list" id="journal-notes-list">
+<!-- Populated dynamically via JS -->
+</div>
+</div>
+</div>
+</div>
+<!-- Tab 4: Workshops -->
+<div class="dash-tab-pane" id="user-workshops">
+<div class="dash-pane-header">
+<h2>Tea Ceremony Workshops</h2>
+<p>Register for live, online tea masterclasses. Kits are shipped to you prior to the date.</p>
+</div>
+<div class="grid grid-2">
+<!-- Booking Form -->
+<div class="card booking-form-card">
+<h3 class="text-primary font-serif">Book a Workshop</h3>
+<form id="workshop-booking-form" onsubmit="bookWorkshop(event)">
+<div class="form-group">
+<label for="w-select">Select Ceremony Topic</label>
+<select class="form-control" id="w-select" required="">
+<option value="Introduction to Usucha (Thin Tea)">Introduction to Usucha (Thin Tea) - Jun 20</option>
+<option value="The Philosophy of Chado (Sen no Rikyu)">The Philosophy of Chado (Sen no Rikyu) - Jul 05</option>
+<option value="Art of Koicha (Thick Tea Ritual)">Art of Koicha (Thick Tea Ritual) - Jul 18</option>
+<option value="Chawan Pottery &amp; Bamboo Craft">Chawan Pottery &amp; Bamboo Craft - Aug 02</option>
+</select>
+</div>
+<div class="form-group">
+<label for="w-name">Attendee Name</label>
+<input id="w-name" placeholder="E.g., Hiro Tanaka" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="w-notes">Special Requests (e.g., allergies, vegan kit)</label>
+<input id="w-notes" placeholder="E.g., Vegetarian treats preference" type="text"/>
+</div>
+<button class="btn btn-primary btn-block" type="submit">Confirm Booking</button>
+</form>
+</div>
+<!-- Registered Workshops -->
+<div class="card active-bookings-card">
+<h3 class="text-primary font-serif">My Active Registrations</h3>
+<p>Make sure to click the instructions PDF or check the tracking link for your workshop tea kit.</p>
+<div class="registered-workshops-list" id="user-bookings-list">
+<!-- Populated dynamically via JS -->
+</div>
+</div>
+</div>
+<div class="card chart-card margin-top-md">
+<h3 class="text-primary font-serif">Chado Skills Mastery Program</h3>
+<div class="canvas-box" style="height: 180px;">
+<canvas height="160" id="user-workshops-chart" width="700"></canvas>
+</div>
+</div>
+</div>
+<!-- Tab 5: Order History -->
+<div class="dash-tab-pane" id="user-orders">
+<div class="dash-pane-header">
+<h2>Order History</h2>
+<p>Review your past orders, download invoices, or reorder favorite seasonal cultivars.</p>
+</div>
+<div class="grid grid-2">
+<div class="card chart-card">
+<h3 class="text-primary font-serif">Monthly Tea Spending</h3>
+<div class="canvas-box" style="height: 200px;">
+<canvas height="180" id="user-orders-chart" width="350"></canvas>
+</div>
+</div>
+<div class="card table-card">
+<h3 class="text-primary font-serif">Recent Shipments</h3>
+<table class="admin-table margin-top-sm">
+<thead>
+<tr>
+<th>Order ID</th>
+<th>Date</th>
+<th>Items</th>
+<th>Total</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>#SADO-9482</td>
+<td>Jun 10, 2026</td>
+<td>Fukuoka Reserve Yame (30g)</td>
+<td>$32.00</td>
+<td><span class="status-badge" style="background-color: var(--primary); color: var(--text-light);">Delivered</span></td>
+</tr>
+<tr>
+<td>#SADO-9120</td>
+<td>May 25, 2026</td>
+<td>Imperial Uji Ceremonial (30g)</td>
+<td>$38.00</td>
+<td><span class="status-badge" style="background-color: var(--primary); color: var(--text-light);">Delivered</span></td>
+</tr>
+<tr>
+<td>#SADO-8841</td>
+<td>Apr 24, 2026</td>
+<td>Chasen Whisk + Organic Nishio</td>
+<td>$65.00</td>
+<td><span class="status-badge" style="background-color: var(--primary); color: var(--text-light);">Delivered</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Tab 6: Loyalty Rewards -->
+<div class="dash-tab-pane" id="user-rewards">
+<div class="dash-pane-header">
+<h2>Loyalty Rewards Program</h2>
+<p>Earn Leaf Points for subscribing, logging tasting notes, or attending workshops. Redeem them for rare tea lots and handmade utensils.</p>
+</div>
+<div class="grid grid-3 text-center admin-kpis margin-bottom-md">
+<div class="card kpi-card">
+<span class="kpi-label">Leaf Points Balance</span>
+<span class="kpi-val" style="color: var(--primary);">350</span>
+<span class="kpi-change text-green">Silver Leaf Tier</span>
+</div>
+<div class="card kpi-card">
+<span class="kpi-label">Points to Next Reward</span>
+<span class="kpi-val" style="color: var(--accent);">150</span>
+<span class="kpi-change text-muted">Free Chashaku Bamboo Scoop</span>
+</div>
+<div class="card kpi-card">
+<span class="kpi-label">Points Multiplier</span>
+<span class="kpi-val">1.2x</span>
+<span class="kpi-change text-green">Active Member Bonus</span>
+</div>
+</div>
+<div class="grid grid-2">
+<div class="card chart-card">
+<h3 class="text-primary font-serif">Point Accrual Analytics</h3>
+<div class="canvas-box" style="height: 200px;">
+<canvas height="180" id="user-rewards-chart" width="350"></canvas>
+</div>
+</div>
+<div class="card rewards-redeem-card">
+<h3 class="text-primary font-serif">Redeem Rewards</h3>
+<ul class="wholesale-points" style="margin-top: 16px;">
+<li class="wholesale-point" style="margin-bottom: 16px; display: flex; align-items: center; gap: 12px;">
+<div class="wholesale-point-icon" style="background-color: var(--primary-xlight); padding: 8px; border-radius: var(--border-radius-sm); color: var(--primary);"><i data-lucide="gift"></i></div>
+<div class="flex-grow">
+<h4 style="margin-bottom: 2px;">Handmade Chashaku (500 pts)</h4>
+<p class="text-muted" style="font-size: 0.85rem;">A beautiful bent bamboo scoop carved by Takayama craftsmen.</p>
+</div>
+<button class="btn btn-primary btn-sm" onclick="addNotification('Need 150 more points to redeem!')" style="align-self: center;">Redeem</button>
+</li>
+<li class="wholesale-point" style="margin-bottom: 16px; display: flex; align-items: center; gap: 12px;">
+<div class="wholesale-point-icon" style="background-color: var(--primary-xlight); padding: 8px; border-radius: var(--border-radius-sm); color: var(--primary);"><i data-lucide="award"></i></div>
+<div class="flex-grow">
+<h4 style="margin-bottom: 2px;">Rare Single-Farm Matcha (800 pts)</h4>
+<p class="text-muted" style="font-size: 0.85rem;">A limited 20g pouch of hand-picked Asahi cultivar from Uji.</p>
+</div>
+<button class="btn btn-primary btn-sm" onclick="addNotification('Need 450 more points to redeem!')" style="align-self: center;">Redeem</button>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Tab 7: Profile Settings -->
+<div class="dash-tab-pane" id="user-settings">
+<div class="dash-pane-header">
+<h2>Profile &amp; Preferences</h2>
+<p>Update your personal details, secure your account, or customize notification intervals.</p>
+</div>
+<div class="grid grid-2">
+<div class="card settings-form-card">
+<h3 class="text-primary font-serif">Account Information</h3>
+<form class="margin-top-sm" onsubmit="event.preventDefault(); addNotification('Profile settings saved!')">
+<div class="form-group">
+<label for="set-name">Full Name</label>
+<input class="form-control" id="set-name" type="text" value="Tasting Master"/>
+</div>
+<div class="form-group">
+<label for="set-email">Email Address</label>
+<input class="form-control" id="set-email" type="email" value="scholar@matcha.com"/>
+</div>
+<div class="form-group" style="display: flex; flex-direction: column; gap: 8px; margin-top: 12px; margin-bottom: 12px;">
+<label class="checkbox-container" style="display: flex; align-items: center; gap: 8px;">
+<input checked="" type="checkbox"/> <span>Receive SMS shipping updates</span>
+</label>
+<label class="checkbox-container" style="display: flex; align-items: center; gap: 8px;">
+<input checked="" type="checkbox"/> <span>Monthly tasting journal reminders</span>
+</label>
+</div>
+<button class="btn btn-primary" type="submit">Update Profile</button>
+</form>
+</div>
+<div class="card chart-card">
+<h3 class="text-primary font-serif">Account Session Logs</h3>
+<div class="canvas-box" style="height: 200px;">
+<canvas height="180" id="user-settings-chart" width="350"></canvas>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></main>
+<!-- Global Notification Container -->
+<div class="notification-container" id="notification-container"></div>
+<!-- Login Modal -->
+<div class="modal-overlay hidden" id="login-modal" onclick="closeLoginModalOnOverlay(event)">
+<div class="modal-box card">
+<button aria-label="Close modal" class="modal-close-btn" onclick="closeLoginModal()"><i data-lucide="x"></i></button>
+<div class="modal-header text-center">
+<span class="logo-kanji">茶</span>
+<h2>Welcome to Sado</h2>
+<p>Access your tasting journal, manage subscriptions, or schedule ceremony workshops.</p>
+</div>
+<form onsubmit="handleLogin(event)">
+<div class="form-group">
+<label for="login-email">Email Address</label>
+<input id="login-email" placeholder="E.g., scholar@matcha.com" required="" type="email"/>
+</div>
+<div class="form-group">
+<label for="login-password">Password</label>
+<input id="login-password" placeholder="••••••••" required="" type="password"/>
+</div>
+<div class="flex justify-between items-center margin-top-sm">
+<label class="checkbox-container">
+<input type="checkbox"/> Remember me
+                    </label>
+<a class="forgot-pass" href="#" onclick="addNotification('Password reset simulation sent!')">Forgot Password?</a>
+</div>
+<button class="btn btn-primary btn-block margin-top-sm" type="submit">Enter Tea Room</button>
+</form>
+<div class="modal-footer text-center margin-top-sm">
+<p>Not a tea club member? <a href="#" onclick="navigateTo('services'); closeLoginModal();">Join Sado Tea Club</a></p>
+</div>
+</div>
+</div>
+<!-- Scripts -->
+<script src="app.js"></script>
+</body>
+</html>

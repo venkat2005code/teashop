@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderAdminBookings();
     
     // Draw initial charts
-    drawUserDeliveriesChart();
+    if(document.getElementById("user-deliveries-chart")) drawUserDeliveriesChart();
     
     // Initialize shade growth preview
     updateShadeSimulation(10);
@@ -69,6 +69,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize first instrument preview quietly on startup
     showHotspotInfo('chasen', false);
     
+    
+    // Determine active page from URL
+    const path = window.location.pathname;
+    const page = path.split('/').pop() || 'index.html';
+    for (const [id, url] of Object.entries(pageMap)) {
+        if (url === page) {
+            state.activePage = id;
+            updateNavHighlight(id);
+            break;
+        }
+    }
+
     // LTR/RTL Listener
     const rtlBtn = document.getElementById('rtl-toggle');
     if (rtlBtn) {
@@ -81,78 +93,26 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ==================== NAVIGATION / ROUTING ====================
+
+const pageMap = {
+    'home-1': 'index.html',
+    'home-2': 'home-2.html',
+    'about': 'about.html',
+    'services': 'subscriptions.html',
+    'contact': 'contact.html',
+    'user-dashboard': 'user-dashboard.html',
+    'admin-dashboard': 'admin-dashboard.html',
+    'login-page': 'login.html',
+    'register-page': 'register.html',
+    'tea-experiences': 'services.html',
+    'shop': 'shop.html',
+    'blog': 'blog.html'
+};
+
 function navigateTo(pageId) {
-    // Close mobile menu if open
-    const navMenu = document.querySelector('.nav-menu');
-    if (navMenu && navMenu.classList.contains('active')) {
-        navMenu.classList.remove('active');
-        const menuIcon = document.getElementById('mobile-menu-icon');
-        if (menuIcon) {
-            menuIcon.setAttribute('data-lucide', 'menu');
-            lucide.createIcons();
-        }
+    if (pageMap[pageId]) {
+        window.location.href = pageMap[pageId];
     }
-
-    // Hide all pages
-    const pages = document.querySelectorAll('.page-view');
-    pages.forEach(p => p.classList.add('hide'));
-    
-    // Show requested page
-    const targetPage = document.getElementById(pageId);
-    if (targetPage) {
-        targetPage.classList.remove('hide');
-        state.activePage = pageId;
-        if (pageId === 'contact') {
-            initContactMap();
-        }
-    }
-    
-    // Highlight nav link
-    updateNavHighlight(pageId);
-
-    // Hide or show the global site header
-    const siteHeader = document.querySelector('header.header');
-    if (siteHeader) {
-        if (pageId === 'user-dashboard' || pageId === 'admin-dashboard' || pageId === 'login-page' || pageId === 'register-page') {
-            siteHeader.classList.add('hidden-header');
-        } else {
-            siteHeader.classList.remove('hidden-header');
-        }
-    }
-    
-    // Trigger any page-specific drawing/scroll updates
-    if (pageId === 'user-dashboard') {
-        const activeTab = document.querySelector('#user-dashboard .dash-tab-pane.active');
-        if (activeTab) {
-            const tabId = activeTab.id;
-            if (tabId === 'user-deliveries') drawUserDeliveriesChart();
-            else if (tabId === 'user-brewing') drawUserBrewingChart();
-            else if (tabId === 'user-tasting') { drawSlidersRadarChart(); drawUserJournalChart(); }
-            else if (tabId === 'user-workshops') drawUserWorkshopsChart();
-            else if (tabId === 'user-orders') drawUserOrdersChart();
-            else if (tabId === 'user-rewards') drawUserRewardsChart();
-            else if (tabId === 'user-settings') drawUserSettingsChart();
-        } else {
-            drawUserDeliveriesChart();
-        }
-    } else if (pageId === 'admin-dashboard') {
-        const activeTab = document.querySelector('#admin-dashboard .dash-tab-pane.active');
-        if (activeTab) {
-            const tabId = activeTab.id;
-            if (tabId === 'admin-members') drawAdminMembersChart();
-            else if (tabId === 'admin-inventory') drawAdminInventoryChart();
-            else if (tabId === 'admin-bookings') drawAdminBookingsChart();
-            else if (tabId === 'admin-analytics') { drawAdminMembershipChart(); drawAdminCategoryChart(); }
-            else if (tabId === 'admin-orders') drawAdminOrdersChart();
-            else if (tabId === 'admin-sourcing') drawAdminSourcingChart();
-            else if (tabId === 'admin-staff') drawAdminStaffChart();
-        } else {
-            drawAdminMembersChart();
-        }
-    }
-    
-    // Scroll to top
-    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function updateNavHighlight(pageId) {
@@ -268,7 +228,7 @@ function redrawActiveDashboardCharts() {
         const activeTab = document.querySelector('#user-dashboard .dash-tab-pane.active');
         if (activeTab) {
             const tabId = activeTab.id;
-            if (tabId === 'user-deliveries') drawUserDeliveriesChart();
+            if (tabId === 'user-deliveries') if(document.getElementById("user-deliveries-chart")) drawUserDeliveriesChart();
             else if (tabId === 'user-brewing') drawUserBrewingChart();
             else if (tabId === 'user-tasting') { drawSlidersRadarChart(); drawUserJournalChart(); }
             else if (tabId === 'user-workshops') drawUserWorkshopsChart();
@@ -1152,7 +1112,7 @@ function switchDashboardTab(element, tabId) {
     
     // Trigger tab-specific drawing
     if (tabId === 'user-deliveries') {
-        drawUserDeliveriesChart();
+        if(document.getElementById("user-deliveries-chart")) drawUserDeliveriesChart();
     } else if (tabId === 'user-brewing') {
         drawUserBrewingChart();
     } else if (tabId === 'user-tasting') {
@@ -1989,3 +1949,41 @@ function showMapLocation(locationKey) {
         addNotification(`Map centered on Sado ${locationKey === 'kyoto' ? 'Kyoto' : 'San Francisco'} location.`);
     }
 }
+
+// Auto-initialize map if present on page load
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById('contact-map')) {
+        initContactMap();
+    }
+});
+
+// Highlight active navigation link
+document.addEventListener('DOMContentLoaded', () => {
+    // Get the current page filename
+    let path = window.location.pathname;
+    let page = path.split("/").pop();
+    
+    // Default to index.html if root
+    if (page === '') {
+        page = 'index.html';
+    }
+
+    // Find all nav links
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    // Loop through links and add active class if href matches current page
+    navLinks.forEach(link => {
+        // Get the href attribute
+        const href = link.getAttribute('href');
+        if (href && href === page) {
+            link.classList.add('active');
+            
+            // If this link is inside a dropdown menu, also highlight the parent dropdown toggle
+            const parentDropdown = link.closest('.nav-item.dropdown');
+            if (parentDropdown) {
+                const toggle = parentDropdown.querySelector('.dropdown-toggle');
+                if (toggle) toggle.classList.add('active');
+            }
+        }
+    });
+});

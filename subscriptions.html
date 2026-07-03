@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sado Matcha - Specialty Japanese Tea &amp; Ceremony Shop</title>
+<!-- Favicon -->
+<link href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23233425%22/&gt;&lt;text y=%2274%22 x=%2216%22 font-size=%2268%22 fill=%22%23bda26b%22 font-family=%22serif%22&gt;茶&lt;/text&gt;&lt;/svg&gt;" rel="icon" type="image/svg+xml"/>
+<meta content="Experience the serenity of authentic ceremonial grade Japanese matcha and traditional tea ceremonies. Join our Tea Club for curated monthly deliveries." name="description"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&amp;family=Noto+Serif+JP:wght@300;400;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- Stylesheet -->
+<link href="style.css" rel="stylesheet"/>
+<!-- Leaflet Map library -->
+<link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
+<script crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+<!-- Header Navigation -->
+<header class="header">
+<div class="header-container">
+<!-- Logo -->
+<a class="logo-link" href="index.html">
+<div class="logo-box">
+<span class="logo-kanji">茶</span>
+<div class="logo-text">
+<span class="logo-title">SADO MATCHA</span>
+<span class="logo-subtitle">茶の湯 Specialty Shop</span>
+</div>
+</div>
+</a>
+<!-- Navigation Menu -->
+<nav class="nav-menu">
+<ul class="nav-list">
+<!-- Home Dropdown -->
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="nav-home">
+<span>Home</span> <i class="nav-icon" data-lucide="chevron-down"></i>
+</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="index.html">Home 1</a></li>
+<li><a class="dropdown-item" href="home-2.html">Home 2</a></li>
+</ul>
+</li>
+<li class="nav-item"><a class="nav-link" href="about.html" id="nav-about">About</a></li>
+<li class="nav-item"><a class="nav-link" href="services.html" id="nav-tea-experiences">Services</a></li>
+<li class="nav-item"><a class="nav-link" href="subscriptions.html" id="nav-subscriptions">Subscriptions</a></li>
+<li class="nav-item"><a class="nav-link" href="shop.html" id="nav-shop">Shop</a></li>
+<li class="nav-item"><a class="nav-link" href="blog.html" id="nav-blog">Blog</a></li>
+<li class="nav-item"><a class="nav-link" href="contact.html" id="nav-contact">Contact</a></li>
+<!-- Dashboard Dropdown -->
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="nav-dashboard">
+<span>Dashboard</span> <i class="nav-icon" data-lucide="chevron-down"></i>
+</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="user-dashboard.html">User Dashboard</a></li>
+<li><a class="dropdown-item" href="admin-dashboard.html">Admin Dashboard</a></li>
+</ul>
+</li>
+<li class="nav-item mobile-only mobile-controls-wrapper">
+<button class="btn btn-primary btn-block mobile-login-btn" onclick="window.location.href='login.html'">Login / Sign Up</button>
+<div class="mobile-toggles-row">
+<!-- Mobile Dark / Light Theme Toggle -->
+<button aria-label="Toggle Dark/Light Theme" class="theme-btn" id="mobile-theme-toggle" onclick="toggleTheme()">
+<i data-lucide="moon" id="mobile-theme-icon"></i>
+</button>
+<!-- Mobile LTR/RTL Toggle Button -->
+<button aria-label="Toggle Layout Direction" class="rtl-btn" id="mobile-rtl-toggle">LTR</button>
+</div>
+</li>
+</ul>
+</nav>
+<!-- Right Controls -->
+<div class="header-controls">
+<!-- Dark / Light Theme Toggle -->
+<button aria-label="Toggle Dark/Light Theme" class="theme-btn" id="theme-toggle" onclick="toggleTheme()">
+<i data-lucide="moon" id="theme-icon"></i>
+</button>
+<!-- LTR/RTL Toggle Button -->
+<button aria-label="Toggle Layout Direction" class="rtl-btn" id="rtl-toggle">LTR</button>
+<!-- Login Button -->
+<button class="btn btn-primary login-btn" onclick="window.location.href='login.html'">Login</button>
+<!-- Mobile Menu Toggle -->
+<button aria-label="Toggle Mobile Menu" class="theme-btn mobile-menu-toggle" id="mobile-menu-btn" onclick="toggleMobileMenu()" style="display: none;">
+<i data-lucide="menu" id="mobile-menu-icon"></i>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Containers (Dynamic Pages) -->
+<main class="main-content">
+<!-- ==================== HOME 1: CEREMONY FOCUS ==================== -->
+
+<!-- ==================== HOME 2: MINDFUL WELLNESS ==================== -->
+
+<!-- ==================== ABOUT PAGE ==================== -->
+
+<!-- ==================== SERVICES PAGE ==================== -->
+
+<!-- ==================== CONTACT PAGE ==================== -->
+
+<!-- ==================== USER DASHBOARD ==================== -->
+
+<!-- ==================== ADMIN DASHBOARD ==================== -->
+
+<!-- ==================== LOGIN PAGE ==================== -->
+
+<!-- ==================== REGISTER PAGE ==================== -->
+
+<div class="page-view" id="services">
+<!-- Section 1: Services Hero -->
+<section class="hero-section text-center services-hero">
+<div class="hero-bg" style="background-image: linear-gradient(rgba(18, 30, 20, 0.72), rgba(18, 30, 20, 0.78)), url('https://images.unsplash.com/photo-1556881286-fc6915169721?auto=format&fit=crop&q=80&w=1600');"></div>
+<div class="hero-content container">
+<span class="hero-badge">OUR SERVICES &amp; PROGRAMS</span>
+<h1 class="hero-title">Experience Sado Matcha</h1>
+<p class="hero-description">From monthly tea subscriptions to immersive corporate workshops and elegant event catering.</p>
+</div>
+</section>
+<!-- Section 2: Tea Club Tiers -->
+<section class="section section-pricing container">
+<div class="section-header text-center">
+<span class="section-tag">MONTHLY SUBSCRIPTIONS</span>
+<h2 class="section-title">The Tea Club Tiers</h2>
+<p class="section-subtitle">Choose the ritual level that matches your experience. Modify, pause, or upgrade anytime via your dashboard.</p>
+</div>
+<div class="grid grid-3">
+<!-- Pricing Card 1 -->
+<div class="card pricing-card text-center">
+<div class="pricing-header">
+<h3>Usucha Novice</h3>
+<span class="price">$29.00 <small>/ month</small></span>
+<p>Perfect for daily sipping and beginners starting their matcha journey.</p>
+</div>
+<ul class="pricing-features">
+<li><i data-lucide="check"></i> 30g Organic Nishio Matcha</li>
+<li><i data-lucide="check"></i> Whisking Video Tutorials</li>
+<li><i data-lucide="check"></i> 10% Discount on Accessories</li>
+<li class="disabled"><i data-lucide="x"></i> Live Virtual Workshops</li>
+<li class="disabled"><i data-lucide="x"></i> Access to rare, limited cultivar crops</li>
+</ul>
+<button class="btn btn-outline-dark" onclick="addNotification('Subscribed to Usucha Novice tier!')">Subscribe Now</button>
+</div>
+<!-- Pricing Card 2 (Recommended) -->
+<div class="card pricing-card recommended text-center">
+<div class="recommended-badge">MOST POPULAR</div>
+<div class="pricing-header">
+<h3>Ceremonial Scholar</h3>
+<span class="price">$45.00 <small>/ month</small></span>
+<p>Our standard grade subscription. Perfect for regular tea ceremony practitioners.</p>
+</div>
+<ul class="pricing-features">
+<li><i data-lucide="check"></i> 30g Imperial Uji Ceremonial</li>
+<li><i data-lucide="check"></i> Monthly Live Zen Workshops</li>
+<li><i data-lucide="check"></i> 15% Discount on Accessories</li>
+<li><i data-lucide="check"></i> Access to brewing dashboard</li>
+<li class="disabled"><i data-lucide="x"></i> Hand-numbered single-farm lots</li>
+</ul>
+<button class="btn btn-primary" onclick="addNotification('Subscribed to Ceremonial Scholar tier!')">Subscribe Now</button>
+</div>
+<!-- Pricing Card 3 -->
+<div class="card pricing-card text-center">
+<div class="pricing-header">
+<h3>Koicha Master</h3>
+<span class="price">$75.00 <small>/ month</small></span>
+<p>Specially curated for true matcha scholars and practitioners of thick tea (Koicha).</p>
+</div>
+<ul class="pricing-features">
+<li><i data-lucide="check"></i> 30g Rare Single-Cultivar Matcha</li>
+<li><i data-lucide="check"></i> Private 1-on-1 Consultation</li>
+<li><i data-lucide="check"></i> Free Handmade Accessory / Year</li>
+<li><i data-lucide="check"></i> VIP Live Workshops</li>
+<li><i data-lucide="check"></i> Free Express Shipping</li>
+</ul>
+<button class="btn btn-outline-dark" onclick="addNotification('Subscribed to Koicha Master tier!')">Subscribe Now</button>
+</div>
+</div>
+</section>
+<!-- Section 3: Virtual Workshops Details -->
+<section class="section section-vworkshops" style="padding: 100px 0; background: var(--bg-body); overflow: hidden;">
+    <div class="container" style="display: flex; align-items: center; position: relative;">
+        <!-- Image on Left -->
+        <div style="width: 65%; height: 500px; border-radius: var(--border-radius-lg); overflow: hidden; box-shadow: var(--shadow-md);">
+            <img src="img_sub_online_class.jpg" alt="Japanese tea ceremony online class" style="width: 100%; height: 100%; object-fit: cover;" />
+        </div>
+        <!-- Overlapping Card on Right -->
+        <div class="card" style="width: 45%; position: absolute; right: 0; padding: 48px; border-radius: var(--border-radius-md); box-shadow: var(--shadow-lg); z-index: 2;">
+            <span class="section-tag" style="margin-bottom: 12px; display: inline-block;">LEARN FROM HOME</span>
+            <h2 class="section-title" style="font-size: 2.2rem; margin-bottom: 20px;">Virtual Japanese Tea Ceremonies</h2>
+            <p style="margin-bottom: 16px; font-size: 1.05rem;">We believe barriers shouldn't block tradition. Our live online workshops bring the tea room to you. Each ticket includes a shipped "Ceremony Kit" containing premium matcha, an introductory chasen whisk, and instructions.</p>
+            <p style="margin-bottom: 32px; font-size: 1.05rem;">Under the guidance of our tea instructors, you'll learn the setup of the chawan, proper folding of the tea cloth (chakin), temperature control, and the delicate kinetics of whisking.</p>
+            <button class="btn btn-primary" onclick="window.location.href='user-dashboard.html'">Schedule a Session</button>
+        </div>
+    </div>
+</section>
+
+<!-- Section 4: Corporate Wellness Programs -->
+<section class="section section-corporate" style="position: relative; min-height: 600px; display: flex; align-items: center; justify-content: center; padding: 100px 0;">
+    <!-- Background Image -->
+    <img src="img_sub_corporate.jpg" alt="Team tea break corporate wellness" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;" />
+    <!-- Dark overlay -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 1;"></div>
+    
+    <!-- Glass Card Center -->
+    <div class="container text-center" style="position: relative; z-index: 2;">
+        <div class="card" style="display: inline-block; text-align: left; max-width: 850px; padding: 60px; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-xl);">
+            <div class="text-center" style="margin-bottom: 30px;">
+                <span class="section-tag" style="display: inline-block; margin-bottom: 10px;">MINDFUL OFFICES</span>
+                <h2 class="section-title" style="margin-bottom: 0;">Matcha Breaks for Corporate Wellness</h2>
+            </div>
+            <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 20px;">Replace the chaotic coffee run with a serene tea break. We design customized stress-relief programs for corporate offices. These 45-minute live or virtual sessions combine breathing exercises, a mindful brewing demonstration, and a guided tea-drinking session.</p>
+            <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 40px;">Studies indicate that the L-theanine in matcha relaxes the nervous system while increasing alpha brain waves, creating a state of alert calm—perfect for focus and productivity.</p>
+            <div class="text-center">
+                <button class="btn btn-primary" onclick="window.location.href='contact.html'">Inquire for Teams</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 5: Event Catering & Live Matcha Bar -->
+<section class="section section-catering" style="padding: 0; display: flex; flex-wrap: wrap; min-height: 550px;">
+    <!-- Left: Text block -->
+    <div style="flex: 1; min-width: 300px; background: var(--primary); color: var(--white); padding: 100px 8%; display: flex; flex-direction: column; justify-content: center;">
+        <span class="section-tag" style="color: var(--accent); margin-bottom: 12px; display: inline-block;">LIVE BARS &amp; CATERING</span>
+        <h2 class="section-title" style="color: var(--white); font-size: 2.4rem; margin-bottom: 24px;">Bespoke Matcha Bar Experiences</h2>
+        <p style="color: rgba(255,255,255,0.85); font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px;">Add a unique touch of quiet sophistication to your next wedding, corporate retreat, or luxury event. Sado's mobile matcha bar features certified tea servers preparing customized tea beverages for your guests.</p>
+        <p style="color: rgba(255,255,255,0.85); font-size: 1.1rem; line-height: 1.6; margin-bottom: 40px;">From traditional usucha tea ceremony presentations to modern iced matcha lattes and sparkling matcha mocktails, we curate a customized menu that fits the tone of your gathering.</p>
+        <div>
+            <button class="btn btn-accent" onclick="window.location.href='contact.html'">Request Event Quote</button>
+        </div>
+    </div>
+    <!-- Right: Image Edge-to-Edge -->
+    <div style="flex: 1; min-width: 300px;">
+        <img src="img_sub_latte_bar.jpg" alt="Live matcha latte bar service" style="width: 100%; height: 100%; object-fit: cover;" />
+    </div>
+</section>
+
+<!-- Section 6: Wholesale & Custom Blends -->
+<section class="section section-wholesale" style="padding: 100px 0; background: var(--bg-light);">
+    <div class="container">
+        <!-- Top Title -->
+        <div class="text-center" style="max-width: 800px; margin: 0 auto 50px;">
+            <span class="section-tag" style="margin-bottom: 12px; display: inline-block;">PARTNERS &amp; RETAIL</span>
+            <h2 class="section-title" style="font-size: 2.2rem; margin-bottom: 20px;">Wholesale Organic Matcha</h2>
+            <p class="section-subtitle">Partner with Sado to elevate your beverage program. We supply premium cafes, restaurants, Michelin-starred kitchens, and luxury hotel spas with fresh, stone-ground ceremonial and culinary matcha.</p>
+        </div>
+        
+        <!-- Panoramic Banner Image -->
+        <div style="width: 100%; height: 350px; border-radius: var(--border-radius-lg); overflow: hidden; margin-bottom: 60px; box-shadow: var(--shadow-md);">
+            <img src="img_field_uji.jpg" alt="Wholesale Tea Fields" style="width: 100%; height: 100%; object-fit: cover;" />
+        </div>
+        
+        <!-- 3-Column Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
+            <!-- Point 1 -->
+            <div class="card text-center" style="padding: 48px 32px; border-radius: var(--border-radius-md);">
+                <div style="width: 64px; height: 64px; border-radius: 50%; background: var(--primary-xlight); color: var(--primary); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
+                    <i data-lucide="award" style="width: 32px; height: 32px;"></i>
+                </div>
+                <h4 class="font-serif text-primary" style="margin-bottom: 16px; font-size: 1.2rem;">100% JAS / USDA Organic</h4>
+                <p class="text-muted" style="font-size: 0.95rem; line-height: 1.6;">Sourced from protected farms using natural compost fertilisation and zero synthetic pesticide treatments.</p>
+            </div>
+            <!-- Point 2 -->
+            <div class="card text-center" style="padding: 48px 32px; border-radius: var(--border-radius-md);">
+                <div style="width: 64px; height: 64px; border-radius: 50%; background: var(--primary-xlight); color: var(--primary); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
+                    <i data-lucide="zap" style="width: 32px; height: 32px;"></i>
+                </div>
+                <h4 class="font-serif text-primary" style="margin-bottom: 16px; font-size: 1.2rem;">Fresh Milled &amp; Cold Shipped</h4>
+                <p class="text-muted" style="font-size: 0.95rem; line-height: 1.6;">Ground in small weekly batches and cold-shipped to preserve peak chlorophyll and flavour.</p>
+            </div>
+            <!-- Point 3 -->
+            <div class="card text-center" style="padding: 48px 32px; border-radius: var(--border-radius-md);">
+                <div style="width: 64px; height: 64px; border-radius: 50%; background: var(--primary-xlight); color: var(--primary); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
+                    <i data-lucide="coffee" style="width: 32px; height: 32px;"></i>
+                </div>
+                <h4 class="font-serif text-primary" style="margin-bottom: 16px; font-size: 1.2rem;">Custom Blending &amp; Training</h4>
+                <p class="text-muted" style="font-size: 0.95rem; line-height: 1.6;">We work with your culinary team to develop exclusive flavor profiles and train staff on proper preparation.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer-block bg-dark text-light">
+<div class="container footer-grid">
+<div class="footer-about">
+<div class="footer-logo-box" style="margin-bottom: 24px;">
+<a class="logo-link" href="index.html">
+<div class="logo-box">
+<span class="logo-kanji">茶</span>
+<div class="logo-text">
+<span class="logo-title">SADO MATCHA</span>
+<span class="logo-subtitle">茶の湯 Specialty Shop</span>
+</div>
+</div>
+</a>
+</div>
+<p class="footer-desc">Delivering tailored tea rituals, certified education, and corporate wellness initiatives to clients worldwide.</p>
+</div>
+<div class="footer-links">
+<h4>Explore</h4>
+<ul>
+<li><a href="index.html">Home 1</a></li>
+<li><a href="home-2.html">Home 2</a></li>
+<li><a href="about.html">About Us</a></li>
+<li><a href="services.html">Our Services</a></li>
+<li><a href="subscriptions.html">Subscriptions</a></li>
+<li><a href="shop.html">Shop</a></li>
+<li><a href="blog.html">Blog</a></li>
+</ul>
+</div>
+<div class="footer-links">
+<h4>Community</h4>
+<ul>
+<li><a href="user-dashboard.html">Member Area</a></li>
+<li><a href="contact.html">Find Workshop</a></li>
+<li><a href="about.html">Tea Masters</a></li>
+<li><a href="subscriptions.html">Wholesale Blends</a></li>
+</ul>
+</div>
+<div class="footer-newsletter">
+<h4>Join The Ritual</h4>
+<p>Sign up to receive mindfulness exercises, tea recipes, and 10% off your first order.</p>
+<form class="newsletter-form" onsubmit="event.preventDefault(); addNotification('Thank you for subscribing!')">
+<input placeholder="Your email address" required="" type="email"/>
+<button aria-label="Subscribe" class="btn btn-primary" type="submit"><i data-lucide="arrow-right"></i></button>
+</form>
+</div>
+</div>
+<div class="footer-bottom text-center container">
+<p>© 2026 Sado Matcha. All rights reserved. Created with mindfulness in Kyoto.</p>
+</div>
+</footer>
+</div></main>
+<!-- Global Notification Container -->
+<div class="notification-container" id="notification-container"></div>
+<!-- Login Modal -->
+<div class="modal-overlay hidden" id="login-modal" onclick="closeLoginModalOnOverlay(event)">
+<div class="modal-box card">
+<button aria-label="Close modal" class="modal-close-btn" onclick="closeLoginModal()"><i data-lucide="x"></i></button>
+<div class="modal-header text-center">
+<span class="logo-kanji">茶</span>
+<h2>Welcome to Sado</h2>
+<p>Access your tasting journal, manage subscriptions, or schedule ceremony workshops.</p>
+</div>
+<form onsubmit="handleLogin(event)">
+<div class="form-group">
+<label for="login-email">Email Address</label>
+<input id="login-email" placeholder="E.g., scholar@matcha.com" required="" type="email"/>
+</div>
+<div class="form-group">
+<label for="login-password">Password</label>
+<input id="login-password" placeholder="••••••••" required="" type="password"/>
+</div>
+<div class="flex justify-between items-center margin-top-sm">
+<label class="checkbox-container">
+<input type="checkbox"/> Remember me
+                    </label>
+<a class="forgot-pass" href="#" onclick="addNotification('Password reset simulation sent!')">Forgot Password?</a>
+</div>
+<button class="btn btn-primary btn-block margin-top-sm" type="submit">Enter Tea Room</button>
+</form>
+<div class="modal-footer text-center margin-top-sm">
+<p>Not a tea club member? <a href="#" onclick="navigateTo('services'); closeLoginModal();">Join Sado Tea Club</a></p>
+</div>
+</div>
+</div>
+<!-- Scripts -->
+<script src="app.js"></script>
+</body>
+</html>

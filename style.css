@@ -341,11 +341,13 @@ button, input, select, textarea {
     letter-spacing: 2px;
     font-weight: 700;
     color: var(--primary);
+    white-space: nowrap;
 }
 
 .logo-subtitle {
     font-size: 0.75rem;
     color: var(--text-muted);
+    white-space: nowrap;
 }
 
 .nav-list {
@@ -3408,4 +3410,26 @@ img, video, canvas, svg {
 
 [data-theme="dark"] .instrument-selector-item .selector-details h3 {
     color: var(--text-dark);
+}
+
+[data-theme="dark"] .dash-main-body { color: var(--text-light) !important; }
+[data-theme="dark"] .dash-pane-header h2 { color: var(--text-light) !important; }
+[data-theme="dark"] .dash-pane-header p { color: var(--text-muted) !important; }
+
+@media (max-width: 380px) { .dash-main-body { padding: 12px 8px !important; } .card { padding: 16px 12px !important; } }
+
+@media (max-width: 1024px) { #user-brewing .grid-2 { grid-template-columns: 1fr !important; gap: 16px !important; } #user-rewards .grid-3 { grid-template-columns: 1fr !important; gap: 16px !important; } }
+
+/* Fix for Contact Location Cards Spacing and Alignment */
+.location-card p {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+    line-height: 1.6;
+}
+
+.location-card .contact-icon {
+    margin-top: 4px;
+    flex-shrink: 0;
 }
