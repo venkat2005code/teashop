@@ -107,7 +107,7 @@
 <div class="page-view" id="home-2">
 <!-- Section 1: Minimalist Hero Banner -->
 <section class="hero-section text-center home-2-hero">
-<div class="hero-bg" style="background-image: linear-gradient(rgba(18, 30, 20, 0.72), rgba(18, 30, 20, 0.78)), url('https://images.unsplash.com/photo-1598112524888-068d87ba29f5?auto=format&fit=crop&q=80&w=1600');"></div>
+<div class="hero-bg" style="background-image: linear-gradient(rgba(18, 30, 20, 0.72), rgba(18, 30, 20, 0.78)), url('img_hero_bg.jpg');"></div>
 <div class="hero-content container">
 <span class="hero-badge text-accent">ZEN MIND, MATCHA HEALTH</span>
 <h1 class="hero-title font-serif">Quiet Your World</h1>
@@ -119,7 +119,8 @@
 </div>
 </section>
 <!-- Section 2: Matcha Origin Terroirs -->
-<section class="section section-terroir container">
+<section class="section section-terroir">
+<div class="container">
 <div class="section-header text-center">
 <span class="section-tag">JAPANESE TERROIRS</span>
 <h2 class="section-title">The Three Sacred Regions</h2>
@@ -154,13 +155,85 @@
 <span class="terroir-metric">Umami: Medium • Body: Intense</span>
 </div>
 </div>
+</div>
 </section>
 <!-- Section 3: The Philosophy of Chado (Interactive Tabs) -->
+<section class="section section-philosophy">
+<div class="container">
+<div class="section-header text-center">
+<span class="section-tag">FOUR PRINCIPLES</span>
+<h2 class="section-title">The Philosophy of Chado</h2>
+<p class="section-subtitle">Introduced by Sen no Rikyu, these four Zen tenets form the spiritual spine of every matcha preparation.</p>
+</div>
+<div class="philosophy-tabs">
+<div class="philosophy-tab-list">
+<button class="philosophy-tab-btn active" onclick="switchPhilosophyTab('wa')">和 (Wa) - Harmony</button>
+<button class="philosophy-tab-btn" onclick="switchPhilosophyTab('kei')">敬 (Kei) - Respect</button>
+<button class="philosophy-tab-btn" onclick="switchPhilosophyTab('sei')">清 (Sei) - Purity</button>
+<button class="philosophy-tab-btn" onclick="switchPhilosophyTab('jaku')">寂 (Jaku) - Tranquility</button>
+</div>
+<div class="philosophy-tab-content card">
+<!-- Wa Content -->
+<div class="philosophy-pane active" id="phi-wa">
+<div class="grid grid-2 items-center">
+<div class="phi-text">
+<h3 class="text-primary">Harmony with Nature and Guest</h3>
+<p>Wa stands for the harmony between the host, the guest, and the natural elements. In the tea ceremony room (chashitsu), seasonal decorations, flowers (chabana), and scrolls are selected to resonate with the current climate, reinforcing the feeling of oneness with nature.</p>
+<blockquote class="zen-quote">"Harmony is the gentle union of heart and environment, finding balance in the present moment."</blockquote>
+</div>
+<div class="phi-image">
+<img alt="Harmony - Japanese tea ceremony" src="img_phil_harmony.jpg"/>
+</div>
+</div>
+</div>
+<!-- Kei Content -->
+<div class="philosophy-pane" id="phi-kei">
+<div class="grid grid-2 items-center">
+<div class="phi-text">
+<h3 class="text-primary">Respect for All Things</h3>
+<p>Kei is the principle of respect. It demands that we treat every person, utensil, and ingredient with equal reverence. In the tea room, social statuses are cast aside; everyone bows to each other, acknowledging the dignity of all human and non-human entities.</p>
+<blockquote class="zen-quote">"Respect is realizing that every object, guest, and scoop of tea contains the spark of life."</blockquote>
+</div>
+<div class="phi-image">
+<img alt="Respect - traditional Japanese bow" src="img_phil_respect.jpg"/>
+</div>
+</div>
+</div>
+<!-- Sei Content -->
+<div class="philosophy-pane" id="phi-sei">
+<div class="grid grid-2 items-center">
+<div class="phi-text">
+<h3 class="text-primary">Purity of Heart and Mind</h3>
+<p>Sei represents purity. It is demonstrated physically by washing hands and rinsing mouths before entering the tea house, and symbolically by the host wiping clean the tea bowl and caddy. It signifies purging the mind of worldly worries and greed.</p>
+<blockquote class="zen-quote">"Purity is wiping away the dust of the world, leaving only a clean glass to reflect the soul."</blockquote>
+</div>
+<div class="phi-image">
+<img alt="Purity - matcha bowl and water" src="img_phil_purity.jpg"/>
+</div>
+</div>
+</div>
+<!-- Jaku Content -->
+<div class="philosophy-pane" id="phi-jaku">
+<div class="grid grid-2 items-center">
+<div class="phi-text">
+<h3 class="text-primary">Tranquility in Action</h3>
+<p>Jaku is the ultimate stage: tranquility or peace of mind. It is not a passive silence, but a profound calm achieved when harmony, respect, and purity are integrated. In Jaku, the host and guest share a silent, shared appreciation of the tea bowl.</p>
+<blockquote class="zen-quote">"Tranquility is not the absence of noise, but the quiet center within the storm."</blockquote>
+</div>
+<div class="phi-image">
+<img alt="Tranquility - zen rock garden" src="img_phil_tranquility.jpg"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 
 <!-- Section 4: Interactive Shade-Growth Slider -->
 <section class="section section-shade bg-light" style="padding: 80px 0;">
   <div class="container">
-    <div class="card" style="border-radius: var(--border-radius-lg); padding: 48px; box-shadow: var(--shadow-md); background: var(--bg-card); display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
+    <div class="card grid grid-2 items-center" style="border-radius: var(--border-radius-lg); padding: 48px; box-shadow: var(--shadow-md);">
        
        <!-- Left Side: Title & Description -->
        <div class="shade-text-side">
@@ -182,7 +255,7 @@
        <div class="shade-control-side">
           <div class="flex items-center justify-between" style="margin-bottom: 24px;">
             <label class="shade-label-row font-serif text-primary" for="shade-slider" style="font-size: 1.2rem; font-weight: 500; margin: 0;">Shading Duration</label>
-            <span class="badge" id="shade-days-val" style="font-size: 1.05rem; padding: 8px 20px; background: var(--primary); color: var(--white);">10 Days</span>
+            <span class="badge" id="shade-days-val" style="font-size: 1.05rem; padding: 8px 20px; background: var(--primary); color: #ffffff; border-radius: 20px;">10 Days</span>
           </div>
           
           <input class="slider-input" id="shade-slider" max="30" min="0" oninput="updateShadeSimulation(this.value)" step="5" type="range" value="10" style="margin-bottom: 40px; width: 100%; cursor: pointer;" />

@@ -929,6 +929,8 @@ button, input, select, textarea {
     opacity: 0.15;
     line-height: 1;
     margin-bottom: -16px;
+    letter-spacing: 0.2em;
+    margin-right: -0.2em;
 }
 
 .terroir-metric {
@@ -939,6 +941,17 @@ button, input, select, textarea {
     border-radius: 4px;
     background-color: var(--primary-xlight);
     color: var(--primary);
+    align-self: center;
+}
+
+.terroir-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.terroir-card .terroir-detail {
+    flex-grow: 1;
 }
 
 /* Philosophy Tabs */
@@ -1320,6 +1333,10 @@ input.dark-input:focus {
     border-radius: var(--border-radius-sm);
     background-color: var(--bg-cream);
     transition: var(--transition);
+}
+
+.form-group input::placeholder, .form-group textarea::placeholder, .form-control::placeholder {
+    color: var(--text-muted);
 }
 
 .form-group input:focus, .form-group select:focus, .form-group textarea:focus {

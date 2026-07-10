@@ -90,6 +90,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobileRtlBtn) {
         mobileRtlBtn.addEventListener('click', toggleDirection);
     }
+    
+    // Draw charts for the active dashboard tab on load
+    redrawActiveDashboardCharts();
 });
 
 // ==================== NAVIGATION / ROUTING ====================
@@ -363,6 +366,8 @@ function updateShadeSimulation(val) {
     const barChlorophyll = document.getElementById('bar-chlorophyll');
     const barTheanine = document.getElementById('bar-theanine');
     const barCatechins = document.getElementById('bar-catechins');
+    
+    if (!label) return;
     
     label.textContent = `${val} Days`;
     
@@ -1188,7 +1193,7 @@ function getThemeColors() {
         primaryLight: isDark ? '#d5c29d' : '#557c56',
         accent: '#bda26b',
         text: isDark ? '#f9f7f2' : '#233425',
-        textMuted: isDark ? '#a8b0a9' : '#888888',
+        textMuted: isDark ? '#a8b0a9' : '#6b756d',
         gridColor: isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(35, 52, 37, 0.08)',
         barBg: isDark ? '#243226' : '#f0f4f1'
     };
@@ -1488,7 +1493,7 @@ function drawUserOrdersChart() {
     const spending = [38, 65, 38, 32];
     const maxVal = 80;
     
-    drawChartAxes(ctx, padding, chartWidth, chartHeight, maxVal, 4, months, colors, state.currentDir);
+    drawChartAxes(ctx, padding, chartWidth, chartHeight, maxVal, 4, [], colors, state.currentDir);
     
     // Columns
     const numBars = spending.length;
@@ -1496,7 +1501,8 @@ function drawUserOrdersChart() {
     ctx.fillStyle = colors.accent;
     
     for (let i = 0; i < numBars; i++) {
-        const x = padding.left + (i / (numBars - 1)) * chartWidth - (barWidth / 2);
+        const slotWidth = chartWidth / numBars;
+        const x = padding.left + (i * slotWidth) + (slotWidth / 2) - (barWidth / 2);
         const y = padding.top + chartHeight - (spending[i] / maxVal) * chartHeight;
         const barH = padding.top + chartHeight - y;
         
@@ -1508,6 +1514,12 @@ function drawUserOrdersChart() {
         ctx.font = '10px var(--font-sans)';
         ctx.textAlign = 'center';
         ctx.fillText(`$${spending[i]}`, x + barWidth / 2, y - 6);
+        
+        // Draw X-axis label centered on slot
+        ctx.fillStyle = colors.textMuted;
+        ctx.textBaseline = 'top';
+        ctx.fillText(months[i], padding.left + (i * slotWidth) + (slotWidth / 2), padding.top + chartHeight + 8);
+        
         ctx.fillStyle = colors.accent; // reset
     }
 }
@@ -1575,20 +1587,29 @@ function drawUserSettingsChart() {
     const durations = [12, 18, 5, 25, 14]; // active minutes
     const maxVal = 30;
     
-    drawChartAxes(ctx, padding, chartWidth, chartHeight, maxVal, 3, logs, colors, state.currentDir);
+    drawChartAxes(ctx, padding, chartWidth, chartHeight, maxVal, 3, [], colors, state.currentDir);
     
     ctx.fillStyle = colors.primaryLight;
     const numBars = durations.length;
     const barWidth = (chartWidth / numBars) * 0.4;
     
     for (let i = 0; i < numBars; i++) {
-        const x = padding.left + (i / (durations.length - 1)) * chartWidth - (barWidth / 2);
+        const slotWidth = chartWidth / numBars;
+        const x = padding.left + (i * slotWidth) + (slotWidth / 2) - (barWidth / 2);
         const y = padding.top + chartHeight - (durations[i] / maxVal) * chartHeight;
         const barH = padding.top + chartHeight - y;
         
         ctx.beginPath();
         ctx.roundRect(x, y, barWidth, barH, 3);
         ctx.fill();
+        
+        // Draw X-axis label centered on slot
+        ctx.fillStyle = colors.textMuted;
+        ctx.font = '10px var(--font-sans)';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
+        ctx.fillText(logs[i], padding.left + (i * slotWidth) + (slotWidth / 2), padding.top + chartHeight + 8);
+        ctx.fillStyle = colors.primaryLight; // reset
     }
 }
 
@@ -1602,7 +1623,7 @@ function drawAdminMembersChart() {
     ctx.clearRect(0, 0, width, height);
     
     const colors = getThemeColors();
-    const padding = { top: 20, right: 20, bottom: 30, left: 95 };
+    const padding = { top: 20, right: 65, bottom: 30, left: 110 };
     const chartWidth = width - padding.left - padding.right;
     const chartHeight = height - padding.top - padding.bottom;
     
@@ -1664,13 +1685,14 @@ function drawAdminInventoryChart() {
     const thresholds = [10, 10, 10, 5, 8, 5];
     const maxVal = 50;
     
-    drawChartAxes(ctx, padding, chartWidth, chartHeight, maxVal, 5, items, colors, state.currentDir);
+    drawChartAxes(ctx, padding, chartWidth, chartHeight, maxVal, 5, [], colors, state.currentDir);
     
     const numBars = items.length;
     const barWidth = (chartWidth / numBars) * 0.35;
     
     for (let i = 0; i < numBars; i++) {
-        const groupX = padding.left + (i / (numBars - 1)) * chartWidth;
+        const slotWidth = chartWidth / numBars;
+        const groupX = padding.left + (i * slotWidth) + (slotWidth / 2);
         
         // Stock Bar
         const x1 = groupX - barWidth - 2;
@@ -1689,6 +1711,13 @@ function drawAdminInventoryChart() {
         ctx.beginPath();
         ctx.roundRect(x2, y2, barWidth, h2, 3);
         ctx.fill();
+        
+        // Draw X-axis label centered on slot
+        ctx.fillStyle = colors.textMuted;
+        ctx.font = '10px var(--font-sans)';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
+        ctx.fillText(items[i], groupX, padding.top + chartHeight + 8);
     }
 }
 
@@ -1702,7 +1731,7 @@ function drawAdminBookingsChart() {
     ctx.clearRect(0, 0, width, height);
     
     const colors = getThemeColors();
-    const padding = { top: 20, right: 20, bottom: 30, left: 110 };
+    const padding = { top: 20, right: 55, bottom: 30, left: 110 };
     const chartWidth = width - padding.left - padding.right;
     const chartHeight = height - padding.top - padding.bottom;
     

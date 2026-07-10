@@ -128,13 +128,13 @@
 <!-- Box Preview -->
 <div class="card box-preview-card">
 <h3 class="text-primary font-serif">Next Shipment</h3>
-<div class="shipment-status-row">
+<div class="shipment-status-row" style="flex-wrap: wrap;">
 <div class="shipment-counter">
 <span class="days-remaining">12</span>
 <span class="days-label">Days Left</span>
 </div>
 <div class="shipment-status-info">
-<span class="status-badge">SHIPPING PREPARATION</span>
+<span class="status-badge" style="background-color: var(--accent); color: var(--primary);">SHIPPING PREPARATION</span>
 <p>Estimated Arrival: <strong>June 25, 2026</strong></p>
 <p>Carrier: <strong>Express Yamato/DHL</strong></p>
 </div>
@@ -260,7 +260,7 @@
 <form id="tasting-form" onsubmit="addTastingNote(event)">
 <div class="form-group">
 <label for="t-blend">Matcha Blend / Origin</label>
-<input id="t-blend" placeholder="E.g., Spring Harvest Kyoto" required="" type="text"/>
+<input class="form-control" id="t-blend" placeholder="E.g., Spring Harvest Kyoto" required="" type="text"/>
 </div>
 <div class="flavor-sliders">
 <div class="flavor-slider-row">
@@ -286,7 +286,7 @@
 </div>
 <div class="form-group margin-top-sm">
 <label for="t-notes">Aroma &amp; Taste Notes</label>
-<textarea id="t-notes" placeholder="E.g., Sweet grass, toasted nuts, incredibly smooth foam..." required="" rows="2"></textarea>
+<textarea class="form-control" id="t-notes" placeholder="Notes on aroma, texture, finish..." required="" rows="3"></textarea>
 </div>
 <button class="btn btn-primary btn-block" type="submit">Add to Journal</button>
 </form>
@@ -368,8 +368,11 @@
 <canvas height="180" id="user-orders-chart" width="350"></canvas>
 </div>
 </div>
-<div class="card table-card">
+<div class="card" style="padding: 0;">
+<div style="padding: 24px 24px 0;">
 <h3 class="text-primary font-serif">Recent Shipments</h3>
+</div>
+<div class="table-responsive" style="overflow-x: auto; width: 100%;">
 <table class="admin-table margin-top-sm">
 <thead>
 <tr>
@@ -404,6 +407,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 </div>
 </div>
@@ -479,11 +483,11 @@
 <input class="form-control" id="set-email" type="email" value="scholar@matcha.com"/>
 </div>
 <div class="form-group" style="display: flex; flex-direction: column; gap: 8px; margin-top: 12px; margin-bottom: 12px;">
-<label class="checkbox-container" style="display: flex; align-items: center; gap: 8px;">
-<input checked="" type="checkbox"/> <span>Receive SMS shipping updates</span>
+<label class="checkbox-container" style="display: flex; align-items: flex-start; gap: 8px;">
+<input checked="" type="checkbox" style="flex-shrink: 0; width: 16px; height: 16px; margin-top: 2px;"/> <span style="line-height: 1.4;">Receive SMS shipping updates</span>
 </label>
-<label class="checkbox-container" style="display: flex; align-items: center; gap: 8px;">
-<input checked="" type="checkbox"/> <span>Monthly tasting journal reminders</span>
+<label class="checkbox-container" style="display: flex; align-items: flex-start; gap: 8px;">
+<input checked="" type="checkbox" style="flex-shrink: 0; width: 16px; height: 16px; margin-top: 2px;"/> <span style="line-height: 1.4;">Monthly tasting journal reminders</span>
 </label>
 </div>
 <button class="btn btn-primary" type="submit">Update Profile</button>
