@@ -514,8 +514,17 @@ function drawSlidersRadarChart(activeNote = null) {
         ];
     }
     
+    // Theme-aware colors
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const computed = getComputedStyle(document.documentElement);
+    const textColor = isDark ? '#f4f0e6' : computed.getPropertyValue('--text-muted').trim() || '#6c757d';
+    const gridColor = isDark ? 'rgba(255, 255, 255, 0.15)' : 'rgba(35, 52, 37, 0.15)';
+    const polyFill = isDark ? 'rgba(197, 160, 89, 0.35)' : 'rgba(35, 52, 37, 0.35)';
+    const accentColor = computed.getPropertyValue('--accent').trim() || '#c5a059';
+    const fontFamily = computed.getPropertyValue('--font-sans').trim() || 'Inter, sans-serif';
+
     // Draw concentric scale rings (Grid)
-    ctx.strokeStyle = 'rgba(35, 52, 37, 0.15)';
+    ctx.strokeStyle = gridColor;
     ctx.lineWidth = 1;
     for (let r = 1; r <= 5; r++) {
         const currentRadius = (r / 5) * radius;
@@ -534,8 +543,9 @@ function drawSlidersRadarChart(activeNote = null) {
     // Draw axis lines and labels
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.font = '10px var(--font-sans)';
-    ctx.fillStyle = 'var(--text-muted)';
+    ctx.font = `10px ${fontFamily}`;
+    ctx.fillStyle = textColor;
+    ctx.strokeStyle = gridColor;
     
     for (let i = 0; i < numPoints; i++) {
         const angle = (i * 2 * Math.PI / numPoints) - (Math.PI / 2);
@@ -554,8 +564,8 @@ function drawSlidersRadarChart(activeNote = null) {
     }
     
     // Plot flavor value polygon
-    ctx.fillStyle = 'rgba(35, 52, 37, 0.35)'; // Translucent Moss Green
-    ctx.strokeStyle = 'var(--accent)'; // Gold Border
+    ctx.fillStyle = polyFill;
+    ctx.strokeStyle = accentColor;
     ctx.lineWidth = 2;
     ctx.beginPath();
     
@@ -1201,10 +1211,13 @@ function getThemeColors() {
 
 // Draw standard axes helper
 function drawChartAxes(ctx, padding, chartWidth, chartHeight, maxVal, steps, labels, colors, direction = 'ltr') {
+    const computed = getComputedStyle(document.documentElement);
+    const fontFamily = computed.getPropertyValue('--font-sans').trim() || 'Inter, sans-serif';
+
     ctx.strokeStyle = colors.gridColor;
     ctx.lineWidth = 1;
     ctx.fillStyle = colors.textMuted;
-    ctx.font = '10px var(--font-sans)';
+    ctx.font = `10px ${fontFamily}`;
     
     // Y-axis grid & labels
     ctx.textBaseline = 'middle';
@@ -1500,6 +1513,9 @@ function drawUserOrdersChart() {
     const barWidth = (chartWidth / numBars) * 0.45;
     ctx.fillStyle = colors.accent;
     
+    const computed = getComputedStyle(document.documentElement);
+    const fontFamily = computed.getPropertyValue('--font-sans').trim() || 'Inter, sans-serif';
+
     for (let i = 0; i < numBars; i++) {
         const slotWidth = chartWidth / numBars;
         const x = padding.left + (i * slotWidth) + (slotWidth / 2) - (barWidth / 2);
@@ -1510,10 +1526,12 @@ function drawUserOrdersChart() {
         ctx.roundRect(x, y, barWidth, barH, 4);
         ctx.fill();
         
+        // Draw value on top of bar
         ctx.fillStyle = colors.text;
-        ctx.font = '10px var(--font-sans)';
+        ctx.font = `10px ${fontFamily}`;
         ctx.textAlign = 'center';
-        ctx.fillText(`$${spending[i]}`, x + barWidth / 2, y - 6);
+        ctx.textBaseline = 'bottom'; // Ensure it sits cleanly above the bar
+        ctx.fillText(`$${spending[i]}`, x + barWidth / 2, y - 4);
         
         // Draw X-axis label centered on slot
         ctx.fillStyle = colors.textMuted;
